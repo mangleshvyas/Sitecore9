@@ -12,6 +12,7 @@
         "deploymentId": null,
         "location": null,
         "singleWebAppName":null
+		"secondWebAppName":null
       }
     },
     "extension": {
@@ -34,6 +35,11 @@
       "minLength": 1,
       "defaultValue": "[coalesce(parameters('standard').singleWebAppName, concat(parameters('deploymentId'), '-single'))]"
     },
+	"secondWebAppName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[coalesce(parameters('standard').singleWebAppName, concat(parameters('deploymentId'), '-single'))]"
+    },
     "msDeployPackageUrl": {
       "type": "securestring",
       "minLength": 1,
@@ -52,6 +58,22 @@
             "packageUri": "[parameters('msDeployPackageUrl')]",
             "setParameters": {
               "Application Path": "[variables('singleWebAppNameTidy')]"
+            }
+          }
+        ]
+      }
+    },
+	{
+      "name": "[concat(variables('secondWebAppNameTidy'), '/', 'MSDeploy')]",
+      "type": "Microsoft.Web/sites/extensions",
+      "location": "[parameters('location')]",
+      "apiVersion": "[variables('webApiVersion')]",
+      "properties": {
+        "addOnPackages": [
+          {
+            "packageUri": "[parameters('msDeployPackageUrl')]",
+            "setParameters": {
+              "Application Path": "[variables('secondWebAppNameTidy')]"
             }
           }
         ]
