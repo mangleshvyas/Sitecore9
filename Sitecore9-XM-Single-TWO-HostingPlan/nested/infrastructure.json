@@ -27,6 +27,7 @@
     "sitecoreTags": {
       "provider": "b51535c2-ab3e-4a68-95f8-e2e3c9a19299",
       "single": "single",
+	  "second": "second",
       "core": "core",
       "master": "master",
       "web": "web",
@@ -265,7 +266,7 @@
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').single]"
+        "logicalName": "[variables('sitecoreTags').second]"
       }
     },
     {
