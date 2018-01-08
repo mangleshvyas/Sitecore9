@@ -19,6 +19,7 @@
 	"secondHostingPlanNameTidy": "[toLower(trim(parameters('secondHostingPlanName')))]",
 
     "singleWebAppNameTidy": "[toLower(trim(parameters('singleWebAppName')))]",
+	"secondWebAppNameTidy": "[toLower(trim(parameters('secondWebAppName')))]",
 
     "searchServiceNameTidy": "[toLower(trim(parameters('searchServiceName')))]",
     "applicationInsightsNameTidy": "[toLower(trim(parameters('applicationInsightsName')))]",
