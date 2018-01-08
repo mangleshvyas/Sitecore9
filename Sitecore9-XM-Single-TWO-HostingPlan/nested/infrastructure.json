@@ -16,7 +16,7 @@
     "formsSqlDatabaseNameTidy": "[toLower(trim(parameters('formsSqlDatabaseName')))]",
 
     "singleHostingPlanNameTidy": "[toLower(trim(parameters('singleHostingPlanName')))]",
-	"sedondHostingPlanNameTidy": "[toLower(trim(parameters('secondHostingPlanName')))]",
+	"secondHostingPlanNameTidy": "[toLower(trim(parameters('secondHostingPlanName')))]",
 
     "singleWebAppNameTidy": "[toLower(trim(parameters('singleWebAppName')))]",
 
