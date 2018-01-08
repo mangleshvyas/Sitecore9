@@ -209,7 +209,7 @@
       "apiVersion": "[variables('serverFarmApiVersion')]",
       "sku": {
         "name": "[parameters('secondHostingPlanSkuName')]",
-        "capacity": "[parameters('sedondHostingPlanSkuCapacity')]"
+        "capacity": "[parameters('secondHostingPlanSkuCapacity')]"
       },
       "properties": {
         "name": "[variables('secondHostingPlanNameTidy')]"
