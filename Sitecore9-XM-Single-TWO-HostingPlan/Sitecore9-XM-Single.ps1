@@ -62,7 +62,7 @@ Get-AzureStorageBlobContent -Blob $jsonParameter -Container $containerName -Dest
 Get-AzureStorageBlobContent -Blob $license -Container $containerName -Destination $licenseFilePath  -Context $context
 
 #8. unarchive the Sitecore tool kit 
-Expand-Archive -Path $localDirectory -DestinationPath 'C:\Sitecore9-Install' -Force
+Expand-Archive -Path $localDirectory -DestinationPath 'C:\Sitecore9' -Force
 
 
 #9. Local Path for license file
