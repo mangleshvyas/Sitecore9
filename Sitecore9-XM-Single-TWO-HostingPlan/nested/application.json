@@ -15,6 +15,7 @@
     "formsSqlDatabaseNameTidy": "[toLower(trim(parameters('formsSqlDatabaseName')))]",
 
     "singleWebAppNameTidy": "[toLower(trim(parameters('singleWebAppName')))]",
+	"secondWebAppNameTidy": "[toLower(trim(parameters('secondWebAppName')))]",
 
     "searchServiceNameTidy": "[toLower(trim(parameters('searchServiceName')))]",
     "applicationInsightsNameTidy": "[toLower(trim(parameters('applicationInsightsName')))]"
@@ -136,6 +137,11 @@
       "type": "string",
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-single')]"
+    },
+	"secondWebAppName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-second')]"
     },
     "singleMsDeployPackageUrl": {
       "type": "securestring",
