@@ -147,6 +147,10 @@
       "type": "securestring",
       "minLength": 1
     },
+	"secondMsDeployPackageUrl": {
+      "type": "securestring",
+      "minLength": 1
+    },
     "telerikEncryptionKey": {
       "type": "securestring",
       "minLength": 8,
@@ -196,6 +200,42 @@
         }
       }
     },
+	{
+      "name": "[concat(variables('secondWebAppNameTidy'), '/', 'MSDeploy')]",
+      "type": "Microsoft.Web/sites/extensions",
+      "location": "[parameters('location')]",
+      "apiVersion": "[variables('webApiVersion')]",
+      "properties": {
+        "packageUri": "[parameters('secondMsDeployPackageUrl')]",
+        "dbType": "SQL",
+        "connectionString": "[concat('Data Source=tcp:', variables('sqlServerFqdnTidy'), ',1433;Initial Catalog=master;User Id=', parameters('sqlServerLogin'), ';Password=', parameters('sqlServerPassword'), ';')]",
+        "setParameters": {
+          "Application Path": "[variables('secondWebAppNameTidy')]",
+          "Sitecore Admin New Password": "[parameters('sitecoreAdminPassword')]",
+          "Core DB User Name": "[parameters('coreSqlDatabaseUserName')]",
+          "Core DB Password": "[parameters('coreSqlDatabasePassword')]",
+          "Core Admin Connection String": "[concat('Encrypt=True;TrustServerCertificate=False;Data Source=', variables('sqlServerFqdnTidy'), ',1433;Initial Catalog=',variables('coreSqlDatabaseNameTidy'),';User Id=', parameters('sqlServerLogin'), ';Password=', parameters('sqlServerPassword'), ';')]",
+          "Core Connection String": "[concat('Encrypt=True;TrustServerCertificate=False;Data Source=', variables('sqlServerFqdnTidy'), ',1433;Initial Catalog=',variables('coreSqlDatabaseNameTidy'),';User Id=', parameters('coreSqlDatabaseUserName'), ';Password=', parameters('coreSqlDatabasePassword'), ';')]",
+          "Master DB User Name": "[parameters('masterSqlDatabaseUserName')]",
+          "Master DB Password": "[parameters('masterSqlDatabasePassword')]",
+          "Master Admin Connection String": "[concat('Encrypt=True;TrustServerCertificate=False;Data Source=', variables('sqlServerFqdnTidy'), ',1433;Initial Catalog=',variables('masterSqlDatabaseNameTidy'),';User Id=', parameters('sqlServerLogin'), ';Password=', parameters('sqlServerPassword'), ';')]",
+          "Master Connection String": "[concat('Encrypt=True;TrustServerCertificate=False;Data Source=', variables('sqlServerFqdnTidy'), ',1433;Initial Catalog=',variables('masterSqlDatabaseNameTidy'),';User Id=', parameters('masterSqlDatabaseUserName'), ';Password=', parameters('masterSqlDatabasePassword'), ';')]",
+          "Web DB User Name": "[parameters('webSqlDatabaseUserName')]",
+          "Web DB Password": "[parameters('webSqlDatabasePassword')]",
+          "Web Admin Connection String": "[concat('Encrypt=True;TrustServerCertificate=False;Data Source=', variables('sqlServerFqdnTidy'), ',1433;Initial Catalog=',variables('webSqlDatabaseNameTidy'),';User Id=', parameters('sqlServerLogin'), ';Password=', parameters('sqlServerPassword'), ';')]",
+          "Web Connection String": "[concat('Encrypt=True;TrustServerCertificate=False;Data Source=', variables('sqlServerFqdnTidy'), ',1433;Initial Catalog=',variables('webSqlDatabaseNameTidy'),';User Id=', parameters('webSqlDatabaseUserName'), ';Password=', parameters('webSqlDatabasePassword'), ';')]",
+          "Experience Forms DB User Name": "[parameters('formsSqlDatabaseUserName')]",
+          "Experience Forms DB Password": "[parameters('formsSqlDatabasePassword')]",
+          "Experience Forms Admin Connection String": "[concat('Encrypt=True;TrustServerCertificate=False;Data Source=', variables('sqlServerFqdnTidy'), ',1433;Initial Catalog=',variables('formsSqlDatabaseNameTidy'),';User Id=', parameters('sqlServerLogin'), ';Password=', parameters('sqlServerPassword'), ';')]",
+          "Experience Forms Connection String": "[concat('Encrypt=True;TrustServerCertificate=False;Data Source=', variables('sqlServerFqdnTidy'), ',1433;Initial Catalog=',variables('formsSqlDatabaseNameTidy'),';User Id=', parameters('formsSqlDatabaseUserName'), ';Password=', parameters('formsSqlDatabasePassword'), ';')]",
+          "Cloud Search Connection String": "[concat('serviceUrl=https://', variables('searchServiceNameTidy'), '.search.windows.net;apiVersion=', variables('searchPreviewApiVersion'), ';apiKey=', listAdminKeys(resourceId('Microsoft.Search/searchServices', variables('searchServiceNameTidy')), variables('searchApiVersion')).primaryKey)]",
+          "Application Insights Instrumentation Key": "[reference(resourceId('Microsoft.Insights/Components', variables('applicationInsightsNameTidy')), variables('applicationInsightsApiVersion')).InstrumentationKey]",
+          "Application Insights Role": "Single",
+          "Telerik Encryption Key": "[parameters('telerikEncryptionKey')]",
+          "License Xml": "[parameters('licenseXml')]"
+        }
+      }
+    },
     {
       "name": "[concat(variables('singleWebAppNameTidy'), '/', 'appsettings')]",
       "type": "Microsoft.Web/sites/config",
@@ -205,6 +245,17 @@
       },
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites/extensions', variables('singleWebAppNameTidy'),'MSDeploy')]"        
+      ]
+    },
+	{
+      "name": "[concat(variables('secondWebAppNameTidy'), '/', 'appsettings')]",
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "[variables('webApiVersion')]",
+      "properties": {
+        "WEBSITE_DYNAMIC_CACHE": 0
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites/extensions', variables('secondWebAppNameTidy'),'MSDeploy')]"        
       ]
     }
   ]
