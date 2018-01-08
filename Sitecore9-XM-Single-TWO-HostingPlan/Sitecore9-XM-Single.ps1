@@ -82,7 +82,7 @@ $remoteJsonPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/mast
 Import-Module $dir\tools\sitecore.cloud.cmdlets.psm1
 
 #13. Go to the local folder
-cd c:\Sitecore9-Install
+cd c:\Sitecore9
 
 #14. Start the installation.
 Start-SitecoreAzureDeployment -Name $resourceGroupName -Location $location -ArmTemplateUrl $remoteJsonPath  -ArmParametersPath $localarmParameterPath  -LicenseXmlPath $locallicensePath 
