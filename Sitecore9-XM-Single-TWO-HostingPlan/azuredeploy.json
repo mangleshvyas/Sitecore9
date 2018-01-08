@@ -192,6 +192,11 @@
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-single')]"
     },
+	"secondWebAppName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-second')]"
+    },
     "singleMsDeployPackageUrl": {
       "type": "securestring",
       "minLength": 1
@@ -349,6 +354,9 @@
           },
           "singleWebAppName": {
             "value": "[parameters('singleWebAppName')]"
+          },
+		  "secondWebAppName": {
+            "value": "[parameters('secondWebAppName')]"
           }
         }
       }
@@ -436,6 +444,9 @@
           "singleWebAppName": {
             "value": "[parameters('singleWebAppName')]"
           },
+		  "secondWebAppName": {
+            "value": "[parameters('secondWebAppName')]"
+          },
           "singleMsDeployPackageUrl": {
             "value": "[parameters('singleMsDeployPackageUrl')]"
           },
@@ -508,6 +519,9 @@
 
               "singleHostingPlanName": "[parameters('singleHostingPlanName')]",
               "singleWebAppName": "[parameters('singleWebAppName')]",
+			  
+			  "secondHostingPlanName": "[parameters('secondHostingPlanName')]",
+              "secondWebAppName": "[parameters('secondWebAppName')]",
               
               "passwordSalt": "[parameters('passwordSalt')]"
             }
