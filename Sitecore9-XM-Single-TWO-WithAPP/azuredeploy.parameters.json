@@ -1,0 +1,27 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "deploymentId": {
+      "value": "Sitecore9-XM"
+    },
+    "location": {
+      "value": "westus"
+    },
+    "sqlServerLogin": {
+      "value": "hiadmin"
+    },
+    "sqlServerPassword": {
+      "value": "P@ssw0rd1234"
+    },
+    "singleMsDeployPackageUrl": {
+      "value": "https://hidevstore.blob.core.windows.net/public/sitecore9/Sitecore%209.0.0%20rev.%20171002%20(Cloud)_single.scwdp.zip?st=2017-12-21T00%3A00%3A00Z&se=2020-12-30T17%3A39%3A00Z&sp=rl&sv=2017-04-17&sr=b&sig=dnEXj47WBEdvpaO618dHfIL6Urr%2BJpMEGdsP3xL82Ac%3D"
+    },
+    "sitecoreAdminPassword": {
+      "value": "P@ssw0rd1234"
+    },
+    "licenseXml": {
+      "value": "license.xml"
+    }
+  }
+}
