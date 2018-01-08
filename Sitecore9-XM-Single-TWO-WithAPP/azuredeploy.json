@@ -352,10 +352,19 @@
           "singleHostingPlanSkuCapacity": {
             "value": "[parameters('singleHostingPlanSkuCapacity')]"
           },
-          "singleWebAppName": {
+		  "singleWebAppName": {
             "value": "[parameters('singleWebAppName')]"
           },
-		  "secondWebAppName": {
+		  "secondHostingPlanName": {
+            "value": "[parameters('secondHostingPlanName')]"
+          },
+          "secondHostingPlanSkuName": {
+            "value": "[parameters('secondHostingPlanSkuName')]"
+          },
+          "secondHostingPlanSkuCapacity": {
+            "value": "[parameters('secondHostingPlanSkuCapacity')]"
+          },
+          "secondWebAppName": {
             "value": "[parameters('secondWebAppName')]"
           }
         }
@@ -449,6 +458,9 @@
           },
           "singleMsDeployPackageUrl": {
             "value": "[parameters('singleMsDeployPackageUrl')]"
+          },
+		  "secondMsDeployPackageUrl": {
+            "value": "[parameters('secondMsDeployPackageUrl')]"
           },
 
           "telerikEncryptionKey": {
