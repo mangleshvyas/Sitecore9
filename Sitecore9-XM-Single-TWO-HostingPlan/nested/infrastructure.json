@@ -244,6 +244,30 @@
         "logicalName": "[variables('sitecoreTags').single]"
       }
     },
+	{
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('secondWebAppNameTidy')]",
+      "apiVersion": "[variables('webApiVersion')]",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('secondHostingPlanNameTidy'))]",
+        "siteConfig": {
+          "use32BitWorkerProcess": false,
+          "alwaysOn": true,
+          "phpVersion": "",
+          "defaultDocuments": [
+            "index.html"
+          ]
+        }
+      },
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('secondHostingPlanNameTidy'))]"
+      ],
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').single]"
+      }
+    },
     {
       "type": "Microsoft.Sql/servers",
       "apiVersion": "[variables('dbApiVersion')]",
