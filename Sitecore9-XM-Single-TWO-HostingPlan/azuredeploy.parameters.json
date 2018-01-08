@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "deploymentId": {
-      "value": "Sitecore9-XM-Single"
+      "value": "Sitecore9-XM"
     },
     "location": {
       "value": "westus"

@@ -186,6 +186,11 @@
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-single')]"
     }
+	"secondWebAppName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-single')]"
+    }
   },
   "resources": [
     {
