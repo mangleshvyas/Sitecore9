@@ -457,16 +457,110 @@
           "singleWebAppName": {
             "value": "[parameters('singleWebAppName')]"
           },
-		  "secondWebAppName": {
-            "value": "[parameters('secondWebAppName')]"
-          },
+		  
           "singleMsDeployPackageUrl": {
             "value": "[parameters('singleMsDeployPackageUrl')]"
           },
-		  "secondMsDeployPackageUrl": {
-            "value": "[parameters('secondMsDeployPackageUrl')]"
+		  
+          "telerikEncryptionKey": {
+            "value": "[parameters('telerikEncryptionKey')]"
           },
 
+          "passwordSalt": {
+            "value": "[parameters('passwordSalt')]"
+          }
+        }
+      },
+      "dependsOn": [ "[resourceId('Microsoft.Resources/deployments', concat(deployment().name, '-infrastructure'))]" ]
+    },
+	{
+      "apiVersion": "[variables('resourcesApiVersion')]",
+      "name": "[concat(deployment().name, '-application')]",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[concat(uri(parameters('templateLinkBase'), 'nested/application.json'), parameters('templateLinkAccessToken'))]"
+        },
+        "parameters": {
+          "infrastructure": {
+            "value": "[reference(concat(deployment().name, '-infrastructure')).outputs.infrastructure.value]"
+          },
+
+          "deploymentId": {
+            "value": "[parameters('deploymentId')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "sitecoreAdminPassword": {
+            "value": "[parameters('sitecoreAdminPassword')]"
+          },
+          "licenseXml": {
+            "value": "[parameters('licenseXml')]"
+          },
+
+          "sqlServerLogin": {
+            "value": "[parameters('sqlServerLogin')]"
+          },
+          "sqlServerPassword": {
+            "value": "[parameters('sqlServerPassword')]"
+          },
+
+          "coreSqlDatabaseName": {
+            "value": "[parameters('coreSqlDatabaseName')]"
+          },
+          "masterSqlDatabaseName": {
+            "value": "[parameters('masterSqlDatabaseName')]"
+          },
+          "webSqlDatabaseName": {
+            "value": "[parameters('webSqlDatabaseName')]"
+          },
+          "formsSqlDatabaseName": {
+            "value": "[parameters('formsSqlDatabaseName')]"
+          },
+         
+          "coreSqlDatabaseUserName": {
+            "value": "[parameters('coreSqlDatabaseUserName')]"
+          },
+          "coreSqlDatabasePassword": {
+            "value": "[parameters('coreSqlDatabasePassword')]"
+          },
+          "masterSqlDatabaseUserName": {
+            "value": "[parameters('masterSqlDatabaseUserName')]"
+          },
+          "masterSqlDatabasePassword": {
+            "value": "[parameters('masterSqlDatabasePassword')]"
+          },
+          "webSqlDatabaseUserName": {
+            "value": "[parameters('webSqlDatabaseUserName')]"
+          },
+          "webSqlDatabasePassword": {
+            "value": "[parameters('webSqlDatabasePassword')]"
+          },
+          "formsSqlDatabaseUserName": {
+            "value": "[parameters('formsSqlDatabaseUserName')]"
+          },
+          "formsSqlDatabasePassword": {
+            "value": "[parameters('formsSqlDatabasePassword')]"
+          },
+
+          "searchServiceName": {
+            "value": "[parameters('searchServiceName')]"
+          },
+
+          "applicationInsightsName": {
+            "value": "[parameters('applicationInsightsName')]"
+          },
+
+          "secondWebAppName": {
+            "value": "[parameters('secondWebAppName')]"
+          },
+		  
+          "secondMsDeployPackageUrl": {
+            "value": "[parameters('secondMsDeployPackageUrl')]"
+          },
+		  
           "telerikEncryptionKey": {
             "value": "[parameters('telerikEncryptionKey')]"
           },
@@ -536,9 +630,74 @@
               "singleHostingPlanName": "[parameters('singleHostingPlanName')]",
               "singleWebAppName": "[parameters('singleWebAppName')]",
 			  
-			  "secondHostingPlanName": "[parameters('secondHostingPlanName')]",
-              "secondWebAppName": "[parameters('secondWebAppName')]",
+              "passwordSalt": "[parameters('passwordSalt')]"
+            }
+          },
+          "extension": { "value": "[parameters('modules').items[copyIndex()].parameters]" }
+        }
+      },
+      "dependsOn": [
+        "[concat(deployment().name, '-' , variables('dependencies')[copyIndex()].name)]"
+      ]
+    },
+	{
+      "copy": {
+        "name": "modules",
+        "count": "[length(parameters('modules').items)]"
+      },
+      "name": "[concat(deployment().name, '-' , parameters('modules').items[copyIndex()].name)]",
+      "apiVersion": "[variables('resourcesApiVersion')]",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[parameters('modules').items[copyIndex()].templateLink]"
+        },
+        "parameters": {
+          "standard": {
+            "value": {
+              "infrastructure": "[reference(concat(deployment().name, '-infrastructure')).outputs.infrastructure.value]",
               
+              "deploymentId": "[parameters('deploymentId')]",
+              "location": "[parameters('location')]",
+              "sitecoreAdminPassword": "[parameters('sitecoreAdminPassword')]",
+              "licenseXml": "[parameters('licenseXml')]",
+
+              "sqlServerName": "[parameters('sqlServerName')]",
+              "sqlServerLogin": "[parameters('sqlServerLogin')]",
+              "sqlServerPassword": "[parameters('sqlServerPassword')]",
+
+              "sqlServerVersion": "[parameters('sqlServerVersion')]",
+              "sqlDatabaseCollation": "[parameters('sqlDatabaseCollation')]",
+              "sqlDatabaseEdition": "[parameters('sqlDatabaseEdition')]",
+              "sqlDatabaseMaxSize": "[parameters('sqlDatabaseMaxSize')]",
+              "sqlBasicDatabaseServiceObjectiveLevel": "[parameters('sqlBasicDatabaseServiceObjectiveLevel')]",
+              "sqlDatabaseServiceObjectiveLevel": "[parameters('sqlDatabaseServiceObjectiveLevel')]",
+
+              "coreSqlDatabaseName": "[parameters('coreSqlDatabaseName')]",
+              "masterSqlDatabaseName": "[parameters('masterSqlDatabaseName')]",
+              "webSqlDatabaseName": "[parameters('webSqlDatabaseName')]",
+              "formsSqlDatabaseName": "[parameters('formsSqlDatabaseName')]",
+
+              "coreSqlDatabaseUserName": "[parameters('coreSqlDatabaseUserName')]",
+              "coreSqlDatabasePassword": "[parameters('coreSqlDatabasePassword')]",
+              "masterSqlDatabaseUserName": "[parameters('masterSqlDatabaseUserName')]",
+              "masterSqlDatabasePassword": "[parameters('masterSqlDatabasePassword')]",
+              "webSqlDatabaseUserName": "[parameters('webSqlDatabaseUserName')]",
+              "webSqlDatabasePassword": "[parameters('webSqlDatabasePassword')]",
+              "formsSqlDatabaseUserName": "[parameters('formsSqlDatabaseUserName')]",
+              "formsSqlDatabasePassword": "[parameters('formsSqlDatabasePassword')]",              
+
+              "searchServiceName": "[parameters('searchServiceName')]",
+              "searchServiceReplicaCount": "[parameters('searchServiceReplicaCount')]",
+              "searchServicePartitionCount": "[parameters('searchServicePartitionCount')]",
+
+              "applicationInsightsName": "[parameters('applicationInsightsName')]",
+              "applicationInsightsLocation": "[parameters('applicationInsightsLocation')]",
+
+              "secondHostingPlanName": "[parameters('secondHostingPlanName')]",
+              "secondWebAppName": "[parameters('secondWebAppName')]",
+			  
               "passwordSalt": "[parameters('passwordSalt')]"
             }
           },
