@@ -40,12 +40,12 @@ $key1 = $storageAccountkey | Where-Object KeyName -EQ "key1" |Select-Object -Exp
 $context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $key1
 
 #4. Create a folder as working director
-mkdir -Path 'c:\Sitecore9-Install' -Force
-$dir = 'C:\Sitecore9-Install'
+mkdir -Path 'c:\Sitecore9' -Force
+$dir = 'C:\Sitecore9'
 
 #6. Download the file from storage account
 $fileName = "sitecore9\Sitecore-XM-Single\Sitecore Azure Toolkit 2.0.0 rev.171010.zip"
-$localDirectory = "C:\Sitecore9-Install\Sitecore Azure Toolkit 2.0.0 rev.171010.zip"
+$localDirectory = "C:\Sitecore9\Sitecore Azure Toolkit 2.0.0 rev.171010.zip"
 $containerName = "public"
 $jsonParameter = "sitecore9\Sitecore-XM-Single\azuredeploy.parameters.json"
 $license  ="sitecore9\Sitecore-XM-Single\license.xml"
@@ -72,7 +72,7 @@ $localLicensePath = "$dir\license.xml"
 $localArmParameterPath = "$dir\azuredeploy.parameters.json"
 
 #11. Remote path for Json ARM Template
-$remoteJsonPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/Sitecore9-XM-Single/azuredeploy.json"
+$remoteJsonPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/Sitecore9-XM-Single-TWO-HostingPlan/azuredeploy.json"
 
 #Certificate Path
 

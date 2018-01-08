@@ -173,7 +173,7 @@
     },
     "singleHostingPlanSkuCapacity": {
       "type": "int",
-      "defaultValue": 1
+      "defaultValue": 2
     },
     "singleWebAppName": {
       "type": "string",
