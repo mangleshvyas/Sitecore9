@@ -201,6 +201,10 @@
       "type": "securestring",
       "minLength": 1
     },
+	"secondMsDeployPackageUrl": {
+      "type": "securestring",
+      "minLength": 1
+    },
 
     "coreSqlDatabaseUserName": {
       "type": "string",
