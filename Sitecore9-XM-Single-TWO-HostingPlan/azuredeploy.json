@@ -161,19 +161,31 @@
       "type": "string",
       "defaultValue": "0.33"
     },
-
     "singleHostingPlanName": {
       "type": "string",
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-single-hp')]"
     },
+	"secondHostingPlanName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-second-hp')]"
+    },
     "singleHostingPlanSkuName": {
+      "type": "string",
+      "defaultValue": "B1"
+    },
+	"secondHostingPlanSkuName": {
       "type": "string",
       "defaultValue": "B1"
     },
     "singleHostingPlanSkuCapacity": {
       "type": "int",
-      "defaultValue": 2
+      "defaultValue": 1
+    },
+	"secondHostingPlanSkuCapacity": {
+      "type": "int",
+      "defaultValue": 1
     },
     "singleWebAppName": {
       "type": "string",
