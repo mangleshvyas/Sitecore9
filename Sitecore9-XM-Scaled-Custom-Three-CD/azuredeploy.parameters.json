@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "deploymentId": {
-      "value": "Sitecore9-XM-Scaled-Test"
+      "value": "Sitecore9-Three-CD"
     },
 	"location": {
       "value": "west us"
