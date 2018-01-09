@@ -176,6 +176,10 @@
       "type": "string",
       "defaultValue": "[concat(parameters('deploymentId'), '-cd2-hp')]"
     },
+	"cd3HostingPlanName": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd3-hp')]"
+    },
 
     "cmWebAppName": {
       "type": "string",
@@ -188,6 +192,10 @@
 	"cd2WebAppName": {
       "type": "string",
       "defaultValue": "[concat(parameters('deploymentId'), '-cd2')]"
+    },
+	"cd3WebAppName": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd3')]"
     },
 
     "cmMsDeployPackageUrl": {
@@ -298,6 +306,9 @@
 		  "cd2HostingPlanName": {
             "value": "[parameters('cd2HostingPlanName')]"
           },
+		  "cd3HostingPlanName": {
+            "value": "[parameters('cd3HostingPlanName')]"
+          },
 
           "cmWebAppName": {
             "value": "[parameters('cmWebAppName')]"
@@ -307,6 +318,9 @@
           },
 		  "cd2WebAppName": {
             "value": "[parameters('cd2WebAppName')]"
+          },
+		  "cd3WebAppName": {
+            "value": "[parameters('cd3WebAppName')]"
           }
         }
       }
@@ -404,6 +418,9 @@
           },
 		  "cd2WebAppName": {
             "value": "[parameters('cd2WebAppName')]"
+          },
+		  "cd3WebAppName": {
+            "value": "[parameters('cd3WebAppName')]"
           },
 
           "cmMsDeployPackageUrl": {

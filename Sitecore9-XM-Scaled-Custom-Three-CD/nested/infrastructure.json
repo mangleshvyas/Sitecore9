@@ -25,15 +25,18 @@
     "cmHostingPlanNameTidy": "[toLower(trim(parameters('cmHostingPlanName')))]",
     "cdHostingPlanNameTidy": "[toLower(trim(parameters('cdHostingPlanName')))]",
 	"cd2HostingPlanNameTidy": "[toLower(trim(parameters('cd2HostingPlanName')))]",
+	"cd3HostingPlanNameTidy": "[toLower(trim(parameters('cd3HostingPlanName')))]",
 
     "cmWebAppNameTidy": "[toLower(trim(parameters('cmWebAppName')))]",
     "cdWebAppNameTidy": "[toLower(trim(parameters('cdWebAppName')))]",
 	"cd2WebAppNameTidy": "[toLower(trim(parameters('cd2WebAppName')))]",
+	"cd3WebAppNameTidy": "[toLower(trim(parameters('cd3WebAppName')))]",
 
     "sitecoreTags": {
       "provider": "b51535c2-ab3e-4a68-95f8-e2e3c9a19299",
       "cd": "cd",
 	  "cd2": "cd2",
+	  "cd3": "cd3",
       "cm": "cm",
       "core": "core",
       "master": "master",
@@ -135,6 +138,10 @@
       "type": "string",
       "defaultValue": "[concat(parameters('deploymentId'), '-cd2-hp')]"
     },
+	"cd3HostingPlanName": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd3-hp')]"
+    },
 
     "cmWebAppName": {
       "type": "string",
@@ -147,6 +154,10 @@
 	"cd2WebAppName": {
       "type": "string",
       "defaultValue": "[concat(parameters('deploymentId'), '-cd2')]"
+    },
+	"cd3WebAppName": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd3')]"
     },
 
     "skuMap": {
@@ -162,6 +173,10 @@
             "SkuCapacity": 1
           },
 		  "cd2HostingPlan": {
+            "SkuName": "B2",
+            "SkuCapacity": 1
+          },
+		  "cd3HostingPlan": {
             "SkuName": "B2",
             "SkuCapacity": 1
           },
@@ -215,6 +230,10 @@
             "SkuName": "B2",
             "SkuCapacity": 2
           },
+		  "cd3HostingPlan": {
+            "SkuName": "B2",
+            "SkuCapacity": 2
+          },
           "coreSqlDatabase": {
             "Edition": "Standard",
             "MaxSize": "268435456000",
@@ -262,6 +281,10 @@
             "SkuCapacity": 3
           },
 		  "cd2HostingPlan": {
+            "SkuName": "B2",
+            "SkuCapacity": 3
+          },
+		  "cd3HostingPlan": {
             "SkuName": "B2",
             "SkuCapacity": 3
           },
@@ -315,6 +338,10 @@
             "SkuName": "S3",
             "SkuCapacity": 4
           },
+		  "cd3HostingPlan": {
+            "SkuName": "S3",
+            "SkuCapacity": 4
+          },
           "coreSqlDatabase": {
             "Edition": "Standard",
             "MaxSize": "268435456000",
@@ -362,6 +389,10 @@
             "SkuCapacity": 8
           },
 		  "cd2HostingPlan": {
+            "SkuName": "S3",
+            "SkuCapacity": 8
+          },
+		  "cd32HostingPlan": {
             "SkuName": "S3",
             "SkuCapacity": 8
           },
@@ -458,7 +489,24 @@
       "location": "[parameters('location')]",
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').cd]"
+        "logicalName": "[variables('sitecoreTags').cd2]"
+      }
+    },
+	{
+      "type": "Microsoft.Web/serverfarms",
+      "name": "[variables('cd3HostingPlanNameTidy')]",
+      "apiVersion": "[variables('serverFarmApiVersion')]",
+      "sku": {
+        "name": "[parameters('resourceSizes').cd3HostingPlan.SkuName]",
+        "capacity": "[parameters('resourceSizes').cd3HostingPlan.SkuCapacity]"
+      },
+      "properties": {
+        "name": "[variables('cd3HostingPlanNameTidy')]"
+      },
+      "location": "[parameters('location')]",
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').cd3]"
       }
     },
     {
@@ -532,6 +580,30 @@
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
         "logicalName": "[variables('sitecoreTags').cd2]"
+      }
+    },
+	{
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('cd3WebAppNameTidy')]",
+      "apiVersion": "[variables('webApiVersion')]",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('cd3HostingPlanNameTidy'))]",
+        "siteConfig": {
+          "use32BitWorkerProcess": false,
+          "alwaysOn": true,
+          "phpVersion": "",
+          "defaultDocuments": [
+            "index.html"
+          ]
+        }
+      },
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('cd3HostingPlanNameTidy'))]"
+      ],
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').cd3]"
       }
     },
     {

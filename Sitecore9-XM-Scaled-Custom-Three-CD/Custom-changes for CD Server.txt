@@ -2,88 +2,110 @@
 
 This file is helpful in identify the changes in each section of Json file in current template. This will add one more application resource and webapp in it for additional CD server.
 
-AzureDeploy file is divided in following section.
 
-a. variables
-N/A
+STEP-1: Edit infrastructure.json file under nested folder (nested/infrastructure.json)
 
-b. parameters
-cdHostingPlanName  --- Done  ------ Change made ---- cd2HostingPlanName  
-cdWebAppName       --- Done  ------ Change Made ---- cd2WebAppName       
-cdMsDeployPackageUrl  ---- Reuse this as parameter
+Let's add some new Sitecore Tags to the Infrastructure file, if you are not using the default tags eg: CD, CM etc, New Tags eg: CD2, CM2
 
-c. resources
--Infrastructure:
-cdHostingPlanName   ---- Done
-cdWebAppName        ---- Done
-
--application:
-cdWebAppName
-cdMsDeployPackageUrl
-
-modules
-cdHostingPlanName   --- Done
-cdWebAppName        --- Done
-
-d. output
-N/A
+	a. Go to nested/infrastrucute.json and go to SitecoreTags: section
+	b. Add new tag eg: CD2
+			"cd2": "cd2",
+	   We will add new tag as below:
+			"cd3": "cd3",
 
 
-
+STEP-2: Continue editing infrastructure.json file for further variables, parameters and resources, there's no change to be done in output section.
 Infrastructure file is devided in following section.
 
 a. variables
-cdHostingPlanNameTidy  ---- Done
-cdWebAppNameTidy       ---- Done	
-	sitecoreTags:
-	"cd2": "cd2",  --- Done
+cdHostingPlanNameTidy  -Done
+cdWebAppNameTidy       -Done
+	
 
 b. parameters
-cdHostingPlanName    ---- Done
-cdWebAppName         ---- Done
+cdHostingPlanName    -Done
+cdWebAppName         -Done
 
 	skuMap:
-	cdHostingPlan	---- Done
+	cdHostingPlan	-Done
 
 	Small:
-	cdHostingPlan	---- Done
+	cdHostingPlan	-Done
 
 	Medium:
-	cdHostingPlan	---- Done
+	cdHostingPlan	-Done
 
 	Large:
-	cdHostingPlan	---- Done
+	cdHostingPlan	-Done
 
 	ExtraLarge :
-	cdHostingPlan	---- Done
+	cdHostingPlan	-Done
 
 
 c. resources
-Microsoft.Web/serverfarms
-cdHostingPlanNameTidy	---- Done
+Microsoft.Web/serverfarms	-Done
+cdHostingPlanNameTidy		-Done
 
-Microsoft.Web/sites
-cdWebAppNameTidy	---- Done
+Microsoft.Web/sites		-Done
+cdWebAppNameTidy		-Done
 
 d. output
+
+
+
+
+
+
+STEP-3: let's now edit the Azure deploy file
+AzureDeploy file is divided in following section.
+
+
+a. variables
+N/A
+
+b. parameters
+cdHostingPlanName		-Done    
+cdWebAppName			-Done       
+cdMsDeployPackageUrl		-Done (Nothing to be changed here, we will refer to only one package through parameter file) 
+
+
+
+c. resources
+		-Infrastructure:
+			cdHostingPlanName		-Done   
+			cdWebAppName			-Done        
+
+		-application:
+			cdWebAppName			-Done
+			cdMsDeployPackageUrl		(Nothing to be changed here, we will refer to only one package through parameter file)
+
+		-modules
+			cdHostingPlanName   
+			cdWebAppName        
+
+d. output
+N/A
+
+
+STEP-4: Let's now edit the application file for further settings.
 
 
 Application file is devided in following section.
 
 a. variables
-cdWebAppNameTidy  ---- Done
+cdWebAppNameTidy					-Done  
 
 b. parameters     
-cdWebAppName	   ---- Done
-cdMsDeployPackageUrl  --- Use this as parameter 
+cdWebAppName						-Done	   
+cdMsDeployPackageUrl					(Nothing to be changed here, we will refer to only one package through parameter file)  
 
 c. resources
 
-	MSDeploy:
-	cdWebAppNameTidy    --- Done
+		-MSDeploy:				-Done
+			cdWebAppNameTidy    
 	
-	appsettings:
-	cdWebAppNameTidy    --- Done
+		-appsettings:				-Done
+			cdWebAppNameTidy    
 
 
 d. output
