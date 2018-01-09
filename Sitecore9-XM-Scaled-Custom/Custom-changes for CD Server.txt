@@ -1,0 +1,93 @@
+### Sitecore -XM - Scaled ###
+
+This file is helpful in identify the changes in each section of Json file in current template. This will add one more application resource and webapp in it for additional CD server.
+
+AzureDeploy file is divided in following section.
+
+a. variables
+N/A
+
+b. parameters
+cdHostingPlanName  --- Done  ------ Change made ---- cd2HostingPlanName  
+cdWebAppName       --- Done  ------ Change Made ---- cd2WebAppName       
+cdMsDeployPackageUrl  ---- Reuse this as parameter
+
+c. resources
+-Infrastructure:
+cdHostingPlanName   ---- Done
+cdWebAppName        ---- Done
+
+-application:
+cdWebAppName
+cdMsDeployPackageUrl
+
+modules
+cdHostingPlanName   --- Done
+cdWebAppName        --- Done
+
+d. output
+N/A
+
+
+
+Infrastructure file is devided in following section.
+
+a. variables
+cdHostingPlanNameTidy  ---- Done
+cdWebAppNameTidy       ---- Done	
+	sitecoreTags:
+	"cd2": "cd2",  --- Done
+
+b. parameters
+cdHostingPlanName    ---- Done
+cdWebAppName         ---- Done
+
+	skuMap:
+	cdHostingPlan	---- Done
+
+	Small:
+	cdHostingPlan	---- Done
+
+	Medium:
+	cdHostingPlan	---- Done
+
+	Large:
+	cdHostingPlan	---- Done
+
+	ExtraLarge :
+	cdHostingPlan	---- Done
+
+
+c. resources
+Microsoft.Web/serverfarms
+cdHostingPlanNameTidy	---- Done
+
+Microsoft.Web/sites
+cdWebAppNameTidy	---- Done
+
+d. output
+
+
+Application file is devided in following section.
+
+a. variables
+cdWebAppNameTidy  ---- Done
+
+b. parameters     
+cdWebAppName	   ---- Done
+cdMsDeployPackageUrl  --- Use this as parameter 
+
+c. resources
+
+	MSDeploy:
+	cdWebAppNameTidy    --- Done
+	
+	appsettings:
+	cdWebAppNameTidy    --- Done
+
+
+d. output
+   N/A
+
+
+
