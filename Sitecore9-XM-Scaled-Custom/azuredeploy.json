@@ -412,10 +412,7 @@
           "cdMsDeployPackageUrl": {
             "value": "[parameters('cdMsDeployPackageUrl')]"
           },
-		  "cd2MsDeployPackageUrl": {
-            "value": "[parameters('cdMsDeployPackageUrl')]"
-          },
-
+		  
           "securityClientIp": {
             "value": "[parameters('securityClientIp')]"
           },
