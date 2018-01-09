@@ -24,13 +24,16 @@
 
     "cmHostingPlanNameTidy": "[toLower(trim(parameters('cmHostingPlanName')))]",
     "cdHostingPlanNameTidy": "[toLower(trim(parameters('cdHostingPlanName')))]",
+	"cd2HostingPlanNameTidy": "[toLower(trim(parameters('cd2HostingPlanName')))]",
 
     "cmWebAppNameTidy": "[toLower(trim(parameters('cmWebAppName')))]",
     "cdWebAppNameTidy": "[toLower(trim(parameters('cdWebAppName')))]",
+	"cd2WebAppNameTidy": "[toLower(trim(parameters('cd2WebAppName')))]",
 
     "sitecoreTags": {
       "provider": "b51535c2-ab3e-4a68-95f8-e2e3c9a19299",
       "cd": "cd",
+	  "cd2": "cd2",
       "cm": "cm",
       "core": "core",
       "master": "master",
@@ -128,6 +131,10 @@
       "type": "string",
       "defaultValue": "[concat(parameters('deploymentId'), '-cd-hp')]"
     },
+	"cd2HostingPlanName": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd2-hp')]"
+    },
 
     "cmWebAppName": {
       "type": "string",
@@ -136,6 +143,10 @@
     "cdWebAppName": {
       "type": "string",
       "defaultValue": "[concat(parameters('deploymentId'), '-cd')]"
+    },
+	"cd2WebAppName": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd2')]"
     },
 
     "skuMap": {
@@ -147,6 +158,10 @@
             "SkuCapacity": 1
           },
           "cdHostingPlan": {
+            "SkuName": "B2",
+            "SkuCapacity": 1
+          },
+		  "cd2HostingPlan": {
             "SkuName": "B2",
             "SkuCapacity": 1
           },
@@ -196,6 +211,10 @@
             "SkuName": "B2",
             "SkuCapacity": 2
           },
+		  "cd2HostingPlan": {
+            "SkuName": "B2",
+            "SkuCapacity": 2
+          },
           "coreSqlDatabase": {
             "Edition": "Standard",
             "MaxSize": "268435456000",
@@ -239,6 +258,10 @@
             "SkuCapacity": 1
           },
           "cdHostingPlan": {
+            "SkuName": "B2",
+            "SkuCapacity": 3
+          },
+		  "cd2HostingPlan": {
             "SkuName": "B2",
             "SkuCapacity": 3
           },
@@ -288,6 +311,10 @@
             "SkuName": "S3",
             "SkuCapacity": 4
           },
+		  "cd2HostingPlan": {
+            "SkuName": "S3",
+            "SkuCapacity": 4
+          },
           "coreSqlDatabase": {
             "Edition": "Standard",
             "MaxSize": "268435456000",
@@ -331,6 +358,10 @@
             "SkuCapacity": 1
           },
           "cdHostingPlan": {
+            "SkuName": "S3",
+            "SkuCapacity": 8
+          },
+		  "cd2HostingPlan": {
             "SkuName": "S3",
             "SkuCapacity": 8
           },
@@ -413,6 +444,23 @@
         "logicalName": "[variables('sitecoreTags').cd]"
       }
     },
+	{
+      "type": "Microsoft.Web/serverfarms",
+      "name": "[variables('cd2HostingPlanNameTidy')]",
+      "apiVersion": "[variables('serverFarmApiVersion')]",
+      "sku": {
+        "name": "[parameters('resourceSizes').cd2HostingPlan.SkuName]",
+        "capacity": "[parameters('resourceSizes').cd2HostingPlan.SkuCapacity]"
+      },
+      "properties": {
+        "name": "[variables('cd2HostingPlanNameTidy')]"
+      },
+      "location": "[parameters('location')]",
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').cd]"
+      }
+    },
     {
       "type": "Microsoft.Web/sites",
       "name": "[variables('cmWebAppNameTidy')]",
@@ -460,6 +508,30 @@
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
         "logicalName": "[variables('sitecoreTags').cd]"
+      }
+    },
+	{
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('cd2WebAppNameTidy')]",
+      "apiVersion": "[variables('webApiVersion')]",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('cd2HostingPlanNameTidy'))]",
+        "siteConfig": {
+          "use32BitWorkerProcess": false,
+          "alwaysOn": true,
+          "phpVersion": "",
+          "defaultDocuments": [
+            "index.html"
+          ]
+        }
+      },
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('cd2HostingPlanNameTidy'))]"
+      ],
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').cd2]"
       }
     },
     {

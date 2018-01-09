@@ -172,6 +172,10 @@
       "type": "string",
       "defaultValue": "[concat(parameters('deploymentId'), '-cd-hp')]"
     },
+	"cd2HostingPlanName": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd2-hp')]"
+    },
 
     "cmWebAppName": {
       "type": "string",
@@ -180,6 +184,10 @@
     "cdWebAppName": {
       "type": "string",
       "defaultValue": "[concat(parameters('deploymentId'), '-cd')]"
+    },
+	"cd2WebAppName": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd2')]"
     },
 
     "cmMsDeployPackageUrl": {
@@ -287,12 +295,18 @@
           "cdHostingPlanName": {
             "value": "[parameters('cdHostingPlanName')]"
           },
+		  "cd2HostingPlanName": {
+            "value": "[parameters('cd2HostingPlanName')]"
+          },
 
           "cmWebAppName": {
             "value": "[parameters('cmWebAppName')]"
           },
           "cdWebAppName": {
             "value": "[parameters('cdWebAppName')]"
+          },
+		  "cd2WebAppName": {
+            "value": "[parameters('cd2WebAppName')]"
           }
         }
       }
@@ -388,11 +402,17 @@
           "cdWebAppName": {
             "value": "[parameters('cdWebAppName')]"
           },
+		  "cd2WebAppName": {
+            "value": "[parameters('cd2WebAppName')]"
+          },
 
           "cmMsDeployPackageUrl": {
             "value": "[parameters('cmMsDeployPackageUrl')]"
           },
           "cdMsDeployPackageUrl": {
+            "value": "[parameters('cdMsDeployPackageUrl')]"
+          },
+		  "cd2MsDeployPackageUrl": {
             "value": "[parameters('cdMsDeployPackageUrl')]"
           },
 
@@ -471,9 +491,11 @@
 
               "cmHostingPlanName": "[parameters('cmHostingPlanName')]",
               "cdHostingPlanName": "[parameters('cdHostingPlanName')]",
+			  "cd2HostingPlanName": "[parameters('cd2HostingPlanName')]",
 
               "cmWebAppName": "[parameters('cmWebAppName')]",
               "cdWebAppName": "[parameters('cdWebAppName')]",
+			  "cd2WebAppName": "[parameters('cd2WebAppName')]",
 
               "securityClientIp": "[parameters('securityClientIp')]",
               "securityClientIpMask": "[parameters('securityClientIpMask')]",
