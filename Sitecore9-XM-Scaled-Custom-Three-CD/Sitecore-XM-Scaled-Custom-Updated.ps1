@@ -67,7 +67,7 @@ $localLicensePath = "$dir\license.xml"
 $localArmParameterPath = "$dir\azuredeploy.parameters.json"
 
 #12. Remote path for Json ARM Template
-$remoteJsonPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/Sitecore9-XM-Scaled-Custom/azuredeploy.json"
+$remoteJsonPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/Sitecore9-XM-Scaled-Custom-Three-CD/azuredeploy.json"
 
 #13. Import the modules from Sitecore toolkit that we downloaded
 Import-Module $dir\tools\sitecore.cloud.cmdlets.psm1
