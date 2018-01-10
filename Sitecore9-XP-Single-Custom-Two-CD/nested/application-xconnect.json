@@ -21,7 +21,7 @@
     "appInsightsNameTidy": "[toLower(trim(parameters('applicationInsightsName')))]",
 
     "xcSingleWebAppNameTidy": "[toLower(trim(parameters('xcSingleWebAppName')))]",
-    "xcSecondWebAppNameTidy": "[toLower(trim(parameters('xcSingleWebAppName')))]"
+    "xcSecondWebAppNameTidy": "[toLower(trim(parameters('xcSecondWebAppName')))]"
   },
   "parameters": {
     "infrastructure": {

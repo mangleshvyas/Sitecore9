@@ -213,12 +213,12 @@
     "secondWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-single')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-second')]"
     },
     "xcSecondWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-xc-single')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-xc-second')]"
     },
 
     "authCertificateThumbprint": {

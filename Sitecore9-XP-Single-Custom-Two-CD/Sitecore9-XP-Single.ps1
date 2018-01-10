@@ -71,7 +71,7 @@ $localLicensePath = "$dir\license.xml"
 $localArmParameterPath = "$dir\azuredeploy.parameters.json"
 
 #11. Remote path for Json ARM Template
-$remoteJsonPath = "https://raw.githubusercontent.com/Sitecore/Sitecore-Azure-Quickstart-Templates/master/Sitecore%209.0.0/XPSingle/azuredeploy.json"
+$remoteJsonPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/Sitecore9-XP-Single-Custom-Two-CD/azuredeploy.json"
 
 #Certificate Path
 
