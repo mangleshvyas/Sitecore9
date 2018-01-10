@@ -15,12 +15,15 @@
     "maSqlDatabaseNameTidy": "[toLower(trim(parameters('maSqlDatabaseName')))]",
 
     "xcSingleHostingPlanNameTidy": "[toLower(trim(parameters('xcSingleHostingPlanName')))]",
+    "xcSecondHostingPlanNameTidy": "[toLower(trim(parameters('xcSecondHostingPlanName')))]",
 
     "xcSingleWebAppNameTidy": "[toLower(trim(parameters('xcSingleWebAppName')))]",
+    "xcSecondWebAppNameTidy": "[toLower(trim(parameters('xcSecondWebAppName')))]",
 
     "sitecoreTags": {
       "provider": "b51535c2-ab3e-4a68-95f8-e2e3c9a19299",
       "xcSingle": "xc-single",
+      "xcSecond": "xc-second",
       "xcRefData": "xc-refdata",
       "xcShard0": "xc-shard-0",
       "xcShard1": "xc-shard-1",
@@ -110,6 +113,25 @@
       "type": "string",
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-xc-single')]"
+    },
+    "xcSecondHostingPlanName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-xc-second-hp')]"
+    },
+    "xcSecondHostingPlanSkuName": {
+      "type": "string",
+      "defaultValue": "S1"
+    },
+    "xcSecondHostingPlanSkuCapacity": {
+      "type": "int",
+      "defaultValue": 1
+    },
+
+    "xcSecondWebAppName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-xc-second')]"
     }
   },
   "resources": [
@@ -153,6 +175,52 @@
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
         "logicalName": "[variables('sitecoreTags').xcSingle]"
+      }
+    },
+
+
+
+
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "name": "[variables('xcSecondHostingPlanNameTidy')]",
+      "apiVersion": "[variables('serverFarmApiVersion')]",
+      "sku": {
+        "name": "[parameters('xcSecondHostingPlanSkuName')]",
+        "capacity": "[parameters('xcSecondHostingPlanSkuCapacity')]"
+      },
+      "properties": {
+        "name": "[variables('xcSecondHostingPlanNameTidy')]"
+      },
+      "location": "[parameters('location')]",
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').xcSecond]"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('xcSecondWebAppNameTidy')]",
+      "apiVersion": "[variables('webApiVersion')]",
+      "properties": {
+        "clientCertEnabled": true,
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('xcSecondHostingPlanNameTidy'))]",
+        "siteConfig": {
+          "use32BitWorkerProcess": false,
+          "alwaysOn": true,
+          "phpVersion": "",
+          "defaultDocuments": [
+            "index.html"
+          ]
+        }
+      },
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('xcSecondHostingPlanNameTidy'))]"
+      ],
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').xcSecond]"
       }
     },
     {

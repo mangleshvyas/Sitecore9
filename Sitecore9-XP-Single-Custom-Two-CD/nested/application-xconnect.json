@@ -20,7 +20,8 @@
     
     "appInsightsNameTidy": "[toLower(trim(parameters('applicationInsightsName')))]",
 
-    "xcSingleWebAppNameTidy": "[toLower(trim(parameters('xcSingleWebAppName')))]"
+    "xcSingleWebAppNameTidy": "[toLower(trim(parameters('xcSingleWebAppName')))]",
+    "xcSecondWebAppNameTidy": "[toLower(trim(parameters('xcSingleWebAppName')))]"
   },
   "parameters": {
     "infrastructure": {
@@ -156,6 +157,11 @@
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-xc-single')]"
     },
+    "xcSecondWebAppName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-xc-second')]"
+    },
 
     "authCertificateThumbprint": {
       "type": "string",
@@ -167,7 +173,7 @@
       "type": "securestring",
       "minLength": 1
     },
-
+    
     "xcServerConfigurationEnvironment": {
       "type": "string",
       "defaultValue": "Production",
@@ -233,6 +239,52 @@
       }
     },
     {
+      "name": "[concat(variables('xcSecondWebAppNameTidy'), '/', 'MSDeploy')]",
+      "type": "Microsoft.Web/sites/extensions",
+      "location": "[parameters('location')]",
+      "apiVersion": "[variables('webApiVersion')]",
+      "properties": {
+        "packageUri": "[parameters('xcSingleMsDeployPackageUrl')]",
+        "dbType": "SQL",
+        "connectionString": "[concat('Data Source=tcp:', variables('sqlServerFqdnTidy'), ',1433;Initial Catalog=master;User Id=', parameters('sqlServerLogin'), ';Password=', parameters('sqlServerPassword'), ';')]",
+        "setParameters": {
+          "IIS Web Application Name": "[variables('xcSecondWebAppNameTidy')]",
+          "Database Server Name": "[variables('sqlServerFqdnTidy')]",
+          "Database Admin User Name": "[parameters('sqlServerLogin')]",
+          "Database Admin User Password": "[parameters('sqlServerPassword')]",
+          "Collection Database Server Name": "[variables('sqlServerFqdnTidy')]",
+          "Collection Shard Map Manager Database Name": "[variables('shardMapManagerSqlDatabaseNameTidy')]",
+          "Collection Shard 0 Database Name": "[variables('shard0SqlDatabaseNameTidy')]",
+          "Collection Shard 1 Database Name": "[variables('shard1SqlDatabaseNameTidy')]",
+          "Processing Pools Database Name": "[variables('poolsSqlDatabaseNameTidy')]",
+          "Marketing Automation Database Name": "[variables('maSqlDatabaseNameTidy')]",
+          "Reference Data Database Name": "[variables('refDataSqlDatabaseNameTidy')]",
+          "XConnect Server Configuration Environment": "[parameters('xcServerConfigurationEnvironment')]",
+          "XConnect Server Certificate Validation Thumbprint": "[parameters('authCertificateThumbprint')]",          
+          "Marketing Automation Engine Xconnect Collection Client Endpoint": "[concat('https://', reference(resourceId(subscription().subscriptionId, resourceGroup().name, 'Microsoft.Web/sites', variables('xcSecondWebAppNameTidy')), variables('webApiVersion')).hostNames[0])]",
+          "Marketing Automation Engine Xconnect Collection Client Certificate Thumbprint": "[parameters('authCertificateThumbprint')]",
+          "Marketing Automation Engine Xdb Reference Data Endpoint": "[concat('https://', reference(resourceId(subscription().subscriptionId, resourceGroup().name, 'Microsoft.Web/sites', variables('xcSecondWebAppNameTidy')), variables('webApiVersion')).hostNames[0])]",
+          "Marketing Automation Engine Xdb Reference Data Client Certificate Thumbprint": "[parameters('authCertificateThumbprint')]",
+          "Collection Database Application User Name": "[parameters('xcShardMapManagerSqlDatabaseUserName')]",
+          "Collection Database Application User Password": "[parameters('xcShardMapManagerSqlDatabasePassword')]",
+          "Processing Pool Database Application User Name": "[parameters('poolsSqlDatabaseUserName')]",
+          "Processing Pool Database Application User Password": "[parameters('poolsSqlDatabasePassword')]",
+          "Reference Data Database Application User Name": "[parameters('xcRefDataSqlDatabaseUserName')]",
+          "Reference Data Database Application User Password": "[parameters('xcRefDataSqlDatabasePassword')]",
+          "Marketing Automation Database Application User Name": "[parameters('xcMaSqlDatabaseUserName')]",
+          "Marketing Automation Database Application User Password": "[parameters('xcMaSqlDatabasePassword')]",
+          "Allow Invalid Client Certificates": "[parameters('allowInvalidClientCertificates')]",
+          "Collection Search Service Url": "[concat('https://', variables('searchServiceNameTidy'), '.search.windows.net')]",
+          "Collection Search Index Name": "[variables('xcSearchIndexNameTidy')]",
+          "Collection Search Query Api Key": "[listAdminKeys(resourceId('Microsoft.Search/searchServices', variables('searchServiceNameTidy')), variables('searchApiVersion')).primaryKey]",
+          "Collection Search Worker Api Key": "[listAdminKeys(resourceId('Microsoft.Search/searchServices', variables('searchServiceNameTidy')), variables('searchApiVersion')).primaryKey]",
+          "XConnect Server Application Insights Key": "[reference(resourceId('Microsoft.Insights/Components', variables('appInsightsNameTidy')), variables('appInsightsApiVersion')).InstrumentationKey]",
+          "XConnect Server Instance Name": "XConnectSingle",
+          "License Xml": "[parameters('licenseXml')]"
+        }
+      }
+    },
+    {
       "name": "[concat(variables('xcSingleWebAppNameTidy'), '/', 'appsettings')]",
       "type": "Microsoft.Web/sites/config",
       "apiVersion": "[variables('webApiVersion')]",
@@ -242,6 +294,18 @@
       },
       "dependsOn": [
         "[concat('Microsoft.Web/Sites/', variables('xcSingleWebAppNameTidy'), '/Extensions/MSDeploy')]"
+      ]
+    },
+    {
+      "name": "[concat(variables('xcSecondWebAppNameTidy'), '/', 'appsettings')]",
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "[variables('webApiVersion')]",
+      "properties": {
+        "WEBSITE_LOAD_CERTIFICATES": "[parameters('authCertificateThumbprint')]",
+        "WEBSITE_DYNAMIC_CACHE": 0
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Web/Sites/', variables('xcSecondWebAppNameTidy'), '/Extensions/MSDeploy')]"
       ]
     }
   ]

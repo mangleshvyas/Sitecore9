@@ -322,6 +322,19 @@
       "type": "int",
       "defaultValue": 1
     },
+    "xcSecondHostingPlanName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-xc-second-hp')]"
+    },
+    "xcSecondHostingPlanSkuName": {
+      "type": "string",
+      "defaultValue": "S1"
+    },
+    "xcSecondHostingPlanSkuCapacity": {
+      "type": "int",
+      "defaultValue": 1
+    },
 
     "singleHostingPlanName": {
       "type": "string",
@@ -336,16 +349,39 @@
       "type": "int",
       "defaultValue": 1
     },
+    "secondHostingPlanName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-second-hp')]"
+    },
+    "secondHostingPlanSkuName": {
+      "type": "string",
+      "defaultValue": "S1"
+    },
+    "secondHostingPlanSkuCapacity": {
+      "type": "int",
+      "defaultValue": 1
+    },
 
     "singleWebAppName": {
       "type": "string",
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-single')]"
     },
+    "secondWebAppName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-second')]"
+    },
     "xcSingleWebAppName": {
       "type": "string",
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-xc-single')]"
+    },
+    "xcSecondWebAppName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-xc-second')]"
     },
 
     "singleMsDeployPackageUrl": {
