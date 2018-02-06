@@ -1,0 +1,18 @@
+{
+    "$schema":  "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+    "contentVersion":  "1.0.0.0",
+    "parameters":  {
+                       "aseName":  {
+                                       "value":  "test-ase"
+                                   },
+                       "aseLocation":  {
+                                           "value":  "westus"
+                                       },
+                       "existingVnetResourceId":  {
+                                                      "value":  "/subscriptions/5a6e21c1-6104-4234-9bca-3d1e9b7b67ee/resourceGroups/Test-rg/providers/Microsoft.Network/virtualNetworks/Test-Vnet"
+                                                  },
+                       "subnetName":  {
+                                          "value":  "Test-Subnet"
+                                      }
+                   }
+}
