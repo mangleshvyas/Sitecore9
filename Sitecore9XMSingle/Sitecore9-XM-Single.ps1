@@ -22,8 +22,9 @@
 #
 $resourceGroupName = "test-ase-pods"
 $Location = "westus"
-$StorageAccountName = "test-storage"
-$WorkingDir = 
+$StorageAccountName = "hiteststorage"
+$WorkingDir = "C:\Source\Repos\Sitecore9\Sitecore9XMSingle"
+$ContainerName = "test-container"
 
 #1. Login to Azure
 Login-AzureRmAccount
@@ -49,7 +50,7 @@ Get-AzureRmSubscription -SubscriptionName $getSubName  | Select-AzureRmSubscript
 
 #4. Resource Group available.
 Write-Host -ForegroundColor Yellow "Now checking for Resource Group and if it is available use same OR Create New"
-New-AzureRmResourceGroup -Name $resourceGroupName -Location $Location
+#New-AzureRmResourceGroup -Name $resourceGroupName -Location $Location
 
 #5. Storage account to be created
 Write-Host -ForegroundColor Yellow "Creating Storage to Upload Sitecore PackageZip"
@@ -59,7 +60,7 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAc
 #6. Get Storage account keys and create container.
 
 $StorageAccountKeys= Get-AzureRmStorageAccountKey  -ResourceGroupName $resourceGroupName -Name $StorageAccountName
-$key0 = $StorageAccountKeys | Select-Object -First 1 -ExcludeProperty Valu
+$key0 = $StorageAccountKeys | Select-Object -First 1 -ExpandProperty Value
 $context = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $key0
 New-AzureStorageContainer -Context $context -Name $ContainerName
 
@@ -67,25 +68,25 @@ New-AzureStorageContainer -Context $context -Name $ContainerName
 
 Write-Host -ForegroundColor Yellow "Uploading Sitecore PackageZip"
 
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.0 rev. 171002 (Cloud)_xp0xconnect.scwdp.zip" -Container $ContainerName -Context $Context
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.0 rev. 171002 (Cloud)_single.scwdp.zip" -Container $ContainerName -Context $Context
+#Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.0 rev. 171002 (Cloud)_xp0xconnect.scwdp.zip" -Container $ContainerName -Context $Context
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_single.scwdp.zip" -Container $ContainerName -Context $Context
 
 
 #8. Set and Get blob access details. 
 #Generate a blob SAS token for Sitecore 9 XP Xconnect package
-$StartTime = Get-Date
-$EndTime = $startTime.AddHours(9.0)
-$uriXPConnect = New-AzureStorageBlobSASToken -Container "s9singlecontainer" -Blob "Sitecore 9.0.0 rev. 171002 (Cloud)_xp0xconnect.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
+#$StartTime = Get-Date
+#$EndTime = $startTime.AddHours(9.0)
+#$uriXPConnect = New-AzureStorageBlobSASToken -Container "s9singlecontainer" -Blob "Sitecore 9.0.0 rev. 171002 (Cloud)_xp0xconnect.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 $StartTime = Get-Date
 $EndTime = $startTime.AddHours(9.0)
-$uriXPSingle = New-AzureStorageBlobSASToken -Container "s9singlecontainer" -Blob "Sitecore 9.0.0 rev. 171002 (Cloud)_single.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
+$uriXPSingle = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_single.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 
 #9. Add the SAS token to azuredeploy.parameters.json file
-$a = Get-Content "$WorkingDir\azuredeploy.parameters.json" -Raw | ConvertFrom-Json
-$a.parameters.xcSingleMsDeployPackageUrl.value = "$uriXPConnect"  
-$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
+#$a = Get-Content "$WorkingDir\azuredeploy.parameters.json" -Raw | ConvertFrom-Json
+#$a.parameters.xcSingleMsDeployPackageUrl.value = "$uriXPConnect"  
+#$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
 
 $a = Get-Content "$WorkingDir\azuredeploy.parameters.json" -Raw | ConvertFrom-Json
 $a.parameters.singleMsDeployPackageUrl.value = "$uriXPSingle"  
@@ -93,11 +94,11 @@ $a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
 
 
 #10. Local Path for license file
-$toolkitPath = "$WorkingDir\Sitecore Azure Toolkit 2.0.0 rev.171010.zip"
+$toolkitPath = "$WorkingDir\Sitecore Azure Toolkit 2.0.1 rev. 171218.zip"
 $LicensePath = "$WorkingDir\license.xml"
 $JsonParameterPath = "$WorkingDir\azuredeploy.parameters.json"
-$JsonDeployPath = "https://raw.githubusercontent.com/Sitecore/Sitecore-Azure-Quickstart-Templates/master/Sitecore%209.0.0/XPSingle/azuredeploy.json"
-$CertificateFile = "$WorkingDir\ED4B1C6021147A88C77284E414FA1EAC57107FCC.pfx"
+$JsonDeployPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/Sitecore9XMSingle/azuredeploy.json"
+#$CertificateFile = "$WorkingDir\ED4B1C6021147A88C77284E414FA1EAC57107FCC.pfx"
 
 
 $Parameters = @{

@@ -1,30 +1,30 @@
-﻿{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "deploymentId": {
-      "value": "Sitecore9xmSingle"
-    },
-    "location": {
-      "value": "west us"
-    },
-    "sqlServerLogin": {
-      "value": "hiadmin"
-    },
-    "sqlServerPassword": {
-      "value": "P@ssw0rd1234"
-    },
-    "singleMsDeployPackageUrl": {
-      "value": "https://hidevstore.blob.core.windows.net/public/sitecore9/Sitecore%209.0.0%20rev.%20171002%20(Cloud)_single.scwdp.zip?st=2017-12-20T19%3A33%3A00Z&se=2020-12-24T19%3A33%3A00Z&sp=rl&sv=2017-04-17&sr=b&sig=BAtodAD80LmeVNuxPULmG916T5F%2FZFfZBXA0CPh%2BonI%3D"
-    },
-    "sitecoreAdminPassword": {
-      "value": "P@ssw0rd1234"
-    },
-    "licenseXml": {
-      "value": ""
-    },
-	"singleHostingPlanName": {
-      "value": ""
-    }
-  }
+{
+    "$schema":  "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion":  "1.0.0.0",
+    "parameters":  {
+                       "deploymentId":  {
+                                            "value":  "Sitecore9xmSingle"
+                                        },
+                       "location":  {
+                                        "value":  "west us"
+                                    },
+                       "sqlServerLogin":  {
+                                              "value":  "hiadmin"
+                                          },
+                       "sqlServerPassword":  {
+                                                 "value":  "P@ssw0rd1234"
+                                             },
+                       "singleMsDeployPackageUrl":  {
+                                                        "value":  "https://hiteststorage.blob.core.windows.net/test-container/Sitecore 9.0.1 rev. 171219 (Cloud)_single.scwdp.zip?sv=2015-04-05\u0026sr=b\u0026sig=JKySM2%2FYZz3KBCsfHSaX5iMKf6yGz7PHzY%2F7vuD%2FDF4%3D\u0026st=2018-02-08T08%3A25%3A18Z\u0026se=2018-02-08T17%3A25%3A18Z\u0026sp=rwd"
+                                                    },
+                       "sitecoreAdminPassword":  {
+                                                     "value":  "P@ssw0rd1234"
+                                                 },
+                       "licenseXml":  {
+                                          "value":  ""
+                                      },
+                       "singleHostingPlanName":  {
+                                                     "value":  "test-ase-asp"
+                                                 }
+                   }
 }
