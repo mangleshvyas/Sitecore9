@@ -86,12 +86,12 @@
     "xcBasicHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('xcBasicHostingPlanName')]"
+      "defaultValue": "[concat(parameters('cmHostingPlanName')]"
     },
     "xcResourceIntensiveHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('xcResourceIntensiveHostingPlanName')]"
+      "defaultValue": "[concat(parameters('cmHostingPlanName')]"
     },
 
     "xcRefDataWebAppName": {
