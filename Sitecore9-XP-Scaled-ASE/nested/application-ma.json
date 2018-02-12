@@ -3,12 +3,13 @@
   "contentVersion": "1.0.0.0",
   "variables": {
     "webApiVersion": "2016-08-01",
-    "appInsightsApiVersion": "2015-05-01",    
+    "appInsightsApiVersion": "2015-05-01",
     "sqlServerFqdnTidy": "[toLower(trim(parameters('sqlServerFqdn')))]",
     "poolsSqlDatabaseNameTidy": "[toLower(trim(parameters('poolsSqlDatabaseName')))]",
     "maSqlDatabaseNameTidy": "[toLower(trim(parameters('maSqlDatabaseName')))]",
     "refDataSqlDatabaseNameTidy": "[toLower(trim(parameters('refDataSqlDatabaseName')))]",
     "shardMapManagerSqlDatabaseNameTidy": "[toLower(trim(parameters('shardMapManagerSqlDatabaseName')))]",
+    "messagingSqlDatabaseNameTidy": "[toLower(trim(parameters('messagingSqlDatabaseName')))]",
     "xcRefDataWebAppNameTidy": "[toLower(trim(parameters('xcRefDataWebAppName')))]",
     "xcCollectWebAppNameTidy": "[toLower(trim(parameters('xcCollectWebAppName')))]",
     "maOpsWebAppNameTidy": "[toLower(trim(parameters('maOpsWebAppName')))]",
@@ -77,6 +78,11 @@
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-smm-db')]"
     },
+    "messagingSqlDatabaseName" : {
+      "type": "string",
+      "minLength" : 1,
+      "defaultValue" : "[concat(parameters('deploymentId'), '-messaging-db')]"
+    },
 
     "poolsSqlDatabaseUserName": {
       "type": "string",
@@ -117,6 +123,16 @@
       "type": "securestring",
       "minLength": 8,
       "defaultValue": "[concat(toUpper(uniqueString('xcsmm', parameters('passwordSalt'))), uniqueString('xcsmm', parameters('sqlServerPassword'), parameters('passwordSalt')), toUpper(uniqueString('xcsmm', parameters('sitecoreAdminPassword'), parameters('passwordSalt'))), '4@')]"
+    },
+    "messagingSqlDatabaseUserName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "messaginguser"
+    },
+    "messagingSqlDatabasePassword": {
+      "type": "securestring",
+      "minLength": 8,
+      "defaultValue": "[concat(toUpper(uniqueString('messaging', parameters('passwordSalt'))), uniqueString('messaging', parameters('sqlServerPassword'), parameters('passwordSalt')), toUpper(uniqueString('messaging', parameters('sitecoreAdminPassword'), parameters('passwordSalt'))), '4@')]"
     },
 
     "applicationInsightsName": {
@@ -201,11 +217,14 @@
           "Collection Database Application User Name": "[parameters('xcShardMapManagerSqlDatabaseUserName')]",
           "Collection Database Application User Password": "[parameters('xcShardMapManagerSqlDatabasePassword')]",
           "Marketing Automation Database Name": "[variables('maSqlDatabaseNameTidy')]",
+          "Messaging Database Name": "[variables('messagingSqlDatabaseNameTidy')]",
           "Reference Data Database Name": "[variables('refDataSqlDatabaseNameTidy')]",
           "Reference Data Database Application User Name": "[parameters('xcRefDataSqlDatabaseUserName')]",
           "Reference Data Database Application User Password": "[parameters('xcRefDataSqlDatabasePassword')]",
           "Marketing Automation Database Application User Name": "[parameters('xcMaSqlDatabaseUserName')]",
           "Marketing Automation Database Application User Password": "[parameters('xcMaSqlDatabasePassword')]",
+          "Messaging Database Application User Name": "[parameters('messagingSqlDatabaseUserName')]",
+          "Messaging Database Application User Password": "[parameters('messagingSqlDatabasePassword')]",
           "XConnect Server Configuration Environment": "[parameters('xcServerConfigurationEnvironment')]",
           "XConnect Server Certificate Validation Thumbprint": "[parameters('authCertificateThumbprint')]",
           "Marketing Automation Engine Xconnect Collection Client Endpoint": "[concat('https://', reference(resourceId(subscription().subscriptionId, resourceGroup().name, 'Microsoft.Web/sites', variables('xcCollectWebAppNameTidy')), variables('webApiVersion')).hostNames[0])]",

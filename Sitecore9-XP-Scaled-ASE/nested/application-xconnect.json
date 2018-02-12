@@ -5,7 +5,7 @@
     "webApiVersion": "2016-08-01",
     "searchApiVersion": "2015-08-19",
     "appInsightsApiVersion": "2015-05-01",
-    
+
     "sqlServerFqdnTidy": "[toLower(trim(parameters('sqlServerFqdn')))]",
 
     "poolsSqlDatabaseNameTidy": "[toLower(trim(parameters('poolsSqlDatabaseName')))]",
@@ -14,6 +14,7 @@
     "shard1SqlDatabaseNameTidy": "[toLower(trim(parameters('shard1SqlDatabaseName')))]",
     "refDataSqlDatabaseNameTidy": "[toLower(trim(parameters('refDataSqlDatabaseName')))]",
     "maSqlDatabaseNameTidy": "[toLower(trim(parameters('maSqlDatabaseName')))]",
+    "messagingSqlDatabaseNameTidy": "[toLower(trim(parameters('messagingSqlDatabaseName')))]",
 
     "xcRefDataWebAppNameTidy": "[toLower(trim(parameters('xcRefDataWebAppName')))]",
     "xcCollectWebAppNameTidy": "[toLower(trim(parameters('xcCollectWebAppName')))]",
@@ -96,6 +97,11 @@
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-ma-db')]"
     },
+    "messagingSqlDatabaseName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-messaging-db')]"
+    },
 
     "poolsSqlDatabaseUserName": {
       "type": "string",
@@ -137,6 +143,16 @@
       "minLength": 8,
       "defaultValue": "[concat(toUpper(uniqueString('xcma', parameters('passwordSalt'))), uniqueString('xcma', parameters('sqlServerPassword'), parameters('passwordSalt')), toUpper(uniqueString('xcma', parameters('sitecoreAdminPassword'), parameters('passwordSalt'))), '4@')]"
     },
+    "messagingSqlDatabaseUserName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "messaginguser"
+    },
+    "messagingSqlDatabasePassword": {
+      "type": "securestring",
+      "minLength": 8,
+      "defaultValue": "[concat(toUpper(uniqueString('messaging', parameters('passwordSalt'))), uniqueString('messaging', parameters('sqlServerPassword'), parameters('passwordSalt')), toUpper(uniqueString('messaging', parameters('sitecoreAdminPassword'), parameters('passwordSalt'))), '4@')]"
+    },
 
     "searchServiceName": {
       "type": "string",
@@ -147,7 +163,7 @@
       "type": "string",
       "minLength": 1,
       "defaultValue": "xdb"
-    },    
+    },
 
     "applicationInsightsName": {
       "type": "string",
@@ -194,7 +210,7 @@
       "type": "bool",
       "defaultValue":false
     },
-    
+
     "passwordSalt": {
       "type": "securestring",
       "minLength": 1,
@@ -254,12 +270,15 @@
           "Collection Shard 1 Database Name": "[variables('shard1SqlDatabaseNameTidy')]",
           "Processing Pools Database Name": "[variables('poolsSqlDatabaseNameTidy')]",
           "Marketing Automation Database Name": "[variables('maSqlDatabaseNameTidy')]",
+          "Messaging Database Name": "[variables('messagingSqlDatabaseNameTidy')]",
           "Collection Database Application User Name": "[parameters('xcShardMapManagerSqlDatabaseUserName')]",
           "Collection Database Application User Password": "[parameters('xcShardMapManagerSqlDatabasePassword')]",
           "Processing Pool Database Application User Name": "[parameters('poolsSqlDatabaseUserName')]",
           "Processing Pool Database Application User Password": "[parameters('poolsSqlDatabasePassword')]",
           "Marketing Automation Database Application User Name": "[parameters('xcMaSqlDatabaseUserName')]",
           "Marketing Automation Database Application User Password": "[parameters('xcMaSqlDatabasePassword')]",
+          "Messaging Database Application User Name": "[parameters('messagingSqlDatabaseUserName')]",
+          "Messaging Database Application User Password": "[parameters('messagingSqlDatabasePassword')]",
           "XConnect Server Configuration Environment": "[parameters('xcServerConfigurationEnvironment')]",
           "XConnect Server Certificate Validation Thumbprint": "[parameters('authCertificateThumbprint')]",
           "Allow Invalid Client Certificates": "[parameters('allowInvalidClientCertificates')]",
@@ -283,12 +302,15 @@
           "Collection Shard Map Manager Database Name": "[variables('shardMapManagerSqlDatabaseNameTidy')]",
           "Processing Pools Database Name": "[variables('poolsSqlDatabaseNameTidy')]",
           "Marketing Automation Database Name": "[variables('maSqlDatabaseNameTidy')]",
+          "Messaging Database Name": "[variables('messagingSqlDatabaseNameTidy')]",
           "Collection Database Application User Name": "[parameters('xcShardMapManagerSqlDatabaseUserName')]",
           "Collection Database Application User Password": "[parameters('xcShardMapManagerSqlDatabasePassword')]",
           "Processing Pool Database Application User Name": "[parameters('poolsSqlDatabaseUserName')]",
           "Processing Pool Database Application User Password": "[parameters('poolsSqlDatabasePassword')]",
           "Marketing Automation Database Application User Name": "[parameters('xcMaSqlDatabaseUserName')]",
           "Marketing Automation Database Application User Password": "[parameters('xcMaSqlDatabasePassword')]",
+          "Messaging Database Application User Name": "[parameters('messagingSqlDatabaseUserName')]",
+          "Messaging Database Application User Password": "[parameters('messagingSqlDatabasePassword')]",
           "XConnect Server Configuration Environment": "[parameters('xcServerConfigurationEnvironment')]",
           "XConnect Server Certificate Validation Thumbprint": "[parameters('authCertificateThumbprint')]",
           "Allow Invalid Client Certificates": "[parameters('allowInvalidClientCertificates')]",

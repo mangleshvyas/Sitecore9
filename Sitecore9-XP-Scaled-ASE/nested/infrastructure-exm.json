@@ -32,7 +32,7 @@
     },
     "exmDdsHostingPlanName": {
       "type": "string",
-      "defaultValue": "[concat(parameters('deploymentId'), '-exm-dds-hp')]"
+      "defaultValue": "[concat(parameters('exmDdsHostingPlanName')]"
     },
     "exmDdsWebAppName": {
       "type": "string",
@@ -43,7 +43,7 @@
       "defaultValue": {
         "Extra Small": {
           "exmDdsHostingPlan": {
-            "SkuName": "B2",
+            "SkuName": "I1",
             "SkuCapacity": 1
           }
         },

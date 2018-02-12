@@ -321,31 +321,31 @@
     "cdHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('cdHostingPlanName')]"
+      "defaultValue": "[concat(parameters('deploymentId')]"
     },
     "prcHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('cmHostingPlanName')]"
+      "defaultValue": "[concat(parameters('prcHostingPlanName')]"
     },
     "repHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('cmHostingPlanName')]"
+      "defaultValue": "[concat(parameters('repHostingPlanName')]"
     },
     "xcBasicHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('cmHostingPlanName')]"
+      "defaultValue": "[concat(parameters('xcBasicHostingPlanName')]"
     },
     "xcResourceIntensiveHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('cmHostingPlanName')]"
+      "defaultValue": "[concat(parameters('xcResourceIntensiveHostingPlanName')]"
     },
     "exmDdsHostingPlanName": {
       "type": "string",
-      "defaultValue": "[concat(parameters('cmHostingPlanName')]"
+      "defaultValue": "[concat(parameters('exmDdsHostingPlanName')]"
     },
 
     "cmWebAppName": {

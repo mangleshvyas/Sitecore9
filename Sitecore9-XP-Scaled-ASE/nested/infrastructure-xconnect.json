@@ -12,6 +12,7 @@
     "shard0SqlDatabaseNameTidy": "[toLower(trim(parameters('shard0SqlDatabaseName')))]",
     "shard1SqlDatabaseNameTidy": "[toLower(trim(parameters('shard1SqlDatabaseName')))]",
     "refDataSqlDatabaseNameTidy": "[toLower(trim(parameters('refDataSqlDatabaseName')))]",
+    "messagingSqlDatabaseNameTidy": "[toLower(trim(parameters('messagingSqlDatabaseName')))]",
 
     "xcBasicHostingPlanNameTidy": "[toLower(trim(parameters('xcBasicHostingPlanName')))]",
     "xcResourceIntensiveHostingPlanNameTidy": "[toLower(trim(parameters('xcResourceIntensiveHostingPlanName')))]",
@@ -28,7 +29,8 @@
       "xcRefData": "xc-refdata",
       "xcShard0": "xc-shard-0",
       "xcShard1": "xc-shard-1",
-      "xcShardMapManager": "xc-smm"
+      "xcShardMapManager": "xc-smm",
+      "messaging": "messaging"
     }
   },
   "parameters": {
@@ -82,16 +84,21 @@
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-refdata-db')]"
     },
+    "messagingSqlDatabaseName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-messaging-db')]"
+    },
 
     "xcBasicHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('cmHostingPlanName')]"
+      "defaultValue": "[concat(parameters('xcBasicHostingPlanName')]"
     },
     "xcResourceIntensiveHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('cmHostingPlanName')]"
+      "defaultValue": "[concat(parameters('xcResourceIntensiveHostingPlanName')]"
     },
 
     "xcRefDataWebAppName": {
@@ -115,11 +122,11 @@
       "defaultValue": {
         "Extra Small": {
           "xcBasicHostingPlan": {
-            "SkuName": "B1",
+            "SkuName": "I1",
             "SkuCapacity": 1
           },
           "xcResourceIntensiveHostingPlan": {
-            "SkuName": "B1",
+            "SkuName": "I1",
             "SkuCapacity": 1
           },
           "refDataSqlDatabase": {
@@ -138,6 +145,11 @@
             "ServiceObjectiveLevel": "S0"
           },
           "xcShard1SqlDatabase": {
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S0"
+          },
+          "messagingSqlDatabase" :{
             "Edition": "Standard",
             "MaxSize": "268435456000",
             "ServiceObjectiveLevel": "S0"
@@ -171,6 +183,11 @@
             "Edition": "Standard",
             "MaxSize": "268435456000",
             "ServiceObjectiveLevel": "S1"
+          },
+          "messagingSqlDatabase" :{
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S0"
           }
         },
         "Medium": {
@@ -201,6 +218,11 @@
             "Edition": "Standard",
             "MaxSize": "268435456000",
             "ServiceObjectiveLevel": "S2"
+          },
+          "messagingSqlDatabase" :{
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S0"
           }
         },
         "Large": {
@@ -231,6 +253,11 @@
             "Edition": "Premium",
             "MaxSize": "268435456000",
             "ServiceObjectiveLevel": "P1"
+          },
+          "messagingSqlDatabase" :{
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S0"
           }
         },
         "Extra Large": {
@@ -261,6 +288,11 @@
             "Edition": "Premium",
             "MaxSize": "268435456000",
             "ServiceObjectiveLevel": "P2"
+          },
+          "messagingSqlDatabase" :{
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S0"
           }
         }
       }
@@ -469,6 +501,35 @@
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
         "logicalName": "[variables('sitecoreTags').xcShard1]"
+      }
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "name": "[concat(variables('sqlServerNameTidy'), '/', variables('messagingSqlDatabaseNameTidy'))]",
+      "location": "[parameters('location')]",
+      "apiVersion": "[variables('dbApiVersion')]",
+      "properties": {
+        "edition": "[parameters('resourceSizes').messagingSqlDataBase.Edition]",
+        "collation": "[parameters('sqlDatabaseCollation')]",
+        "maxSizeBytes": "[parameters('resourceSizes').messagingSqlDataBase.MaxSize]",
+        "requestedServiceObjectiveName": "[parameters('resourceSizes').messagingSqlDataBase.ServiceObjectiveLevel]"
+      },
+      "resources": [
+        {
+          "name": "current",
+          "type": "transparentDataEncryption",
+          "dependsOn": [
+            "[variables('messagingSqlDatabaseNameTidy')]"
+          ],
+          "apiVersion": "2014-04-01",
+          "properties": {
+            "status": "Enabled"
+          }
+        }
+      ],
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').messaging]"
       }
     },
     {

@@ -19,6 +19,7 @@
     "poolsSqlDatabaseNameTidy": "[toLower(trim(parameters('poolsSqlDatabaseName')))]",
     "tasksSqlDatabaseNameTidy": "[toLower(trim(parameters('tasksSqlDatabaseName')))]",
     "formsSqlDatabaseNameTidy": "[toLower(trim(parameters('formsSqlDatabaseName')))]",
+    "exmMasterSqlDatabaseNameTidy": "[toLower(trim(parameters('exmMasterSqlDatabaseName')))]",
 
     "cmHostingPlanNameTidy": "[toLower(trim(parameters('cmHostingPlanName')))]",
     "cdHostingPlanNameTidy": "[toLower(trim(parameters('cdHostingPlanName')))]",
@@ -48,7 +49,8 @@
       "reporting": "reporting",
       "pools": "prc-pools",
       "tasks": "prc-tasks",
-      "forms": "forms"
+      "forms": "forms",
+      "exmmaster" : "exmmaster"
     }
   },
   "parameters": {
@@ -130,7 +132,11 @@
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-forms-db')]"
     },
-
+    "exmMasterSqlDatabaseName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-exmmaster-db')]"
+    },
     "searchServiceName": {
       "type": "string",
       "minLength": 1,
@@ -166,15 +172,15 @@
       "minLength": 1,
       "defaultValue": "[concat(parameters('cdHostingPlanName')]"
     },
-    "cdHostingPlanName": {
+    "prcHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('cdHostingPlanName')]"
+      "defaultValue": "[concat(parameters('prcHostingPlanName')]"
     },
-    "cdHostingPlanName": {
+    "repHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('cdHostingPlanName')]"
+      "defaultValue": "[concat(parameters('repHostingPlanName')]"
     },
 
     "cmWebAppName": {
@@ -216,19 +222,19 @@
       "defaultValue": {
         "Extra Small": {
           "cmHostingPlan": {
-            "SkuName": "B2",
+            "SkuName": "I1",
             "SkuCapacity": 1
           },
           "cdHostingPlan": {
-            "SkuName": "B2",
+            "SkuName": "I1",
             "SkuCapacity": 1
           },
           "prcHostingPlan": {
-            "SkuName": "B1",
+            "SkuName": "I1",
             "SkuCapacity": 1
           },
           "repHostingPlan": {
-            "SkuName": "B1",
+            "SkuName": "I1",
             "SkuCapacity": 1
           },
           "coreSqlDatabase": {
@@ -262,6 +268,11 @@
             "ServiceObjectiveLevel": "S0"
           },
           "formsSqlDatabase": {
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S0"
+          },
+          "exmMasterSqlDatabase": {
             "Edition": "Standard",
             "MaxSize": "268435456000",
             "ServiceObjectiveLevel": "S0"
@@ -335,6 +346,11 @@
             "MaxSize": "268435456000",
             "ServiceObjectiveLevel": "S0"
           },
+          "exmMasterSqlDatabase": {
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S0"
+          },
           "searchService": {
             "SkuName": "Standard",
             "Partitions": 1,
@@ -400,6 +416,11 @@
             "ServiceObjectiveLevel": "S0"
           },
           "formsSqlDatabase": {
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S0"
+          },
+          "exmMasterSqlDatabase": {
             "Edition": "Standard",
             "MaxSize": "268435456000",
             "ServiceObjectiveLevel": "S0"
@@ -473,6 +494,11 @@
             "MaxSize": "268435456000",
             "ServiceObjectiveLevel": "S1"
           },
+          "exmMasterSqlDatabase": {
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S1"
+          },
           "searchService": {
             "SkuName": "Standard",
             "Partitions": 1,
@@ -538,6 +564,11 @@
             "ServiceObjectiveLevel": "S1"
           },
           "formsSqlDatabase": {
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S2"
+          },
+          "exmMasterSqlDatabase": {
             "Edition": "Standard",
             "MaxSize": "268435456000",
             "ServiceObjectiveLevel": "S2"
@@ -963,6 +994,36 @@
           "tags": {
             "provider": "[variables('sitecoreTags').provider]",
             "logicalName": "[variables('sitecoreTags').forms]"
+          }
+        },
+        {
+          "type": "databases",
+          "apiVersion": "[variables('dbApiVersion')]",
+          "properties": {
+            "edition": "[parameters('resourceSizes').exmMasterSqlDatabase.Edition]",
+            "collation": "[parameters('sqlDatabaseCollation')]",
+            "maxSizeBytes": "[parameters('resourceSizes').exmMasterSqlDatabase.MaxSize]",
+            "requestedServiceObjectiveName": "[parameters('resourceSizes').exmMasterSqlDatabase.ServiceObjectiveLevel]"
+          },
+          "resources": [
+            {
+              "name": "current",
+              "type": "transparentDataEncryption",
+              "dependsOn": [
+                "[variables('exmMasterSqlDatabaseNameTidy')]"
+              ],
+              "apiVersion": "2014-04-01",
+              "properties": {
+                "status": "Enabled"
+              }
+            }
+          ],
+          "name": "[variables('exmMasterSqlDatabaseNameTidy')]",
+          "location": "[parameters('location')]",
+          "dependsOn": [ "[resourceId('Microsoft.Sql/servers', variables('sqlServerNameTidy'))]" ],
+          "tags": {
+            "provider": "[variables('sitecoreTags').provider]",
+            "logicalName": "[variables('sitecoreTags').exmmaster]"
           }
         }
       ]
