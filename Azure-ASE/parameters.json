@@ -1,0 +1,45 @@
+{
+    "$schema":  "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion":  "1.0.0.0",
+    "parameters":  {
+                       "vnetName":  {
+                                        "value":  "HIDev-VNet"
+                                    },
+                       "location":  {
+                                        "value":  "West US"
+                                    },
+                       "locationId":  {
+                                          "value":  "West US"
+                                      },
+                       "subnetName":  {
+                                          "value":  "HIDev-Subnet"
+                                      },
+                       "vnetId":  {
+                                      "value":  "/subscriptions/5a6e21c1-6104-4234-9bca-3d1e9b7b67ee/resourceGroups/HIDev/providers/Microsoft.Network/virtualNetworks/HIDev-VNet"
+                                  },
+                       "VNetResourceGroupName":  {
+                                                     "value":  "HIDev"
+                                                 },
+                       "vnetAddress":  {
+                                           "value":  "192.168.0.0/16"
+                                       },
+                       "subnetAddress":  {
+                                             "value":  "192.168.1.0/24"
+                                         },
+                       "subnetRouteTableName":  {
+                                                    "value":  "HIDev-Route-Table"
+                                                },
+                       "subnetNSGName":  {
+                                             "value":  "HIDev-NSG"
+                                         },
+                       "name":  {
+                                    "value":  "HIDev + ASE"
+                                },
+                       "kind":  {
+                                    "value":  "ASEV2"
+                                },
+                       "subscriptionId":  {
+                                              "value":  "5a6e21c1-6104-4234-9bca-3d1e9b7b67ee"
+                                          }
+                   }
+}
