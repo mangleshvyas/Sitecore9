@@ -67,7 +67,7 @@ $ASEWorkingDir
 Login-AzureRmAccount
 
 #2. Getting Azure Subscription and setting up Subscription as variable.
-$GetSub = Get-AzureRmSubscription | select -ExpandProperty 'Name'
+$GetSub = Get-AzureRmSubscription | select -ExpandProperty 'SubscriptionName'
 Write-Host "Select the numeric value for account that you want to use for setup" -ForegroundColor Yellow
 
 for ($i = 0; $i -lt $GetSub.Length ; $i++ ) {Write-Host $i + $GetSub[$i]}

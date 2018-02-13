@@ -40,7 +40,7 @@ Login-AzureRmAccount
 
 #2. Getting Azure Subscription and setting up Subscription as variable.
 
-$GetSub = Get-AzureRmSubscription | select -ExpandProperty 'Name'
+$GetSub = Get-AzureRmSubscription | select -ExpandProperty 'SubscriptionName'
 Write-Host "Select the numeric value for account that you want to use for setup" -ForegroundColor Yellow
 
 for ($i = 0; $i -lt $GetSub.Length ; $i++ ) {Write-Host $i + $GetSub[$i]}
@@ -68,28 +68,117 @@ New-AzureStorageContainer -Context $Context -Name $ContainerName
 
 
 #7. Upload Files to storage account
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp0xconnect.scwdp.zip" -Container $ContainerName -Context $Context
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_single.scwdp.zip" -Container $ContainerName -Context $Context
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_cd.scwdp.zip" -Container $ContainerName -Context $Context
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_cm.scwdp.zip" -Container $ContainerName -Context $Context
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_dds.scwdp.zip" -Container $ContainerName -Context $Context
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_prc.scwdp.zip" -Container $ContainerName -Context $Context
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_rep.scwdp.zip" -Container $ContainerName -Context $Context
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1collection.scwdp.zip" -Container $ContainerName -Context $Context
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1collectionsearch.scwdp.zip" -Container $ContainerName -Context $Context
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1marketingautomation.scwdp.zip" -Container $ContainerName -Context $Context
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1marketingautomationreporting.scwdp.zip" -Container $ContainerName -Context $Context
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1referencedata.scwdp.zip" -Container $ContainerName -Context $Context
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore.Patch.EXM (Cloud)_CM.zip" -Container $ContainerName -Context $Context
 
 
 #8. Set and Get blob access details. 
 #Generate a blob SAS token for Sitecore 9 XP Xconnect package
 $StartTime = Get-Date
 $EndTime = $startTime.AddHours(9.0)
-$uriXPConnect = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_xp0xconnect.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
+$uriCD = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_cd.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 $StartTime = Get-Date
 $EndTime = $startTime.AddHours(9.0)
-$uriXPSingle = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_single.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
+$uriCM = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_cm.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
+
+$StartTime = Get-Date
+$EndTime = $startTime.AddHours(9.0)
+$uriexmDDS = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_dds.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
+
+
+$StartTime = Get-Date
+$EndTime = $startTime.AddHours(9.0)
+$uriPRC = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_prc.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
+
+
+$StartTime = Get-Date
+$EndTime = $startTime.AddHours(9.0)
+$uriREP = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_rep.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
+
+
+$StartTime = Get-Date
+$EndTime = $startTime.AddHours(9.0)
+$uriXCcol = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_xp1collection.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
+
+
+$StartTime = Get-Date
+$EndTime = $startTime.AddHours(9.0)
+$uriXCSearch = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_xp1collectionsearch.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
+
+
+$StartTime = Get-Date
+$EndTime = $startTime.AddHours(9.0)
+$uriXCmkt = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_xp1marketingautomation.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
+
+
+$StartTime = Get-Date
+$EndTime = $startTime.AddHours(9.0)
+$uriXCmktrep = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_xp1marketingautomationreporting.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
+
+
+$StartTime = Get-Date
+$EndTime = $startTime.AddHours(9.0)
+$uriXCref = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_xp1referencedata.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
+
+
+$StartTime = Get-Date
+$EndTime = $startTime.AddHours(9.0)
+$uriExmCM = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore.Patch.EXM (Cloud)_CM.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 #9. Add the SAS token to azuredeploy.parameters.json file
 $a = Get-Content "$WorkingDir\azuredeploy.parameters.json" -Raw | ConvertFrom-Json
-$a.parameters.xcSingleMsDeployPackageUrl.value = "$uriXPConnect"  
+$a.parameters.cmMsDeployPackageUrl.value = "$uriCM"  
 $a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
 
 $a = Get-Content "$WorkingDir\azuredeploy.parameters.json" -Raw | ConvertFrom-Json
-$a.parameters.singleMsDeployPackageUrl.value = "$uriXPSingle"  
+$a.parameters.cdMsDeployPackageUrl.value = "$uriCD"  
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
+
+$a = Get-Content "$WorkingDir\azuredeploy.parameters.json" -Raw | ConvertFrom-Json
+$a.parameters.prcMsDeployPackageUrl.value = "$uriPRC"
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
+
+$a = Get-Content "$WorkingDir\azuredeploy.parameters.json" -Raw | ConvertFrom-Json
+$a.parameters.repMsDeployPackageUrl.value = "$uriREP"  
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
+
+$a = Get-Content "$WorkingDir\azuredeploy.parameters.json" -Raw | ConvertFrom-Json
+$a.parameters.xcRefDataMsDeployPackageUrl.value = "$uriXCref"  
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
+
+$a = Get-Content "$WorkingDir\azuredeploy.parameters.json" -Raw | ConvertFrom-Json
+$a.parameters.xcCollectMsDeployPackageUrl.value = "$uriXCcol"  
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
+
+$a = Get-Content "$WorkingDir\azuredeploy.parameters.json" -Raw | ConvertFrom-Json
+$a.parameters.xcSearchMsDeployPackageUrl.value = "$uriXCSearch"  
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
+
+$a = Get-Content "$WorkingDir\azuredeploy.parameters.json" -Raw | ConvertFrom-Json
+$a.parameters.maOpsMsDeployPackageUrl.value = "$uriXCmkt"  
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
+
+$a = Get-Content "$WorkingDir\azuredeploy.parameters.json" -Raw | ConvertFrom-Json
+$a.parameters.maRepMsDeployPackageUrl.value = "$uriXCmktrep"  
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
+
+$a = Get-Content "$WorkingDir\azuredeploy.parameters.json" -Raw | ConvertFrom-Json
+$a.parameters.exmDdsMsDeployPackageUrl.value = "$uriexmDDS"  
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
+
+$a = Get-Content "$WorkingDir\azuredeploy.parameters.json" -Raw | ConvertFrom-Json
+$a.parameters.exmCmMsDeployPackageUrl.value = "$uriExmCM"  
 $a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
 
 
