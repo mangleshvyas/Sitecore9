@@ -684,7 +684,7 @@
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('cmHostingPlanNameTidy'))]",
-		"[concat('Microsoft.Web/Sites/', variables('cmWebAppNameTidy'), '/Extensions/MSDeploy')]"
+		
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
@@ -709,7 +709,7 @@
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('cdHostingPlanNameTidy'))]",
-		"[concat('Microsoft.Web/Sites/', variables('cdWebAppNameTidy'), '/Extensions/MSDeploy')]"
+		"[concat('Microsoft.Web/Sites/', variables('cmWebAppNameTidy'), '/Extensions/MSDeploy')]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
@@ -734,7 +734,7 @@
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('prcHostingPlanNameTidy'))]",
-		"[concat('Microsoft.Web/Sites/', variables('prcWebAppNameTidy'), '/Extensions/MSDeploy')]"
+		"[concat('Microsoft.Web/Sites/', variables('cmWebAppNameTidy'), '/Extensions/MSDeploy')]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
@@ -759,7 +759,7 @@
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('repHostingPlanNameTidy'))]",
-		"[concat('Microsoft.Web/Sites/', variables('repWebAppNameTidy'), '/Extensions/MSDeploy')]"
+		"[concat('Microsoft.Web/Sites/', variables('cmWebAppNameTidy'), '/Extensions/MSDeploy')]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
