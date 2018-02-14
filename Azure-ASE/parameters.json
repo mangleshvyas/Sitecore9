@@ -3,7 +3,7 @@
     "contentVersion":  "1.0.0.0",
     "parameters":  {
                        "vnetName":  {
-                                        "value":  "HIDev-VNet"
+                                        "value":  "mvdev-vnet"
                                     },
                        "location":  {
                                         "value":  "West US"
@@ -12,34 +12,34 @@
                                           "value":  "West US"
                                       },
                        "subnetName":  {
-                                          "value":  "HIDev-Subnet"
+                                          "value":  "mvdev-snet"
                                       },
                        "vnetId":  {
-                                      "value":  "/subscriptions/5a6e21c1-6104-4234-9bca-3d1e9b7b67ee/resourceGroups/HIDev/providers/Microsoft.Network/virtualNetworks/HIDev-VNet"
+                                      "value":  "/subscriptions/5d474f0f-892e-4843-a5c9-803a09ca8628/resourceGroups/mvdev/providers/Microsoft.Network/virtualNetworks/mvdev-vnet"
                                   },
                        "VNetResourceGroupName":  {
-                                                     "value":  "HIDev"
+                                                     "value":  "mvdev"
                                                  },
                        "vnetAddress":  {
-                                           "value":  "192.168.0.0/16"
+                                           "value":  "172.16.0.0/16"
                                        },
                        "subnetAddress":  {
-                                             "value":  "192.168.1.0/24"
+                                             "value":  "172.16.1.0/24"
                                          },
                        "subnetRouteTableName":  {
-                                                    "value":  "HIDev-Route-Table"
+                                                    "value":  "mvdev-Route-Table"
                                                 },
                        "subnetNSGName":  {
-                                             "value":  "HIDev-NSG"
+                                             "value":  "mvdev-NSG"
                                          },
                        "name":  {
-                                    "value":  "HIDev + ASE"
+                                    "value":  "mvdev + ASE"
                                 },
                        "kind":  {
                                     "value":  "ASEV2"
                                 },
                        "subscriptionId":  {
-                                              "value":  "5a6e21c1-6104-4234-9bca-3d1e9b7b67ee"
+                                              "value":  ""
                                           }
                    }
 }

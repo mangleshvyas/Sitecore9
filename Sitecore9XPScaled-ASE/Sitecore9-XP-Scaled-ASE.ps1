@@ -73,6 +73,7 @@ Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud
 Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_dds.scwdp.zip" -Container $ContainerName -Context $Context
 Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_prc.scwdp.zip" -Container $ContainerName -Context $Context
 Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_rep.scwdp.zip" -Container $ContainerName -Context $Context
+
 Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1collection.scwdp.zip" -Container $ContainerName -Context $Context
 Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1collectionsearch.scwdp.zip" -Container $ContainerName -Context $Context
 Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1marketingautomation.scwdp.zip" -Container $ContainerName -Context $Context
@@ -186,7 +187,7 @@ $a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
 $toolkitPath = "$WorkingDir\Sitecore Azure Toolkit 2.0.1 rev. 171218.zip"
 $LicensePath = "$WorkingDir\license.xml"
 $JsonParameterPath = "$WorkingDir\azuredeploy.parameters.json"
-$JsonDeployPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/Sitecore9XPSingle-with-ASE/azuredeploy.json"
+$JsonDeployPath = "https://raw.githubusercontent.com/Sitecore/Sitecore-Azure-Quickstart-Templates/master/Sitecore%209.0.1/XP/azuredeploy.json"
 $CertificateFile = "$WorkingDir\ED4B1C6021147A88C77284E414FA1EAC57107FCC.pfx"
 
 
