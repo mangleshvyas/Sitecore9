@@ -122,11 +122,11 @@
       "defaultValue": {
         "Extra Small": {
           "xcBasicHostingPlan": {
-            "SkuName": "B1",
+            "SkuName": "I1",
             "SkuCapacity": 1
           },
           "xcResourceIntensiveHostingPlan": {
-            "SkuName": "B1",
+            "SkuName": "I1",
             "SkuCapacity": 1
           },
           "refDataSqlDatabase": {

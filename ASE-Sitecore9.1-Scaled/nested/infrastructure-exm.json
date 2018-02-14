@@ -43,7 +43,7 @@
       "defaultValue": {
         "Extra Small": {
           "exmDdsHostingPlan": {
-            "SkuName": "B2",
+            "SkuName": "I1",
             "SkuCapacity": 1
           }
         },
