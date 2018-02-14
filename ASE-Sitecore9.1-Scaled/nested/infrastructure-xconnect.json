@@ -356,7 +356,7 @@
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('xcResourceIntensiveHostingPlanNameTidy'))]",
-		"[concat('Microsoft.Web/Sites/', variables('xcRefDataWebAppNameTidy'), '/Extensions/MSDeploy')]"
+		
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
@@ -411,7 +411,7 @@
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('xcResourceIntensiveHostingPlanNameTidy'))]",
-		"[concat('Microsoft.Web/Sites/', variables('xcCollectWebAppNameTidy'), '/Extensions/MSDeploy')]"
+		
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
@@ -553,7 +553,7 @@
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('xcBasicHostingPlanNameTidy'))]",
-		"[concat('Microsoft.Web/Sites/', variables('xcSearchWebAppNameTidy'), '/Extensions/MSDeploy')]"
+		
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
