@@ -668,8 +668,9 @@
     },
     {
       "type": "Microsoft.Web/sites",
-      "name": "[variables('cmWebAppNameTidy')]",
+      "name": "[variables('cmWebAppNameTidy'), '/','MSDeploy']",
       "apiVersion": "[variables('webApiVersion')]",
+	  "type": "Microsoft.Web/sites/extensions",
       "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('cmHostingPlanNameTidy'))]",
         "siteConfig": {
