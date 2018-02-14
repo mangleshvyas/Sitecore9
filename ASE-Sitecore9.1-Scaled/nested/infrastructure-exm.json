@@ -114,7 +114,7 @@
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('exmDdsHostingPlanNameTidy'))]",
-		"[concat('Microsoft.Web/Sites/', variables('exmDdsHostingPlanNameTidy'), '/Extensions/MSDeploy')]"
+		"[concat('Microsoft.Web/Sites/', variables('exmDdsWebAppNameTidy'), '/Extensions/MSDeploy')]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
