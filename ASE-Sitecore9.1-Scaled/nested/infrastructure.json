@@ -670,8 +670,7 @@
       "type": "Microsoft.Web/sites",
       "name": "[variables('cmWebAppNameTidy')]",
       "apiVersion": "[variables('webApiVersion')]",
-	  "type": "Microsoft.Web/sites/extensions",
-      "properties": {
+	  "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('cmHostingPlanNameTidy'))]",
         "siteConfig": {
           "use32BitWorkerProcess": false,
