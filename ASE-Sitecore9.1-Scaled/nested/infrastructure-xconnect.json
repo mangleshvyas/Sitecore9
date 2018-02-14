@@ -93,12 +93,12 @@
     "xcBasicHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('xcBasicHostingPlanName')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-xc-basic-hp')]"
     },
     "xcResourceIntensiveHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('xcResourceIntensiveHostingPlanName')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-xc-resourceintensive-hp')]"
     },
 
     "xcRefDataWebAppName": {
@@ -122,11 +122,11 @@
       "defaultValue": {
         "Extra Small": {
           "xcBasicHostingPlan": {
-            "SkuName": "I1",
+            "SkuName": "B1",
             "SkuCapacity": 1
           },
           "xcResourceIntensiveHostingPlan": {
-            "SkuName": "I1",
+            "SkuName": "B1",
             "SkuCapacity": 1
           },
           "refDataSqlDatabase": {
@@ -355,8 +355,7 @@
       },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('xcResourceIntensiveHostingPlanNameTidy'))]",
-		
+        "[resourceId('Microsoft.Web/serverfarms', variables('xcResourceIntensiveHostingPlanNameTidy'))]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
@@ -410,8 +409,7 @@
       },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('xcResourceIntensiveHostingPlanNameTidy'))]",
-		
+        "[resourceId('Microsoft.Web/serverfarms', variables('xcResourceIntensiveHostingPlanNameTidy'))]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
@@ -552,8 +550,7 @@
       },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('xcBasicHostingPlanNameTidy'))]",
-		
+        "[resourceId('Microsoft.Web/serverfarms', variables('xcBasicHostingPlanNameTidy'))]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",

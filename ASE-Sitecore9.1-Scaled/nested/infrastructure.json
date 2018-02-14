@@ -165,22 +165,22 @@
     "cmHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('cmHostingPlanName')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-cm-hp')]"
     },
     "cdHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('cdHostingPlanName')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd-hp')]"
     },
     "prcHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('prcHostingPlanName')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-prc-hp')]"
     },
     "repHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('repHostingPlanName')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-rep-hp')]"
     },
 
     "cmWebAppName": {
@@ -222,19 +222,19 @@
       "defaultValue": {
         "Extra Small": {
           "cmHostingPlan": {
-            "SkuName": "I1",
+            "SkuName": "B2",
             "SkuCapacity": 1
           },
           "cdHostingPlan": {
-            "SkuName": "I1",
+            "SkuName": "B2",
             "SkuCapacity": 1
           },
           "prcHostingPlan": {
-            "SkuName": "I1",
+            "SkuName": "B1",
             "SkuCapacity": 1
           },
           "repHostingPlan": {
-            "SkuName": "I1",
+            "SkuName": "B1",
             "SkuCapacity": 1
           },
           "coreSqlDatabase": {
@@ -670,7 +670,7 @@
       "type": "Microsoft.Web/sites",
       "name": "[variables('cmWebAppNameTidy')]",
       "apiVersion": "[variables('webApiVersion')]",
-	  "properties": {
+      "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('cmHostingPlanNameTidy'))]",
         "siteConfig": {
           "use32BitWorkerProcess": false,
@@ -683,8 +683,7 @@
       },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('cmHostingPlanNameTidy'))]",
-		
+        "[resourceId('Microsoft.Web/serverfarms', variables('cmHostingPlanNameTidy'))]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
@@ -708,8 +707,7 @@
       },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('cdHostingPlanNameTidy'))]",
-		
+        "[resourceId('Microsoft.Web/serverfarms', variables('cdHostingPlanNameTidy'))]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
@@ -733,8 +731,7 @@
       },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('prcHostingPlanNameTidy'))]",
-		
+        "[resourceId('Microsoft.Web/serverfarms', variables('prcHostingPlanNameTidy'))]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
@@ -758,8 +755,7 @@
       },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('repHostingPlanNameTidy'))]",
-		
+        "[resourceId('Microsoft.Web/serverfarms', variables('repHostingPlanNameTidy'))]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",

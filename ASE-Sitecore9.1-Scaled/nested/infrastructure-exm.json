@@ -32,7 +32,7 @@
     },
     "exmDdsHostingPlanName": {
       "type": "string",
-      "defaultValue": "[concat(parameters('exmDdsHostingPlanName')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-exm-dds-hp')]"
     },
     "exmDdsWebAppName": {
       "type": "string",
@@ -43,7 +43,7 @@
       "defaultValue": {
         "Extra Small": {
           "exmDdsHostingPlan": {
-            "SkuName": "I1",
+            "SkuName": "B2",
             "SkuCapacity": 1
           }
         },
@@ -113,8 +113,7 @@
       },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('exmDdsHostingPlanNameTidy'))]",
-		"[concat('Microsoft.Web/Sites/', variables('exmDdsWebAppNameTidy'), '/Extensions/MSDeploy')]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('exmDdsHostingPlanNameTidy'))]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
