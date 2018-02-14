@@ -668,7 +668,7 @@
     },
     {
       "type": "Microsoft.Web/sites",
-      "name": "[variables('cmWebAppNameTidy'), '/','MSDeploy']",
+      "name": "[variables('cmWebAppNameTidy')]",
       "apiVersion": "[variables('webApiVersion')]",
 	  "type": "Microsoft.Web/sites/extensions",
       "properties": {
