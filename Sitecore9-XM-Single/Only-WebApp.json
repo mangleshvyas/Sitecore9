@@ -5,6 +5,7 @@
   },
   "variables": {
     "appServicePlanName":"[concat('AppServicePlan-',parameters('baseResourceName'))]"
+	"webAppPortalName":"[concat(parameters('baseResourceName'),'Portal')]"
   },
   "resources": [
     {
