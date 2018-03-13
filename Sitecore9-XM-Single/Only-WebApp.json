@@ -4,8 +4,8 @@
   "parameters": {
   },
   "variables": {
-    "appServicePlanName":"[concat('AppServicePlan-',parameters('baseResourceName'))]"
-	"webAppPortalName":"[concat(parameters('baseResourceName'),'Portal')]"
+    "appServicePlanName":"[concat('AppServicePlan-',parameters('baseResourceName'))]",
+    "webAppPortalName":"[concat(parameters('baseResourceName'),'Portal')]"
   },
   "resources": [
     {
