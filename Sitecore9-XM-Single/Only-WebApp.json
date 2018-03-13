@@ -11,17 +11,17 @@
     {
       "apiVersion": "2015-08-01",
       "type": "Microsoft.Web/sites",
-      "name": "[variables('webAppPortalName')]",
+      "name": "[variables('webAppPortalName2')]",
       "location":"[resourceGroup().location]",
       "comments": "This is the web app, also the defaults 'nameless' slot",
       "tags": {
           "displayName":"WebApp"
       },
       "properties": {
-          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms',variables('appServicePlanName'))]"
+          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms',variables('appServicePlanName2'))]"
       },
       "dependsOn": [
-          "[resourceId('Microsoft.Web/serverfarms',variables('appServicePlanName'))]"
+          "[resourceId('Microsoft.Web/serverfarms',variables('appServicePlanName2'))]"
       ]
 
   }
