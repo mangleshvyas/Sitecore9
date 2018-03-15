@@ -657,7 +657,7 @@
             "value": "[parameters('xcServerConfigurationEnvironment')]"
           }
         }
-      },
+      }
       
     },
     {
