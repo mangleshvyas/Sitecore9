@@ -672,8 +672,7 @@
         "parameters": {
           "standard": {
             "value": {
-              "infrastructure": "[reference(concat(deployment().name, '-infrastructure')).outputs.infrastructure.value]",
-
+              
               "deploymentId": "[parameters('deploymentId')]",
               "location": "[parameters('location')]",
 
