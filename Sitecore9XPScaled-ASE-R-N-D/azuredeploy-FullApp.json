@@ -741,9 +741,7 @@
           }
         }
       },
-      "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', concat(deployment().name, '-application-ma'))]"
-      ]
+      
     },
     {
       "apiVersion": "[variables('resourcesApiVersion')]",
@@ -876,9 +874,7 @@
           }
         }
       },
-      "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', concat(deployment().name, '-infrastructure-ma'))]"
-      ]
+      
     },
     {
       "apiVersion": "[variables('resourcesApiVersion')]",
@@ -998,9 +994,7 @@
           }
         }
       },
-      "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', concat(deployment().name, '-application-xconnect'))]"
-      ]
+      
     },
     {
       "apiVersion": "[variables('resourcesApiVersion')]",
@@ -1161,11 +1155,7 @@
           }
         }
       },
-      "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', concat(deployment().name, '-infrastructure'))]",
-        "[resourceId('Microsoft.Resources/deployments', concat(deployment().name, '-infrastructure-exm'))]",
-        "[resourceId('Microsoft.Resources/deployments', concat(deployment().name, '-application'))]"
-      ]
+      
     },
     {
       "copy": {
