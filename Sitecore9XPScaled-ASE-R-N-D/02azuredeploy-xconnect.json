@@ -588,10 +588,7 @@
             "value": "[parameters('xcSearchWebAppName')]"
           }
         }
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', concat(deployment().name, '-infrastructure'))]"
-      ]
+      } 
     }
   ]
 }
