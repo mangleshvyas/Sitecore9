@@ -538,9 +538,7 @@
           "uri": "[concat(uri(parameters('templateLinkBase'), 'nested/application.json'), parameters('templateLinkAccessToken'))]"
         },
         "parameters": {
-          "infrastructure": {
-            "value": "[reference(concat(deployment().name, '-infrastructure')).outputs.infrastructure.value]"
-          },
+          
 
           "deploymentId": {
             "value": "[parameters('deploymentId')]"
@@ -758,9 +756,7 @@
           "uri": "[concat(uri(parameters('templateLinkBase'), 'nested/application-xconnect.json'), parameters('templateLinkAccessToken'))]"
         },
         "parameters": {
-          "infrastructure": {
-            "value": "[reference(concat(deployment().name, '-infrastructure')).outputs.infrastructure.value]"
-          },
+          
 
           "deploymentId": {
             "value": "[parameters('deploymentId')]"
@@ -895,9 +891,7 @@
           "uri": "[concat(uri(parameters('templateLinkBase'), 'nested/application-ma.json'), parameters('templateLinkAccessToken'))]"
         },
         "parameters": {
-          "infrastructure": {
-            "value": "[reference(concat(deployment().name, '-infrastructure')).outputs.infrastructure.value]"
-          },
+          
 
           "deploymentId": {
             "value": "[parameters('deploymentId')]"
@@ -1019,9 +1013,7 @@
           "uri": "[concat(uri(parameters('templateLinkBase'), 'nested/application-exm.json'), parameters('templateLinkAccessToken'))]"
         },
         "parameters": {
-          "infrastructure": {
-            "value": "[reference(concat(deployment().name, '-infrastructure')).outputs.infrastructure.value]"
-          },
+          
 
           "sitecoreAdminPassword": {
             "value": "[parameters('sitecoreAdminPassword')]"
@@ -1192,7 +1184,7 @@
         "parameters": {
           "standard": {
             "value": {
-              "infrastructure": "[reference(concat(deployment().name, '-infrastructure')).outputs.infrastructure.value]",
+              
 
               "deploymentId": "[parameters('deploymentId')]",
               "location": "[parameters('location')]",
