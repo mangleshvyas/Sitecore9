@@ -63,25 +63,25 @@
                                                        "value":  "P@ssw0rd1234"
                                                    },
                        "cmHostingPlanName":  {
-                                                 "value":  "CMMV"
+                                                 "value":  "CM"
                                              },
                        "cdHostingPlanName":  {
-                                                 "value":  "CDMV"
+                                                 "value":  "CD"
                                              },
                        "prcHostingPlanName":  {
-                                                  "value":  "PreMV"
+                                                  "value":  "Prc"
                                               },
                        "repHostingPlanName":  {
-                                                  "value":  "RepMV"
+                                                  "value":  "Rep"
                                               },
                        "xcBasicHostingPlanName":  {
-                                                      "value":  "XCBMV"
+                                                      "value":  "XCB"
                                                   },
                        "xcResourceIntensiveHostingPlanName":  {
-                                                                  "value":  "XCRepMV"
+                                                                  "value":  "XCRep"
                                                               },
                        "exmDdsHostingPlanName":  {
-                                                     "value":  "EXMMV"
+                                                     "value":  "EXM"
                                                  }
                    }
 }
