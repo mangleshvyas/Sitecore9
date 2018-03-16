@@ -3,31 +3,31 @@
     "contentVersion":  "1.0.0.0",
     "parameters":  {
                        "CMappServicePlanName":  {
-                                                    "value":  "CMAPP"
+                                                    "value":  "CMMV"
                                                 },
                        "CDappServicePlanName":  {
-                                                    "value":  "CDAPP"
+                                                    "value":  "CDMV"
                                                 },
                        "PrcappServicePlanName":  {
-                                                     "value":  "PRCAPP"
+                                                     "value":  "PreMV"
                                                  },
                        "RepappServicePlanName":  {
-                                                     "value":  "REPAPP"
+                                                     "value":  "RepMV"
                                                  },
                        "XCBappServicePlanName":  {
-                                                     "value":  "XCBAPP"
+                                                     "value":  "XCBMV"
                                                  },
                        "XCRepappServicePlanName":  {
-                                                       "value":  "XCPREP"
+                                                       "value":  "XCRepMV"
                                                    },
                        "ExmappServicePlanName":  {
-                                                     "value":  "EXPAPP"
+                                                     "value":  "EXMMV"
                                                  },
                        "appServiceEnvironmentName":  {
-                                                         "value":  "mvase"
+                                                         "value":  "pods-ase"
                                                      },
                        "aseLocation":  {
-                                           "value":  "West US"
+                                           "value":  "East US"
                                        }
                    }
 }

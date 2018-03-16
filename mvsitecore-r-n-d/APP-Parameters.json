@@ -3,10 +3,10 @@
     "contentVersion":  "1.0.0.0",
     "parameters":  {
                        "deploymentId":  {
-                                            "value":  "MVDev"
+                                            "value":  "Pods"
                                         },
                        "location":  {
-                                        "value":  "West US"
+                                        "value":  "East US"
                                     },
                        "sitecoreAdminPassword":  {
                                                      "value":  "P@ssw0rd1234"
@@ -63,25 +63,25 @@
                                                        "value":  "P@ssw0rd1234"
                                                    },
                        "cmHostingPlanName":  {
-                                                 "value":  "CMAPP"
+                                                 "value":  "CMMV"
                                              },
                        "cdHostingPlanName":  {
-                                                 "value":  "CDAPP"
+                                                 "value":  "CDMV"
                                              },
                        "prcHostingPlanName":  {
-                                                  "value":  "PRCAPP"
+                                                  "value":  "PreMV"
                                               },
                        "repHostingPlanName":  {
-                                                  "value":  "REPAPP"
+                                                  "value":  "RepMV"
                                               },
                        "xcBasicHostingPlanName":  {
-                                                      "value":  "XCBAPP"
+                                                      "value":  "XCBMV"
                                                   },
                        "xcResourceIntensiveHostingPlanName":  {
-                                                                  "value":  "XCPREP"
+                                                                  "value":  "XCRepMV"
                                                               },
                        "exmDdsHostingPlanName":  {
-                                                     "value":  "EXPAPP"
+                                                     "value":  "EXMMV"
                                                  }
                    }
 }
