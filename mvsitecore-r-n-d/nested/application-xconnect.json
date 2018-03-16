@@ -286,7 +286,10 @@
           "XConnect Server Instance Name": "Collection",
           "License Xml": "[parameters('licenseXml')]"
         }
-      }
+      },
+	  "dependsOn": [
+        "[resourceId('Microsoft.Web/sites/extensions', variables('xcRefDataWebAppNameTidy'),'MSDeploy')]"
+      ]
     },
     {
       "name": "[concat(variables('xcSearchWebAppNameTidy'), '/', 'MSDeploy')]",
