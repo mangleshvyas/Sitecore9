@@ -1,0 +1,45 @@
+{
+    "$schema":  "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion":  "1.0.0.0",
+    "parameters":  {
+                       "vnetName":  {
+                                        "value":  "ecsgase-vnet"
+                                    },
+                       "location":  {
+                                        "value":  "Australia East"
+                                    },
+                       "locationId":  {
+                                          "value":  "West US"
+                                      },
+                       "subnetName":  {
+                                          "value":  "ecsgase-snet"
+                                      },
+                       "vnetId":  {
+                                      "value":  "/subscriptions/d46e1c41-3c53-4160-a74f-b1e3939002c6/resourceGroups/ECSGResourceGroup/providers/Microsoft.Network/virtualNetworks/ecsgase-vnet"
+                                  },
+                       "VNetResourceGroupName":  {
+                                                     "value":  "ECSGResourceGroup"
+                                                 },
+                       "vnetAddress":  {
+                                           "value":  "172.16.0.0/16"
+                                       },
+                       "subnetAddress":  {
+                                             "value":  "172.16.1.0/24"
+                                         },
+                       "subnetRouteTableName":  {
+                                                    "value":  "ECSGResourceGroup-Route-Table"
+                                                },
+                       "subnetNSGName":  {
+                                             "value":  "ECSGResourceGroup-NSG"
+                                         },
+                       "name":  {
+                                    "value":  "ECSGResourceGroup + ASE"
+                                },
+                       "kind":  {
+                                    "value":  "ASEV2"
+                                },
+                       "subscriptionId":  {
+                                              "value":  "8cc0acc8-094b-48db-90af-8b8f6a228071"
+                                          }
+                   }
+}

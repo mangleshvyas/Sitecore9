@@ -1,0 +1,216 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "CMappServicePlanName": {
+            "type": "string",
+			"metadata": {
+                "description": "The name of the App Service plan to use for hosting the web app."
+            }
+        },
+		"CDappServicePlanName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the App Service plan to use for hosting the web app."
+            }
+        },
+		"PrcappServicePlanName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the App Service plan to use for hosting the web app."
+            }
+        },
+		"RepappServicePlanName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the App Service plan to use for hosting the web app."
+            }
+        },
+		"XCBappServicePlanName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the App Service plan to use for hosting the web app."
+            }
+        },
+		"XCRepappServicePlanName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the App Service plan to use for hosting the web app."
+            }
+        },
+		"ExmappServicePlanName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the App Service plan to use for hosting the web app."
+            }
+        },
+        "appServiceEnvironmentName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the App Service Environment where the app service plan will be created."
+            }
+        },
+        "aseLocation": {
+            "type": "string",
+            "defaultValue": "West US",
+            "metadata": {
+                "description": "Set this to the same location as the app service environment"
+            }
+        },
+        "pricingTier": {
+            "type": "string",
+            "allowedValues": [
+                "1",
+                "2",
+                "3"
+            ],
+            "defaultValue": "1",
+            "metadata": {
+                "description": "Defines pricing tier for workers: 1 = Isolated 1, 2 = Isolated 2, 3 = Isolated 3."
+            }
+        },
+        "capacity": {
+            "type": "int",
+            "defaultValue": 1,
+            "metadata": {
+                "description": "Defines the number of instances that will be allocated to the app service plan."
+            }
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-08-01",
+            "name": "[parameters('CMappServicePlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[parameters('aseLocation')]",
+            "properties": {
+                "name": "[parameters('CMappServicePlanName')]",
+                "hostingEnvironmentProfile": {
+                     "id": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('appServiceEnvironmentName'))]"
+                }
+            },
+            "sku": {
+                "name" : "[concat('I',parameters('pricingTier'))]",
+                "tier": "Isolated",
+                "size": "[concat('I',parameters('pricingTier'))]",
+                "family": "I",
+                "capacity": "[parameters('capacity')]"
+            }
+        },
+		{
+            "apiVersion": "2015-08-01",
+            "name": "[parameters('CDappServicePlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[parameters('aseLocation')]",
+            "properties": {
+                "name": "[parameters('CDappServicePlanName')]",
+                "hostingEnvironmentProfile": {
+                     "id": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('appServiceEnvironmentName'))]"
+                }
+            },
+            "sku": {
+                "name" : "[concat('I',parameters('pricingTier'))]",
+                "tier": "Isolated",
+                "size": "[concat('I',parameters('pricingTier'))]",
+                "family": "I",
+                "capacity": "[parameters('capacity')]"
+            }
+        },
+		{
+            "apiVersion": "2015-08-01",
+            "name": "[parameters('PrcappServicePlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[parameters('aseLocation')]",
+            "properties": {
+                "name": "[parameters('PrcappServicePlanName')]",
+                "hostingEnvironmentProfile": {
+                     "id": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('appServiceEnvironmentName'))]"
+                }
+            },
+            "sku": {
+                "name" : "[concat('I',parameters('pricingTier'))]",
+                "tier": "Isolated",
+                "size": "[concat('I',parameters('pricingTier'))]",
+                "family": "I",
+                "capacity": "[parameters('capacity')]"
+            }
+        },
+		{
+            "apiVersion": "2015-08-01",
+            "name": "[parameters('RepappServicePlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[parameters('aseLocation')]",
+            "properties": {
+                "name": "[parameters('RepappServicePlanName')]",
+                "hostingEnvironmentProfile": {
+                     "id": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('appServiceEnvironmentName'))]"
+                }
+            },
+            "sku": {
+                "name" : "[concat('I',parameters('pricingTier'))]",
+                "tier": "Isolated",
+                "size": "[concat('I',parameters('pricingTier'))]",
+                "family": "I",
+                "capacity": "[parameters('capacity')]"
+            }
+        },
+		{
+            "apiVersion": "2015-08-01",
+            "name": "[parameters('XCBappServicePlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[parameters('aseLocation')]",
+            "properties": {
+                "name": "[parameters('XCBappServicePlanName')]",
+                "hostingEnvironmentProfile": {
+                     "id": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('appServiceEnvironmentName'))]"
+                }
+            },
+            "sku": {
+                "name" : "[concat('I',parameters('pricingTier'))]",
+                "tier": "Isolated",
+                "size": "[concat('I',parameters('pricingTier'))]",
+                "family": "I",
+                "capacity": "[parameters('capacity')]"
+            }
+        },
+		{
+            "apiVersion": "2015-08-01",
+            "name": "[parameters('XCRepappServicePlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[parameters('aseLocation')]",
+            "properties": {
+                "name": "[parameters('XCRepappServicePlanName')]",
+                "hostingEnvironmentProfile": {
+                     "id": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('appServiceEnvironmentName'))]"
+                }
+            },
+            "sku": {
+                "name" : "[concat('I',parameters('pricingTier'))]",
+                "tier": "Isolated",
+                "size": "[concat('I',parameters('pricingTier'))]",
+                "family": "I",
+                "capacity": "[parameters('capacity')]"
+            }
+        },
+		{
+            "apiVersion": "2015-08-01",
+            "name": "[parameters('ExmappServicePlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[parameters('aseLocation')]",
+            "properties": {
+                "name": "[parameters('ExmappServicePlanName')]",
+                "hostingEnvironmentProfile": {
+                     "id": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('appServiceEnvironmentName'))]"
+                }
+            },
+            "sku": {
+                "name" : "[concat('I',parameters('pricingTier'))]",
+                "tier": "Isolated",
+                "size": "[concat('I',parameters('pricingTier'))]",
+                "family": "I",
+                "capacity": "[parameters('capacity')]"
+            }
+        }
+        
+    ]
+}
