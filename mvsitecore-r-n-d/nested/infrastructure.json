@@ -165,22 +165,22 @@
     "cmHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-cm-hp')]"
+      "defaultValue": "[concat(parameters('cmHostingPlanName')]"
     },
     "cdHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-cd-hp')]"
+      "defaultValue": "[concat(parameters('cdHostingPlanName')]"
     },
     "prcHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-prc-hp')]"
+      "defaultValue": "[concat(parameters('prcHostingPlanName')]"
     },
     "repHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-rep-hp')]"
+      "defaultValue": "[concat(parameters('repHostingPlanName')]"
     },
 
     "cmWebAppName": {
@@ -222,19 +222,19 @@
       "defaultValue": {
         "Extra Small": {
           "cmHostingPlan": {
-            "SkuName": "B2",
+            "SkuName": "I1",
             "SkuCapacity": 1
           },
           "cdHostingPlan": {
-            "SkuName": "B2",
+            "SkuName": "I1",
             "SkuCapacity": 1
           },
           "prcHostingPlan": {
-            "SkuName": "B1",
+            "SkuName": "I1",
             "SkuCapacity": 1
           },
           "repHostingPlan": {
-            "SkuName": "B1",
+            "SkuName": "I1",
             "SkuCapacity": 1
           },
           "coreSqlDatabase": {
