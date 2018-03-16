@@ -187,7 +187,8 @@ $a | ConvertTo-Json | Set-Content "$WorkingDir\APP-Parameters.json"
 $toolkitPath = "$WorkingDir\Sitecore Azure Toolkit 2.0.1 rev. 171218.zip"
 $LicensePath = "$WorkingDir\license.xml"
 $JsonParameterPath = "$WorkingDir\APP-Parameters.json"
-$JsonDeployPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/Sitecore9XPScaled-ASE/azuredeploy.json"
+#$JsonDeployPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/Sitecore9XPScaled-ASE/azuredeploy.json"
+$JsonDeployPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/mvsitecore-r-n-d/azuredeploy-Infra.json"
 $CertificateFile = "$WorkingDir\ED4B1C6021147A88C77284E414FA1EAC57107FCC.pfx"
 
 
@@ -204,7 +205,7 @@ Expand-Archive -Path $toolkitPath -DestinationPath $WorkingDir -Force
 
 
 #12. Import the modules from Sitecore toolkit that we downloaded
-Import-Module $WorkingDir\tools\sitecore.cloud.cmdlets.psm1
+Import-Module $WorkingDir\tools\sitecore.cloud.cmdlets.psm1 -Verbose
 
 #13. Go to the local folder
 cd $WorkingDir 
