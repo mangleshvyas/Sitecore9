@@ -250,7 +250,7 @@
         }
       },
 	  "dependsOn": [
-        "[resourceId('Microsoft.search/searchservices', variables('searchServiceNameTidy'),'MSDeploy')]"
+        "[resourceId('Microsoft.search/searchservices', variables('searchServiceNameTidy'))]"
       ]
     },
     {
