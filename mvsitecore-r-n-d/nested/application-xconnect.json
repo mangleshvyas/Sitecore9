@@ -248,7 +248,10 @@
           "XConnect Server Instance Name": "ReferenceData",
           "License Xml": "[parameters('licenseXml')]"
         }
-      }
+      },
+	  "dependsOn": [
+        "[resourceId('Microsoft.search/searchservices', variables('searchServiceNameTidy'),'MSDeploy')]"
+      ]
     },
     {
       "name": "[concat(variables('xcCollectWebAppNameTidy'), '/', 'MSDeploy')]",
