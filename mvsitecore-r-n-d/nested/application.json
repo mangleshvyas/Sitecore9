@@ -484,7 +484,10 @@
             }
           }          
         ]
-      }
+      },
+	  "dependsOn": [
+        "[resourceId('Microsoft.Web/sites/extensions', variables('cmWebAppNameTidy'),'MSDeploy')]"
+      ]
     },
     {
       "name": "[concat(variables('prcWebAppNameTidy'), '/', 'MSDeploy')]",
@@ -528,7 +531,10 @@
             }
           }
         ]
-      }
+      },
+	  "dependsOn": [
+        "[resourceId('Microsoft.Web/sites/extensions', variables('cdWebAppNameTidy'),'MSDeploy')]"
+      ]
     },
     {
       "name": "[concat(variables('repWebAppNameTidy'), '/', 'MSDeploy')]",
@@ -561,7 +567,10 @@
             }
           }          
         ]
-      }
+      },
+	  "dependsOn": [
+        "[resourceId('Microsoft.Web/sites/extensions', variables('prcWebAppNameTidy'),'MSDeploy')]"
+      ]
     },
     {
       "name": "[concat(variables('cdWebAppNameTidy'), '/', 'appsettings')]",
