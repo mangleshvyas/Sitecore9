@@ -493,7 +493,7 @@
     "authCertificateName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-auth-uat')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-auth')]"
     },
     "authCertificateBlob": {
       "type": "securestring",
