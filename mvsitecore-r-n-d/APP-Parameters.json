@@ -3,10 +3,10 @@
     "contentVersion":  "1.0.0.0",
     "parameters":  {
                        "deploymentId":  {
-                                            "value":  "HBDev"
+                                            "value":  "PODS-UAT"
                                         },
                        "location":  {
-                                        "value":  "West US"
+                                        "value":  "East US"
                                     },
                        "sitecoreAdminPassword":  {
                                                      "value":  "P@ssw0rd1234"

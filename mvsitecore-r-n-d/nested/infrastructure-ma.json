@@ -43,7 +43,7 @@
     "sqlServerName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-sql')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-sql')]"
     },
 
     "sqlDatabaseCollation": {
@@ -55,7 +55,7 @@
     "maSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ma-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-ma-db')]"
     },
 
     "xcBasicHostingPlanName": {
@@ -67,12 +67,12 @@
     "maOpsWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ma-ops')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-ma-ops')]"
     },
     "maRepWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ma-rep')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-ma-rep')]"
     },
 
     "skuMap": {

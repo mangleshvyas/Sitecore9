@@ -69,7 +69,7 @@
     "sqlServerName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-sql')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-sql')]"
     },
     "sqlServerLogin": {
       "type": "string",
@@ -94,72 +94,72 @@
     "coreSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-core-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-core-db')]"
     },
     "masterSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-master-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-master-db')]"
     },
     "webSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-web-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-web-db')]"
     },
     "reportingSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-reporting-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-reporting-db')]"
     },
     "poolsSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-pools-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-pools-db')]"
     },
     "tasksSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-tasks-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-tasks-db')]"
     },
     "formsSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-forms-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-forms-db')]"
     },
     "exmMasterSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-exmmaster-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-exmmaster-db')]"
     },
     "shardMapManagerSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-smm-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-smm-db')]"
     },
     "shard0SqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-shard0-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-shard0-db')]"
     },
     "shard1SqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-shard1-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-shard1-db')]"
     },
     "refDataSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-refdata-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-refdata-db')]"
     },
     "maSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ma-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-ma-db')]"
     },
     "messagingSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-messaging-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-messaging-db')]"
     },
 
     "coreSqlDatabaseUserName": {
@@ -286,22 +286,22 @@
     "redisCacheName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-redis')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-redis')]"
     },
     "searchServiceName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-as')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-as')]"
     },
     "xcSearchIndexName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "xdb"
+      "defaultValue": "uat-xdb"
     },
     "applicationInsightsName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ai')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-ai')]"
     },
     "applicationInsightsLocation": {
       "type": "string",
@@ -310,7 +310,7 @@
     "applicationInsightsPricePlan": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ai-pp')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-ai-pp')]"
     },
 
     "cmHostingPlanName": {
@@ -351,51 +351,51 @@
     "cmWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-cm')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-cm')]"
     },
     "cdWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-cd')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-cd')]"
     },
     "prcWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-prc')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-prc')]"
     },
     "repWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-rep')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-rep')]"
     },
     "xcRefDataWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-xc-refdata')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-xc-refdata')]"
     },
     "xcCollectWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-xc-collect')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-xc-collect')]"
     },
     "xcSearchWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-xc-search')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-xc-search')]"
     },
     "maOpsWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ma-ops')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-ma-ops')]"
     },
     "maRepWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ma-rep')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-ma-rep')]"
     },
     "exmDdsWebAppName": {
       "type": "string",
-      "defaultValue": "[concat(parameters('deploymentId'), '-exm-dds')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-exm-dds')]"
     },
 
     "cmMsDeployPackageUrl": {
@@ -493,7 +493,7 @@
     "authCertificateName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-auth')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-auth')]"
     },
     "authCertificateBlob": {
       "type": "securestring",

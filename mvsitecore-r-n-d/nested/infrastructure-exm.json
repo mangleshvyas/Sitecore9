@@ -36,7 +36,7 @@
     },
     "exmDdsWebAppName": {
       "type": "string",
-      "defaultValue": "[concat(parameters('deploymentId'), '-exm-dds')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-exm-dds')]"
     },
     "skuMap": {
       "type": "secureObject",

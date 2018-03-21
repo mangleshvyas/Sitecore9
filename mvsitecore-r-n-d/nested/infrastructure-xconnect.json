@@ -24,13 +24,13 @@
     "sitecoreTags": {
       "provider": "b51535c2-ab3e-4a68-95f8-e2e3c9a19299",
       "xc": "xc",
-      "xcSearch": "xc-search",
-      "xcCollect": "xc-collect",
-      "xcRefData": "xc-refdata",
-      "xcShard0": "xc-shard-0",
-      "xcShard1": "xc-shard-1",
-      "xcShardMapManager": "xc-smm",
-      "messaging": "messaging"
+      "xcSearch": "uat-xc-search",
+      "xcCollect": "uat-xc-collect",
+      "xcRefData": "uat-xc-refdata",
+      "xcShard0": "uat-xc-shard-0",
+      "xcShard1": "uat-xc-shard-1",
+      "xcShardMapManager": "uat-xc-smm",
+      "messaging": "uat-messaging"
     }
   },
   "parameters": {
@@ -55,7 +55,7 @@
     "sqlServerName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-sql')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-sql')]"
     },
 
     "sqlDatabaseCollation": {
@@ -67,27 +67,27 @@
     "shardMapManagerSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-smm-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-smm-db')]"
     },
     "shard0SqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-shard0-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-shard0-db')]"
     },
     "shard1SqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-shard1-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-shard1-db')]"
     },
     "refDataSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-refdata-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-refdata-db')]"
     },
     "messagingSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-messaging-db')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-messaging-db')]"
     },
 
     "xcBasicHostingPlanName": {
@@ -104,17 +104,17 @@
     "xcRefDataWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-xc-refdata')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-xc-refdata')]"
     },
     "xcCollectWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-xc-collect')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-xc-collect')]"
     },
     "xcSearchWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-xc-search')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-uat-xc-search')]"
     },
 
     "skuMap": {
