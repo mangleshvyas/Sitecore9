@@ -3,13 +3,13 @@
     "contentVersion":  "1.0.0.0",
     "parameters":  {
                        "deploymentId":  {
-                                            "value":  "podsuat"
+                                            "value":  "podsint"
                                         },
                        "location":  {
                                         "value":  "East US"
                                     },
                        "sitecoreAdminPassword":  {
-                                                     "value":  "P@ssw0rd1234"
+                                                     "value":  "ZdtWRn8xzpza4UP"
                                                  },
                        "licenseXml":  {
                                           "value":  "license.xml"
@@ -21,7 +21,7 @@
                                               "value":  "hiadmin"
                                           },
                        "sqlServerPassword":  {
-                                                 "value":  "P@ssw0rd1234"
+                                                 "value":  "oh2lnZqOLismeQV"
                                              },
                        "cmMsDeployPackageUrl":  {
                                                     "value":  "https://podsstrg.blob.core.windows.net/container/Sitecore 9.0.1 rev. 171219 (Cloud)_cm.scwdp.zip?sv=2015-04-05\u0026sr=b\u0026sig=gVUJkYKPkhmQdqd3fub28EgjDGHnFoBRcH4RQxMO8t8%3D\u0026st=2018-03-21T07%3A46%3A46Z\u0026se=2018-03-23T07%3A46%3A46Z\u0026sp=rwd"
