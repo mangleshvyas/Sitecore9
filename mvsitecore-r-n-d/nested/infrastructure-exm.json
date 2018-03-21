@@ -10,7 +10,7 @@
 
     "sitecoreTags": {
       "provider": "b51535c2-ab3e-4a68-95f8-e2e3c9a19299",
-      "dds": "dds"
+      "dds": "dds-uat"
     }
   },
   "parameters": {
@@ -36,7 +36,7 @@
     },
     "exmDdsWebAppName": {
       "type": "string",
-      "defaultValue": "[concat(parameters('deploymentId'), '-uat-exm-dds')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-exm-dds-uat')]"
     },
     "skuMap": {
       "type": "secureObject",

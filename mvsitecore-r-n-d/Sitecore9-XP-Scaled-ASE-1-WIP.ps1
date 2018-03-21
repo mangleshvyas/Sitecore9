@@ -68,73 +68,73 @@ New-AzureStorageContainer -Context $Context -Name $ContainerName
 
 
 #7. Upload Files to storage account
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_cd.scwdp.zip" -Container $ContainerName -Context $Context
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_cm.scwdp.zip" -Container $ContainerName -Context $Context
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_dds.scwdp.zip" -Container $ContainerName -Context $Context
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_prc.scwdp.zip" -Container $ContainerName -Context $Context
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_rep.scwdp.zip" -Container $ContainerName -Context $Context
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_cd.scwdp.zip" -Container $ContainerName -Context $Context -Verbose
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_cm.scwdp.zip" -Container $ContainerName -Context $Context -Verbose
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_dds.scwdp.zip" -Container $ContainerName -Context $Context -Verbose
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_prc.scwdp.zip" -Container $ContainerName -Context $Context -Verbose
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_rep.scwdp.zip" -Container $ContainerName -Context $Context -Verbose
 
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1collection.scwdp.zip" -Container $ContainerName -Context $Context
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1collectionsearch.scwdp.zip" -Container $ContainerName -Context $Context
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1marketingautomation.scwdp.zip" -Container $ContainerName -Context $Context
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1marketingautomationreporting.scwdp.zip" -Container $ContainerName -Context $Context
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1referencedata.scwdp.zip" -Container $ContainerName -Context $Context
-Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore.Patch.EXM (Cloud)_CM.zip" -Container $ContainerName -Context $Context
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1collection.scwdp.zip" -Container $ContainerName -Context $Context -Verbose
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1collectionsearch.scwdp.zip" -Container $ContainerName -Context $Context -Verbose
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1marketingautomation.scwdp.zip" -Container $ContainerName -Context $Context -Verbose
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1marketingautomationreporting.scwdp.zip" -Container $ContainerName -Context $Context -Verbose
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore 9.0.1 rev. 171219 (Cloud)_xp1referencedata.scwdp.zip" -Container $ContainerName -Context $Context -Verbose
+Set-AzureStorageBlobContent -File "$WorkingDir\Sitecore.Patch.EXM (Cloud)_CM.zip" -Container $ContainerName -Context $Context -Verbose
 
 
 #8. Set and Get blob access details. 
 #Generate a blob SAS token for Sitecore 9 XP Xconnect package
 $StartTime = Get-Date
-$EndTime = $startTime.AddHours(9.0)
+$EndTime = $startTime.AddHours(48.0)
 $uriCD = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_cd.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 $StartTime = Get-Date
-$EndTime = $startTime.AddHours(9.0)
+$EndTime = $startTime.AddHours(48.0)
 $uriCM = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_cm.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 
 $StartTime = Get-Date
-$EndTime = $startTime.AddHours(9.0)
+$EndTime = $startTime.AddHours(48.0)
 $uriexmDDS = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_dds.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 
 $StartTime = Get-Date
-$EndTime = $startTime.AddHours(9.0)
+$EndTime = $startTime.AddHours(48.0)
 $uriPRC = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_prc.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 
 $StartTime = Get-Date
-$EndTime = $startTime.AddHours(9.0)
+$EndTime = $startTime.AddHours(48.0)
 $uriREP = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_rep.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 
 $StartTime = Get-Date
-$EndTime = $startTime.AddHours(9.0)
+$EndTime = $startTime.AddHours(48.0)
 $uriXCcol = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_xp1collection.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 
 $StartTime = Get-Date
-$EndTime = $startTime.AddHours(9.0)
+$EndTime = $startTime.AddHours(48.0)
 $uriXCSearch = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_xp1collectionsearch.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 
 $StartTime = Get-Date
-$EndTime = $startTime.AddHours(9.0)
+$EndTime = $startTime.AddHours(48.0)
 $uriXCmkt = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_xp1marketingautomation.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 
 $StartTime = Get-Date
-$EndTime = $startTime.AddHours(9.0)
+$EndTime = $startTime.AddHours(48.0)
 $uriXCmktrep = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_xp1marketingautomationreporting.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 
 $StartTime = Get-Date
-$EndTime = $startTime.AddHours(9.0)
+$EndTime = $startTime.AddHours(48.0)
 $uriXCref = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore 9.0.1 rev. 171219 (Cloud)_xp1referencedata.scwdp.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 
 $StartTime = Get-Date
-$EndTime = $startTime.AddHours(9.0)
+$EndTime = $startTime.AddHours(48.0)
 $uriExmCM = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore.Patch.EXM (Cloud)_CM.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 #9. Add the SAS token to APP-Parameters.json file
