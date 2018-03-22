@@ -39,18 +39,18 @@
 
     "sitecoreTags": {
       "provider": "b51535c2-ab3e-4a68-95f8-e2e3c9a19299",
-      "cm": "cm-int",
-      "cd": "cd-int",
-      "rep": "rep-int",
-      "prc": "prc-int",
-      "core": "core-int",
-      "master": "master-int",
-      "web": "web-int",
-      "reporting": "reporting-int",
-      "pools": "prc-pools-int",
-      "tasks": "prc-tasks-int",
-      "forms": "forms-int",
-      "exmmaster" : "exmmaster-int"
+      "cm": "cm-qa",
+      "cd": "cd-qa",
+      "rep": "rep-qa",
+      "prc": "prc-qa",
+      "core": "core-qa",
+      "master": "master-qa",
+      "web": "web-qa",
+      "reporting": "reporting-qa",
+      "pools": "prc-pools-qa",
+      "tasks": "prc-tasks-qa",
+      "forms": "forms-qa",
+      "exmmaster" : "exmmaster-qa"
     }
   },
   "parameters": {
@@ -75,7 +75,7 @@
     "sqlServerName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-sql-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-sql-qa')]"
     },
     "sqlServerLogin": {
       "type": "string",
@@ -100,57 +100,57 @@
     "coreSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-core-db-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-core-db-qa')]"
     },
     "masterSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-master-db-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-master-db-qa')]"
     },
     "webSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-web-db-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-web-db-qa')]"
     },
     "reportingSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-reporting-db-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-reporting-db-qa')]"
     },
     "poolsSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-pools-db-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-pools-db-qa')]"
     },
     "tasksSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-tasks-db-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-tasks-db-qa')]"
     },
     "formsSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-forms-db-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-forms-db-qa')]"
     },
     "exmMasterSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-exmmaster-db-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-exmmaster-db-qa')]"
     },
     "searchServiceName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-as-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-as-qa')]"
     },
     "redisCacheName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-redis-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-redis-qa')]"
     },
     "applicationInsightsName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ai-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-ai-qa')]"
     },
     "applicationInsightsLocation": {
       "type": "string",
@@ -159,7 +159,7 @@
     "applicationInsightsPricePlan": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ai-pp-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-ai-pp-qa')]"
     },
 
     "cmHostingPlanName": {
@@ -186,27 +186,27 @@
     "cmWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-cm-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-cm-qa')]"
     },
     "cdWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-cd-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd-qa')]"
     },
     "prcWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-prc-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-prc-qa')]"
     },
     "repWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-rep-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-rep-qa')]"
     },
     "authCertificateName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-auth-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-auth-qa')]"
     },
     "authCertificateBlob": {
       "type": "securestring",

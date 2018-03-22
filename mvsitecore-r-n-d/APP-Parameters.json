@@ -63,25 +63,25 @@
                                                        "value":  "P@ssw0rd1234"
                                                    },
                        "cmHostingPlanName":  {
-                                                 "value":  "CM-Int"
+                                                 "value":  "CM-QA"
                                              },
                        "cdHostingPlanName":  {
-                                                 "value":  "CD-Int"
+                                                 "value":  "CD-QA"
                                              },
                        "prcHostingPlanName":  {
-                                                  "value":  "Prc-Int"
+                                                  "value":  "Prc-QA"
                                               },
                        "repHostingPlanName":  {
-                                                  "value":  "Rep-Int"
+                                                  "value":  "Rep-QA"
                                               },
                        "xcBasicHostingPlanName":  {
-                                                      "value":  "Xcb-Int"
+                                                      "value":  "Xcb-QA"
                                                   },
                        "xcResourceIntensiveHostingPlanName":  {
-                                                                  "value":  "Xcr-Int"
+                                                                  "value":  "Xcr-QA"
                                                               },
                        "exmDdsHostingPlanName":  {
-                                                     "value":  "Exm-Int"
+                                                     "value":  "Exm-QA"
                                                  }
                    }
 }

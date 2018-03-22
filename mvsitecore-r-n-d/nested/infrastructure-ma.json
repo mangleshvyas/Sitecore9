@@ -16,9 +16,9 @@
 
     "sitecoreTags": {
       "provider": "b51535c2-ab3e-4a68-95f8-e2e3c9a19299",
-      "maOps": "ma-ops-int",
-      "maRep": "ma-rep-int",
-      "ma": "ma-int"
+      "maOps": "ma-ops-qa",
+      "maRep": "ma-rep-qa",
+      "ma": "ma-qa"
     }
   },
   "parameters": {
@@ -43,7 +43,7 @@
     "sqlServerName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-sql-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-sql-qa')]"
     },
 
     "sqlDatabaseCollation": {
@@ -55,7 +55,7 @@
     "maSqlDatabaseName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ma-db-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-ma-db-qa')]"
     },
 
     "xcBasicHostingPlanName": {
@@ -67,12 +67,12 @@
     "maOpsWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ma-ops-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-ma-ops-qa')]"
     },
     "maRepWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ma-rep-int')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-ma-rep-qa')]"
     },
 
     "skuMap": {
