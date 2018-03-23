@@ -32,7 +32,7 @@
     },
     "exmDdsHostingPlanName": {
       "type": "string",
-      "defaultValue": "[concat(parameters('deploymentId'), '-ot')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-exm-dds-hp')]"
     },
     "exmDdsWebAppName": {
       "type": "string",

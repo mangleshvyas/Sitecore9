@@ -61,7 +61,7 @@
     "xcBasicHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ot')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-xc-basic-hp')]"
     },
 
     "maOpsWebAppName": {

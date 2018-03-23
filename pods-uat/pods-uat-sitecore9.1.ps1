@@ -138,57 +138,57 @@ $EndTime = $startTime.AddHours(48.0)
 $uriExmCM = New-AzureStorageBlobSASToken -Container $ContainerName -Blob "Sitecore.Patch.EXM (Cloud)_CM.zip" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $Context -FullUri
 
 #9. Add the SAS token to APP-Parameters.json file
-$a = Get-Content "$WorkingDir\APP-Parameters.json" -Raw | ConvertFrom-Json
+$a = Get-Content "$WorkingDir\azuredeploy.Parameters.json" -Raw | ConvertFrom-Json
 $a.parameters.cmMsDeployPackageUrl.value = "$uriCM"  
-$a | ConvertTo-Json | Set-Content "$WorkingDir\APP-Parameters.json"
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.Parameters.json"
 
-$a = Get-Content "$WorkingDir\APP-Parameters.json" -Raw | ConvertFrom-Json
+$a = Get-Content "$WorkingDir\azuredeploy.Parameters.json" -Raw | ConvertFrom-Json
 $a.parameters.cdMsDeployPackageUrl.value = "$uriCD"  
-$a | ConvertTo-Json | Set-Content "$WorkingDir\APP-Parameters.json"
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.Parameters.json"
 
-$a = Get-Content "$WorkingDir\APP-Parameters.json" -Raw | ConvertFrom-Json
+$a = Get-Content "$WorkingDir\azuredeploy.Parameters.json" -Raw | ConvertFrom-Json
 $a.parameters.prcMsDeployPackageUrl.value = "$uriPRC"
-$a | ConvertTo-Json | Set-Content "$WorkingDir\APP-Parameters.json"
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.Parameters.json"
 
-$a = Get-Content "$WorkingDir\APP-Parameters.json" -Raw | ConvertFrom-Json
+$a = Get-Content "$WorkingDir\azuredeploy.Parameters.json" -Raw | ConvertFrom-Json
 $a.parameters.repMsDeployPackageUrl.value = "$uriREP"  
-$a | ConvertTo-Json | Set-Content "$WorkingDir\APP-Parameters.json"
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.Parameters.json"
 
-$a = Get-Content "$WorkingDir\APP-Parameters.json" -Raw | ConvertFrom-Json
+$a = Get-Content "$WorkingDir\azuredeploy.Parameters.json" -Raw | ConvertFrom-Json
 $a.parameters.xcRefDataMsDeployPackageUrl.value = "$uriXCref"  
-$a | ConvertTo-Json | Set-Content "$WorkingDir\APP-Parameters.json"
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.Parameters.json"
 
-$a = Get-Content "$WorkingDir\APP-Parameters.json" -Raw | ConvertFrom-Json
+$a = Get-Content "$WorkingDir\azuredeploy.Parameters.json" -Raw | ConvertFrom-Json
 $a.parameters.xcCollectMsDeployPackageUrl.value = "$uriXCcol"  
-$a | ConvertTo-Json | Set-Content "$WorkingDir\APP-Parameters.json"
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.Parameters.json"
 
-$a = Get-Content "$WorkingDir\APP-Parameters.json" -Raw | ConvertFrom-Json
+$a = Get-Content "$WorkingDir\azuredeploy.Parameters.json" -Raw | ConvertFrom-Json
 $a.parameters.xcSearchMsDeployPackageUrl.value = "$uriXCSearch"  
-$a | ConvertTo-Json | Set-Content "$WorkingDir\APP-Parameters.json"
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.Parameters.json"
 
-$a = Get-Content "$WorkingDir\APP-Parameters.json" -Raw | ConvertFrom-Json
+$a = Get-Content "$WorkingDir\azuredeploy.Parameters.json" -Raw | ConvertFrom-Json
 $a.parameters.maOpsMsDeployPackageUrl.value = "$uriXCmkt"  
-$a | ConvertTo-Json | Set-Content "$WorkingDir\APP-Parameters.json"
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.Parameters.json"
 
-$a = Get-Content "$WorkingDir\APP-Parameters.json" -Raw | ConvertFrom-Json
+$a = Get-Content "$WorkingDir\azuredeploy.Parameters.json" -Raw | ConvertFrom-Json
 $a.parameters.maRepMsDeployPackageUrl.value = "$uriXCmktrep"  
-$a | ConvertTo-Json | Set-Content "$WorkingDir\APP-Parameters.json"
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.Parameters.json"
 
-$a = Get-Content "$WorkingDir\APP-Parameters.json" -Raw | ConvertFrom-Json
+$a = Get-Content "$WorkingDir\azuredeploy.Parameters.json" -Raw | ConvertFrom-Json
 $a.parameters.exmDdsMsDeployPackageUrl.value = "$uriexmDDS"  
-$a | ConvertTo-Json | Set-Content "$WorkingDir\APP-Parameters.json"
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.Parameters.json"
 
-$a = Get-Content "$WorkingDir\APP-Parameters.json" -Raw | ConvertFrom-Json
+$a = Get-Content "$WorkingDir\azuredeploy.Parameters.json" -Raw | ConvertFrom-Json
 $a.parameters.exmCmMsDeployPackageUrl.value = "$uriExmCM"  
-$a | ConvertTo-Json | Set-Content "$WorkingDir\APP-Parameters.json"
+$a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.Parameters.json"
 
 
 #10. Local Path for license file
 $toolkitPath = "$WorkingDir\Sitecore Azure Toolkit 2.0.1 rev. 171218.zip"
 $LicensePath = "$WorkingDir\license.xml"
-$JsonParameterPath = "$WorkingDir\APP-Parameters.json"
+$JsonParameterPath = "$WorkingDir\azuredeploy.Parameters.json"
 #$JsonDeployPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/Sitecore9XPScaled-ASE/azuredeploy.json"
-$JsonDeployPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/mvsitecore-r-n-d/azuredeploy-Infra.json"
+$JsonDeployPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/pods-woase-uat/azuredeploy.json"
 $CertificateFile = "$WorkingDir\ED4B1C6021147A88C77284E414FA1EAC57107FCC.pfx"
 
 

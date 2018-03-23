@@ -24,7 +24,7 @@
     "cmHostingPlanNameTidy": "[toLower(trim(parameters('cmHostingPlanName')))]",
     "cdHostingPlanNameTidy": "[toLower(trim(parameters('cdHostingPlanName')))]",
     "prcHostingPlanNameTidy": "[toLower(trim(parameters('prcHostingPlanName')))]",
- 
+    "repHostingPlanNameTidy": "[toLower(trim(parameters('repHostingPlanName')))]",
 
     "cmWebAppNameTidy": "[toLower(trim(parameters('cmWebAppName')))]",
     "cdWebAppNameTidy": "[toLower(trim(parameters('cdWebAppName')))]",
@@ -165,18 +165,24 @@
     "cmHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-be')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-cm-hp')]"
     },
     "cdHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-fe')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd-hp')]"
     },
     "prcHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ot')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-prc-hp')]"
     },
+    "repHostingPlanName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-rep-hp')]"
+    },
+
     "cmWebAppName": {
       "type": "string",
       "minLength": 1,
@@ -224,6 +230,10 @@
             "SkuCapacity": 1
           },
           "prcHostingPlan": {
+            "SkuName": "B1",
+            "SkuCapacity": 1
+          },
+          "repHostingPlan": {
             "SkuName": "B1",
             "SkuCapacity": 1
           },
@@ -297,6 +307,10 @@
             "SkuName": "B1",
             "SkuCapacity": 1
           },
+          "repHostingPlan": {
+            "SkuName": "B1",
+            "SkuCapacity": 1
+          },
           "coreSqlDatabase": {
             "Edition": "Standard",
             "MaxSize": "268435456000",
@@ -365,6 +379,10 @@
           },
           "prcHostingPlan": {
             "SkuName": "B1",
+            "SkuCapacity": 1
+          },
+          "repHostingPlan": {
+            "SkuName": "B2",
             "SkuCapacity": 1
           },
           "coreSqlDatabase": {
@@ -437,6 +455,10 @@
             "SkuName": "B2",
             "SkuCapacity": 1
           },
+          "repHostingPlan": {
+            "SkuName": "B2",
+            "SkuCapacity": 1
+          },
           "coreSqlDatabase": {
             "Edition": "Standard",
             "MaxSize": "268435456000",
@@ -504,6 +526,10 @@
             "SkuCapacity": 8
           },
           "prcHostingPlan": {
+            "SkuName": "B2",
+            "SkuCapacity": 1
+          },
+          "repHostingPlan": {
             "SkuName": "B2",
             "SkuCapacity": 1
           },
@@ -624,6 +650,23 @@
       }
     },
     {
+      "type": "Microsoft.Web/serverfarms",
+      "name": "[variables('repHostingPlanNameTidy')]",
+      "apiVersion": "[variables('serverFarmApiVersion')]",
+      "sku": {
+        "name": "[parameters('resourceSizes').repHostingPlan.SkuName]",
+        "capacity": "[parameters('resourceSizes').repHostingPlan.SkuCapacity]"
+      },
+      "properties": {
+        "name": "[variables('repHostingPlanNameTidy')]"
+      },
+      "location": "[parameters('location')]",
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').rep]"
+      }
+    },
+    {
       "type": "Microsoft.Web/sites",
       "name": "[variables('cmWebAppNameTidy')]",
       "apiVersion": "[variables('webApiVersion')]",
@@ -676,7 +719,7 @@
       "name": "[variables('prcWebAppNameTidy')]",
       "apiVersion": "[variables('webApiVersion')]",
       "properties": {
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('cmHostingPlanNameTidy'))]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('prcHostingPlanNameTidy'))]",
         "siteConfig": {
           "use32BitWorkerProcess": false,
           "alwaysOn": true,
@@ -688,7 +731,7 @@
       },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('cmHostingPlanNameTidy'))]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('prcHostingPlanNameTidy'))]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
@@ -700,7 +743,7 @@
       "name": "[variables('repWebAppNameTidy')]",
       "apiVersion": "[variables('webApiVersion')]",
       "properties": {
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('cmHostingPlanNameTidy'))]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('repHostingPlanNameTidy'))]",
         "siteConfig": {
           "use32BitWorkerProcess": false,
           "alwaysOn": true,
@@ -712,7 +755,7 @@
       },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('cmHostingPlanNameTidy'))]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('repHostingPlanNameTidy'))]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
@@ -1057,7 +1100,8 @@
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('cmHostingPlanNameTidy'))]",
         "[resourceId('Microsoft.Web/serverfarms', variables('cdHostingPlanNameTidy'))]",
-        "[resourceId('Microsoft.Web/serverfarms', variables('prcHostingPlanNameTidy'))]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('prcHostingPlanNameTidy'))]",
+        "[resourceId('Microsoft.Web/serverfarms', variables('repHostingPlanNameTidy'))]"
       ],
       "properties": {
         "password": "[parameters('authCertificatePassword')]",
