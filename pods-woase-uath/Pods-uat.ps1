@@ -102,7 +102,7 @@ $a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
 $toolkitPath = "$WorkingDir\Sitecore Azure Toolkit 2.0.1 rev. 171218.zip"
 $LicensePath = "$WorkingDir\license.xml"
 $JsonParameterPath = "$WorkingDir\azuredeploy.parameters.json"
-$JsonDeployPath = "https://github.com/mangleshvyas/Sitecore9/blob/master/pods-woase-uath/azuredeploy.json"
+$JsonDeployPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/pods-woase-uath/azuredeploy.json"
 $CertificateFile = "$WorkingDir\ED4B1C6021147A88C77284E414FA1EAC57107FCC.pfx"
 
 
@@ -126,4 +126,4 @@ Import-Module $WorkingDir\tools\sitecore.cloud.cmdlets.psm1 -Verbose
 cd $WorkingDir
 
 #13. Run the Siteccore Azure Deployment Cmdlet. 
-Start-SitecoreAzureDeployment -Name $ResourceGroupName -Location $Location -ArmTemplateUrl $JsonDeployPath  -ArmParametersPath $JsonParameterPath  -LicenseXmlPath $LicensePath -SetKeyValue $Parameters -Verbose
+Start-SitecoreAzureDeployment -Name $ResourceGroupName -Location $Location -ArmTemplateUrl $JsonDeployPath  -ArmParametersPath $JsonParameterPath  -LicenseXmlPath $LicensePath -SetKeyValue $Parameters -Verbose 
