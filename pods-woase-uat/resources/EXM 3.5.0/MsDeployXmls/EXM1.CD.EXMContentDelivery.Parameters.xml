@@ -1,0 +1,33 @@
+<parameters>
+  <parameter name="Application Path" tags="iisapp">
+    <parameterEntry type="ProviderPath" scope="iisapp" match="WebSite" />
+  </parameter>
+  <parameter name="EXM Web Admin Connection String" tags="Hidden, SQLConnectionString, NoStore">
+    <parameterEntry type="ProviderPath" scope="dbDacFx" match="Sitecore.Exm_Web.dacpac" />
+    <parameterEntry type="ProviderPath" scope="dbfullsql" match="CreateUser.Exm.Web.sql" />
+  </parameter>
+  <parameter name="EXM Web DB User Name" description="User name to access you EXM Web database." tags="SQL, Hidden, DbUsername">
+    <parameterEntry type="TextFile" scope="CreateUser.Exm.Web.sql" match="PlaceHolderForUser" />
+  </parameter>
+  <parameter name="EXM Web DB Password" description="Password to access you EXM Web database." tags="SQL, Hidden, DbUserPassword">
+    <parameterEntry type="TextFile" scope="CreateUser.Exm.Web.sql" match="PlaceHolderForPassword" />
+  </parameter>
+  <parameter name="EXM Web Connection String" description="User name to access you EXM Web database." tags="Hidden, NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Data\\Transforms\\EXM\\Xdts\\App_Config\\ConnectionStrings\.config\.xdt$" match="//connectionStrings/add[@name='exm.web']/@connectionString" />
+  </parameter>
+  <parameter name="Cryptographic Key" description="Cryptographic Key" tags="Hidden, NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Data\\Transforms\\EXM\\Xdts\\App_Config\\ConnectionStrings\.config\.xdt$" match="//connectionStrings/add[@name='EXM.CryptographicKey']/@connectionString" />
+  </parameter>
+  <parameter name="Authentication Key" description="Authentication Key" tags="Hidden, NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Data\\Transforms\\EXM\\Xdts\\App_Config\\ConnectionStrings\.config\.xdt$" match="//connectionStrings/add[@name='EXM.AuthenticationKey']/@connectionString" />
+  </parameter>
+  <parameter name="Internal Api Key" description="Internal Api Key" tags="Hidden, SQLConnectionString, NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Data\\Transforms\\EXM\\Xdts\\App_Config\\ConnectionStrings\.config\.xdt$" match="//connectionStrings/add[@name='EXM.InternalApiKey']/@connectionString" />
+  </parameter>
+  <parameter name="Email Campaign Client Service" description="Email Campaign Client Service" tags="Hidden, SQLConnectionString, NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Data\\Transforms\\EXM\\Xdts\\App_Config\\ConnectionStrings\.config\.xdt$" match="//connectionStrings/add[@name='EmailCampaignClientService']/@connectionString" />
+  </parameter>
+  <parameter name="Analytics Cluster Name" description="Sitecore Analytics Tracking Cluster Name" tags="Hidden, NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\Include\\zzz\\Sitecore\.Analytics\.Tracking\.config$" match="//settings/setting[@name='Analytics.ClusterName']/@set:value" />
+  </parameter>
+</parameters>

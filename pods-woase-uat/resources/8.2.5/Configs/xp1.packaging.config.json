@@ -1,0 +1,29 @@
+{
+  "scwdps": [
+    {
+      "role": "cd",
+      "parametersXml": "xP1.CD.parameters.xml",
+      "sccpls": [ "Sitecore.Cloud.RoleSpecific_CD.sccpl", "Sitecore.Cloud.Redis_CD.sccpl", "Sitecore.Cloud.Thundercracker_CD.sccpl", "Sitecore.Cloud.Security_CD.sccpl" ]
+    },
+    {
+      "role": "cm",
+      "parametersXml": "xP1.CM.parameters.xml",
+      "sccpls": [ "Sitecore.Cloud.RoleSpecific_CM.sccpl", "Sitecore.Cloud.HttpsRedirection.sccpl", "Sitecore.Cloud.IPSecurity.sccpl" ]
+    },
+    {
+      "role": "cm2",
+      "parametersXml": "xP1.CM2.parameters.xml",
+      "sccpls": [ "Sitecore.Cloud.RoleSpecific_CM.sccpl", "Sitecore.Cloud.HttpsRedirection.sccpl", "Sitecore.Cloud.IPSecurity.sccpl" ]
+    },
+    {
+      "role": "prc",
+      "parametersXml": "xP1.PRC.parameters.xml",
+      "sccpls": [ "Sitecore.Cloud.RoleSpecific_PRC.sccpl", "Sitecore.Cloud.HttpsRedirection.sccpl", "Sitecore.Cloud.IPSecurity.sccpl" ]
+    },
+    {
+      "role": "rep",
+      "parametersXml": "xP1.REP.parameters.xml",
+      "sccpls": [ "Sitecore.Cloud.RoleSpecific_REP.sccpl", "Sitecore.Cloud.HttpsRedirection.sccpl" ]
+    }
+  ]
+}

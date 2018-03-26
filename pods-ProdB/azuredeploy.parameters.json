@@ -1,0 +1,66 @@
+{
+    "$schema":  "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion":  "1.0.0.0",
+    "parameters":  {
+                       "deploymentId":  {
+                                            "value":  "pods-ProdB"
+                                        },
+                       "location":  {
+                                        "value":  "East US"
+                                    },
+                       "sitecoreAdminPassword":  {
+                                                     "value":  "e5aSZPNhqOuMpD4"
+                                                 },
+                       "licenseXml":  {
+                                          "value":  "license.xml"
+                                      },
+                       "repAuthenticationApiKey":  {
+                                                       "value":  "bd21cd9e54054534a476f4e6d660e8b2"
+                                                   },
+                       "sqlServerLogin":  {
+                                              "value":  "hiadmin"
+                                          },
+                       "sqlServerPassword":  {
+                                                 "value":  "WzXiMBQXeZs7cqo"
+                                             },
+                       "cmMsDeployPackageUrl":  {
+                                                    "value":  "https://podsprodbstrg.blob.core.windows.net/container/Sitecore 9.0.1 rev. 171219 (Cloud)_cm.scwdp.zip?sv=2015-04-05\u0026sr=b\u0026sig=6QeZyRiWO0RggS2aVW90HEpnIQ6NwKqy%2Ff5MJB57XO8%3D\u0026st=2018-03-25T11%3A24%3A21Z\u0026se=2018-03-27T11%3A24%3A21Z\u0026sp=rwd"
+                                                },
+                       "cdMsDeployPackageUrl":  {
+                                                    "value":  "https://podsprodbstrg.blob.core.windows.net/container/Sitecore 9.0.1 rev. 171219 (Cloud)_cd.scwdp.zip?sv=2015-04-05\u0026sr=b\u0026sig=DAaYra3F3fxRDzxn%2Ft27FZe6phO%2F0Wj9jOBPPsGxgLQ%3D\u0026st=2018-03-25T11%3A24%3A21Z\u0026se=2018-03-27T11%3A24%3A21Z\u0026sp=rwd"
+                                                },
+                       "prcMsDeployPackageUrl":  {
+                                                     "value":  "https://podsprodbstrg.blob.core.windows.net/container/Sitecore 9.0.1 rev. 171219 (Cloud)_prc.scwdp.zip?sv=2015-04-05\u0026sr=b\u0026sig=l4vZ%2Bp9FufwUQxY%2Bz4muQBYjhOJqtx2CKs6bSkls80Q%3D\u0026st=2018-03-25T11%3A24%3A21Z\u0026se=2018-03-27T11%3A24%3A21Z\u0026sp=rwd"
+                                                 },
+                       "repMsDeployPackageUrl":  {
+                                                     "value":  "https://podsprodbstrg.blob.core.windows.net/container/Sitecore 9.0.1 rev. 171219 (Cloud)_rep.scwdp.zip?sv=2015-04-05\u0026sr=b\u0026sig=PCqGi0%2BhrG6S4TTSF3MqB2Oqza9%2BTK8vTn6mJ10w7Ss%3D\u0026st=2018-03-25T11%3A24%3A21Z\u0026se=2018-03-27T11%3A24%3A21Z\u0026sp=rwd"
+                                                 },
+                       "xcRefDataMsDeployPackageUrl":  {
+                                                           "value":  "https://podsprodbstrg.blob.core.windows.net/container/Sitecore 9.0.1 rev. 171219 (Cloud)_xp1referencedata.scwdp.zip?sv=2015-04-05\u0026sr=b\u0026sig=lLojzUKqNRc1ysBWUulaki2ZY%2Bd7FAlpUyOVyUcHc00%3D\u0026st=2018-03-25T11%3A24%3A21Z\u0026se=2018-03-27T11%3A24%3A21Z\u0026sp=rwd"
+                                                       },
+                       "xcCollectMsDeployPackageUrl":  {
+                                                           "value":  "https://podsprodbstrg.blob.core.windows.net/container/Sitecore 9.0.1 rev. 171219 (Cloud)_xp1collection.scwdp.zip?sv=2015-04-05\u0026sr=b\u0026sig=T0hLb6fE96vtnRjis73QAWoFxzNrtvtmCaWkXG43hCI%3D\u0026st=2018-03-25T11%3A24%3A21Z\u0026se=2018-03-27T11%3A24%3A21Z\u0026sp=rwd"
+                                                       },
+                       "xcSearchMsDeployPackageUrl":  {
+                                                          "value":  "https://podsprodbstrg.blob.core.windows.net/container/Sitecore 9.0.1 rev. 171219 (Cloud)_xp1collectionsearch.scwdp.zip?sv=2015-04-05\u0026sr=b\u0026sig=N5S3ZjS%2BRdeo13kQgHoQOJcRqpvYJaqqI2LTqzcd0vQ%3D\u0026st=2018-03-25T11%3A24%3A21Z\u0026se=2018-03-27T11%3A24%3A21Z\u0026sp=rwd"
+                                                      },
+                       "maOpsMsDeployPackageUrl":  {
+                                                       "value":  "https://podsprodbstrg.blob.core.windows.net/container/Sitecore 9.0.1 rev. 171219 (Cloud)_xp1marketingautomation.scwdp.zip?sv=2015-04-05\u0026sr=b\u0026sig=8kkumYglga%2BVUA9xAGM5IWgya7t4ed8w9p%2FkWOMbN58%3D\u0026st=2018-03-25T11%3A24%3A21Z\u0026se=2018-03-27T11%3A24%3A21Z\u0026sp=rwd"
+                                                   },
+                       "maRepMsDeployPackageUrl":  {
+                                                       "value":  "https://podsprodbstrg.blob.core.windows.net/container/Sitecore 9.0.1 rev. 171219 (Cloud)_xp1marketingautomationreporting.scwdp.zip?sv=2015-04-05\u0026sr=b\u0026sig=Codu%2F7i7prOfA6TckD6ogTp6j%2Fna9ASXvnfrkHRjzwE%3D\u0026st=2018-03-25T11%3A24%3A21Z\u0026se=2018-03-27T11%3A24%3A21Z\u0026sp=rwd"
+                                                   },
+                       "exmDdsMsDeployPackageUrl":  {
+                                                        "value":  "https://podsprodbstrg.blob.core.windows.net/container/Sitecore 9.0.1 rev. 171219 (Cloud)_dds.scwdp.zip?sv=2015-04-05\u0026sr=b\u0026sig=wIHLsWBe6Ag1dwO0oABXY5RRfEU1%2BVRrcV7cYXnKK6U%3D\u0026st=2018-03-25T11%3A24%3A21Z\u0026se=2018-03-27T11%3A24%3A21Z\u0026sp=rwd"
+                                                    },
+                       "exmCmMsDeployPackageUrl":  {
+                                                       "value":  "https://podsprodbstrg.blob.core.windows.net/container/Sitecore.Patch.EXM (Cloud)_CM.zip?sv=2015-04-05\u0026sr=b\u0026sig=LlFKesnFaPBC8556j%2FG11RI9w6SaiGg26aRXoYrGUBU%3D\u0026st=2018-03-25T11%3A24%3A21Z\u0026se=2018-03-27T11%3A24%3A21Z\u0026sp=rwd"
+                                                   },
+                       "authCertificateBlob":  {
+                                                   "value":  "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"
+                                               },
+                       "authCertificatePassword":  {
+                                                       "value":  "P@ssw0rd1234"
+                                                   }
+                   }
+}

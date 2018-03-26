@@ -1,0 +1,72 @@
+{
+  "scwdps": [{
+      "role": "cm",
+      "parametersXml": "EXM1.CM.EXM.Parameters.xml",
+      "sccpls": [
+        "Sitecore.Exm.Email.Cloud.Configuration.sccpl",
+        "Sitecore.Exm.Role_CM_DDS.sccpl",
+        "Sitecore.Exm.Logging.Email.Cloud.Configuration.sccpl",
+        "Sitecore.Exm.Role_CM.sccpl",
+        "Sitecore.Exm.Security.Role_CM.sccpl"
+      ],
+      "embedSccpls": ["Sitecore.Exm.Embed.Role_CM_DDS.sccpl"],
+      "sourcePackagePattern": "Email Experience Manager \\d\\.\\d\\.\\d rev. \\d{6}\\.zip",
+      "additionalWdpContentsFolders": ["ExmDacpacs"]
+    },
+    {
+      "role": "cm",
+      "parametersXml": "ExmSampleNewsletter.Parameters.xml",
+      "sccpls": [],
+      "embedSccpls": [],
+      "sourcePackagePattern": "Email Experience Manager Sample Newsletter \\d\\.\\d\\.\\d rev. \\d{6}\\.zip"
+    },
+    {
+      "role": "cm",
+      "parametersXml": "ExmSampleNewsletterFile.Parameters.xml",
+      "sccpls": [],
+      "embedSccpls": [],
+      "sourcePackagePattern": "Email Experience Manager Sample Newsletter Files \\d\\.\\d\\.\\d rev. \\d{6}\\.zip"
+    },
+    {
+      "role": "dds",
+      "parametersXml": "EXM1.DDS.EXMEmailProcessing.Parameters.xml",
+      "sccpls": [
+        "Sitecore.Exm.Email.Cloud.Configuration.sccpl",
+        "Sitecore.Exm.Logging.Email.Cloud.Configuration.sccpl",
+        "Sitecore.Exm.Role_DDS.sccpl",
+        "Sitecore.Exm.Security.Role_DDS.sccpl"
+      ],
+      "embedSccpls": ["Sitecore.Exm.Embed.Role_CM_DDS.sccpl"],
+      "sourcePackagePattern": "Email Experience Manager - Email Processing \\d\\.\\d\\.\\d rev. \\d{6}\\.zip"
+    },
+    {
+      "role": "cd",
+      "parametersXml": "EXM1.CD.EXMContentDelivery.Parameters.xml",
+      "sccpls": [
+        "Sitecore.Exm.Logging.Email.Cloud.Configuration.sccpl",
+        "Sitecore.Exm.Role_CD.sccpl",
+        "Sitecore.Exm.Security.Role_CD.sccpl"
+      ],
+      "embedSccpls": [],
+      "sourcePackagePattern": "Email Experience Manager - Content Delivery \\d\\.\\d\\.\\d rev. \\d{6}\\.zip",
+      "additionalWdpContentsFolders": ["ExmDacpacs"]
+    },
+    {
+      "role": "prc",
+      "parametersXml": "EXM1.PRC.EXMAnalyticsProcessing.Parameters.xml",
+      "sccpls": [
+        "Sitecore.Exm.Logging.Email.Cloud.Configuration_PRC_REP.sccpl",
+        "Sitecore.Exm.Role_PRC.sccpl"
+      ],
+      "embedSccpls": [],
+      "sourcePackagePattern": "Email Experience Manager - Analytics Processing \\d\\.\\d\\.\\d rev. \\d{6}\\.zip"
+    },
+    {
+      "role": "rep",
+      "parametersXml": "EXM1.REP.EXMReporting.Parameters.xml",
+      "sccpls": ["Sitecore.Exm.Logging.Email.Cloud.Configuration_PRC_REP.sccpl"],
+      "embedSccpls": [],
+      "sourcePackagePattern": "Email Experience Manager - Reporting \\d\\.\\d\\.\\d rev. \\d{6}\\.zip"
+    }
+  ]
+}
