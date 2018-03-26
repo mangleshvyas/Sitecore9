@@ -223,17 +223,17 @@
     "singleWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-single')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-cm')]"
+    },
+	"secondWebAppName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd')]"
     },
     "xcSingleWebAppName": {
       "type": "string",
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-xc-single')]"
-    },
-	"secondWebAppName": {
-      "type": "string",
-      "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-web')]"
     },
     "authCertificateThumbprint": {
       "type": "string",
@@ -349,7 +349,6 @@
               "EXM Authentication Key": "[parameters('exmAuthenticationKey')]"
             }
           },
-
           {
             "packageUri": "[parameters('disablePrefetchCachingMsDeployPackageUrl')]",
             "setParameters": {
@@ -424,7 +423,6 @@
               "EXM Authentication Key": "[parameters('exmAuthenticationKey')]"
             }
           },
-
           {
             "packageUri": "[parameters('disablePrefetchCachingMsDeployPackageUrl')]",
             "setParameters": {

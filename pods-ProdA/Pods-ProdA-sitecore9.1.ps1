@@ -54,7 +54,7 @@ Get-AzureRmSubscription -SubscriptionName $GetSubName  | Select-AzureRmSubscript
 
 
 #4. Resource group available. 
-New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
+#New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
 
 
 #5. Storage account to be created
@@ -193,10 +193,8 @@ $CertificateFile = "$WorkingDir\ED4B1C6021147A88C77284E414FA1EAC57107FCC.pfx"
 
 
 $Parameters = @{
-
-    "deploymentId"=$resourceGroupName;
+    
     "authCertificateBlob" = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes($CertificateFile))
-
 }
 
 #11. Unzip the Toolkit zip file

@@ -366,12 +366,10 @@
       "type": "int",
       "defaultValue": 1
     },
-	
-
-    "secondHostingPlanName": {
+	"secondHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-web-hp')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd-hp')]"
     },
     "secondHostingPlanSkuName": {
       "type": "string",
@@ -382,7 +380,6 @@
       "defaultValue": 1
     },
 
-
     "singleWebAppName": {
       "type": "string",
       "minLength": 1,
@@ -391,14 +388,14 @@
 	"secondWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-web')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd')]"
     },
     "xcSingleWebAppName": {
       "type": "string",
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-xc-single')]"
     },
-	
+
     "singleMsDeployPackageUrl": {
       "type": "securestring",
       "minLength": 1
@@ -581,6 +578,20 @@
 
           "singleWebAppName": {
             "value": "[parameters('singleWebAppName')]"
+          },
+		  
+		  "secondHostingPlanName": {
+            "value": "[parameters('secondHostingPlanName')]"
+          },
+          "secondHostingPlanSkuCapacity": {
+            "value": "[parameters('secondHostingPlanSkuCapacity')]"
+          },
+          "secondHostingPlanSkuName": {
+            "value": "[parameters('secondHostingPlanSkuName')]"
+          },
+
+          "secondWebAppName": {
+            "value": "[parameters('secondWebAppName')]"
           },
 
           "authCertificateName": {
@@ -803,6 +814,9 @@
 
           "singleWebAppName": {
             "value": "[parameters('singleWebAppName')]"
+          },
+		  "secondWebAppName": {
+            "value": "[parameters('secondWebAppName')]"
           },
           "xcSingleWebAppName": {
             "value": "[parameters('xcSingleWebAppName')]"
@@ -1051,9 +1065,11 @@
 
               "xcSingleHostingPlanName": "[parameters('xcSingleHostingPlanName')]",
               "singleHostingPlanName": "[parameters('singleHostingPlanName')]",
+			  "secondHostingPlanName": "[parameters('secondHostingPlanName')]",
 
               "xcSingleWebAppName": "[parameters('xcSingleWebAppName')]",
               "singleWebAppName": "[parameters('singleWebAppName')]",
+			  "secondWebAppName": "[parameters('secondWebAppName')]",
 
               "passwordSalt": "[parameters('passwordSalt')]",
 

@@ -34,8 +34,8 @@
 
     "sitecoreTags": {
       "provider": "b51535c2-ab3e-4a68-95f8-e2e3c9a19299",
-      "single": "single",
-	  "second": "second",
+      "cm": "cm",
+	  "cd": "cd",
       "core": "core",
       "master": "master",
       "web": "web",
@@ -198,16 +198,10 @@
       "type": "int",
       "defaultValue": 1
     },
-
-    "singleWebAppName": {
-      "type": "string",
-      "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-cm')]"
-    },
 	"secondHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-web-hp')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd-hp')]"
     },
     "secondHostingPlanSkuName": {
       "type": "string",
@@ -218,10 +212,15 @@
       "defaultValue": 1
     },
 
-    "secondWebAppName": {
+    "singleWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-web')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-cm')]"
+    },
+	"secondWebAppName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-cd')]"
     },
     "authCertificateName": {
       "type": "string",
@@ -255,6 +254,23 @@
         "logicalName": "[variables('sitecoreTags').single]"
       }
     },
+	{
+      "type": "Microsoft.Web/serverfarms",
+      "name": "[variables('secondHostingPlanNameTidy')]",
+      "apiVersion": "[variables('serverFarmApiVersion')]",
+      "sku": {
+        "name": "[parameters('secondHostingPlanSkuName')]",
+        "capacity": "[parameters('secondHostingPlanSkuCapacity')]"
+      },
+      "properties": {
+        "name": "[variables('secondHostingPlanNameTidy')]"
+      },
+      "location": "[parameters('location')]",
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').single]"
+      }
+    },
     {
       "type": "Microsoft.Web/sites",
       "name": "[variables('singleWebAppNameTidy')]",
@@ -276,24 +292,7 @@
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').single]"
-      }
-    },
-	{
-      "type": "Microsoft.Web/serverfarms",
-      "name": "[variables('secondHostingPlanNameTidy')]",
-      "apiVersion": "[variables('serverFarmApiVersion')]",
-      "sku": {
-        "name": "[parameters('secondHostingPlanSkuName')]",
-        "capacity": "[parameters('secondHostingPlanSkuCapacity')]"
-      },
-      "properties": {
-        "name": "[variables('secondHostingPlanNameTidy')]"
-      },
-      "location": "[parameters('location')]",
-      "tags": {
-        "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').second]"
+        "logicalName": "[variables('sitecoreTags').cm]"
       }
     },
 	{
@@ -317,7 +316,7 @@
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').second]"
+        "logicalName": "[variables('sitecoreTags').cd]"
       }
     },
     {
