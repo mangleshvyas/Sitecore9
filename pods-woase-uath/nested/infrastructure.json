@@ -188,7 +188,7 @@
     "singleHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-single-hp')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-cm-hp')]"
     },
     "singleHostingPlanSkuName": {
       "type": "string",
@@ -202,12 +202,12 @@
     "singleWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-single')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-cm')]"
     },
 	"secondHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-second-hp')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-web-hp')]"
     },
     "secondHostingPlanSkuName": {
       "type": "string",
@@ -221,7 +221,7 @@
     "secondWebAppName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-second')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-web')]"
     },
     "authCertificateName": {
       "type": "string",
