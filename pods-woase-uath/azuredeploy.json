@@ -366,7 +366,9 @@
       "type": "int",
       "defaultValue": 1
     },
-	    "secondHostingPlanName": {
+	
+
+    "secondHostingPlanName": {
       "type": "string",
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-web-hp')]"
@@ -379,6 +381,7 @@
       "type": "int",
       "defaultValue": 1
     },
+
 
     "singleWebAppName": {
       "type": "string",
