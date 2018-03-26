@@ -251,7 +251,7 @@
       "location": "[parameters('location')]",
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').single]"
+        "logicalName": "[variables('sitecoreTags').cm]"
       }
     },
 	{
@@ -268,7 +268,7 @@
       "location": "[parameters('location')]",
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').single]"
+        "logicalName": "[variables('sitecoreTags').cd]"
       }
     },
     {
