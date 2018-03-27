@@ -21,10 +21,8 @@
     "exmMasterSqlDatabaseNameTidy": "[toLower(trim(parameters('exmMasterSqlDatabaseName')))]",
 
     "singleHostingPlanNameTidy": "[toLower(trim(parameters('singleHostingPlanName')))]",
-	
 
     "singleWebAppNameTidy": "[toLower(trim(parameters('singleWebAppName')))]",
-	"secondWebAppNameTidy": "[toLower(trim(parameters('secondWebAppName')))]",
 
     "searchServiceNameTidy": "[toLower(trim(parameters('searchServiceName')))]",
     "applicationInsightsNameTidy": "[toLower(trim(parameters('applicationInsightsName')))]",
@@ -34,8 +32,7 @@
 
     "sitecoreTags": {
       "provider": "b51535c2-ab3e-4a68-95f8-e2e3c9a19299",
-      "cm": "cm",
-	  "cd": "cd",
+      "single": "cm",
       "core": "core",
       "master": "master",
       "web": "web",
@@ -198,16 +195,11 @@
       "type": "int",
       "defaultValue": 1
     },
-	
+
     "singleWebAppName": {
       "type": "string",
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-cm')]"
-    },
-	"secondWebAppName": {
-      "type": "string",
-      "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-cd')]"
     },
     "authCertificateName": {
       "type": "string",
@@ -238,10 +230,9 @@
       "location": "[parameters('location')]",
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').cm]"
+        "logicalName": "[variables('sitecoreTags').single]"
       }
     },
-	
     {
       "type": "Microsoft.Web/sites",
       "name": "[variables('singleWebAppNameTidy')]",
@@ -263,31 +254,7 @@
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').cm]"
-      }
-    },
-	{
-      "type": "Microsoft.Web/sites",
-      "name": "[variables('secondWebAppNameTidy')]",
-      "apiVersion": "[variables('webApiVersion')]",
-      "properties": {
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]",
-        "siteConfig": {
-          "use32BitWorkerProcess": false,
-          "alwaysOn": true,
-          "phpVersion": "",
-          "defaultDocuments": [
-            "index.html"
-          ]
-        }
-      },
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
-      ],
-      "tags": {
-        "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').cd]"
+        "logicalName": "[variables('sitecoreTags').single]"
       }
     },
     {
