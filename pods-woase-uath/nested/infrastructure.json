@@ -21,7 +21,7 @@
     "exmMasterSqlDatabaseNameTidy": "[toLower(trim(parameters('exmMasterSqlDatabaseName')))]",
 
     "singleHostingPlanNameTidy": "[toLower(trim(parameters('singleHostingPlanName')))]",
-	"secondHostingPlanNameTidy": "[toLower(trim(parameters('secondHostingPlanName')))]",
+	
 
     "singleWebAppNameTidy": "[toLower(trim(parameters('singleWebAppName')))]",
 	"secondWebAppNameTidy": "[toLower(trim(parameters('secondWebAppName')))]",
@@ -198,20 +198,7 @@
       "type": "int",
       "defaultValue": 1
     },
-	"secondHostingPlanName": {
-      "type": "string",
-      "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-cd-hp')]"
-    },
-    "secondHostingPlanSkuName": {
-      "type": "string",
-      "defaultValue": "S1"
-    },
-    "secondHostingPlanSkuCapacity": {
-      "type": "int",
-      "defaultValue": 1
-    },
-
+	
     "singleWebAppName": {
       "type": "string",
       "minLength": 1,
@@ -254,23 +241,7 @@
         "logicalName": "[variables('sitecoreTags').cm]"
       }
     },
-	{
-      "type": "Microsoft.Web/serverfarms",
-      "name": "[variables('secondHostingPlanNameTidy')]",
-      "apiVersion": "[variables('serverFarmApiVersion')]",
-      "sku": {
-        "name": "[parameters('secondHostingPlanSkuName')]",
-        "capacity": "[parameters('secondHostingPlanSkuCapacity')]"
-      },
-      "properties": {
-        "name": "[variables('secondHostingPlanNameTidy')]"
-      },
-      "location": "[parameters('location')]",
-      "tags": {
-        "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').cd]"
-      }
-    },
+	
     {
       "type": "Microsoft.Web/sites",
       "name": "[variables('singleWebAppNameTidy')]",
@@ -300,7 +271,7 @@
       "name": "[variables('secondWebAppNameTidy')]",
       "apiVersion": "[variables('webApiVersion')]",
       "properties": {
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('secondHostingPlanNameTidy'))]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]",
         "siteConfig": {
           "use32BitWorkerProcess": false,
           "alwaysOn": true,
@@ -312,7 +283,7 @@
       },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('secondHostingPlanNameTidy'))]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",

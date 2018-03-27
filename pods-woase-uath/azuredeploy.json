@@ -366,19 +366,6 @@
       "type": "int",
       "defaultValue": 1
     },
-	"secondHostingPlanName": {
-      "type": "string",
-      "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-cd-hp')]"
-    },
-    "secondHostingPlanSkuName": {
-      "type": "string",
-      "defaultValue": "S1"
-    },
-    "secondHostingPlanSkuCapacity": {
-      "type": "int",
-      "defaultValue": 1
-    },
 
     "singleWebAppName": {
       "type": "string",
@@ -580,16 +567,7 @@
             "value": "[parameters('singleWebAppName')]"
           },
 		  
-		  "secondHostingPlanName": {
-            "value": "[parameters('secondHostingPlanName')]"
-          },
-          "secondHostingPlanSkuCapacity": {
-            "value": "[parameters('secondHostingPlanSkuCapacity')]"
-          },
-          "secondHostingPlanSkuName": {
-            "value": "[parameters('secondHostingPlanSkuName')]"
-          },
-
+		  
           "secondWebAppName": {
             "value": "[parameters('secondWebAppName')]"
           },
@@ -1065,11 +1043,11 @@
 
               "xcSingleHostingPlanName": "[parameters('xcSingleHostingPlanName')]",
               "singleHostingPlanName": "[parameters('singleHostingPlanName')]",
-			  "secondHostingPlanName": "[parameters('secondHostingPlanName')]",
+			  
 
               "xcSingleWebAppName": "[parameters('xcSingleWebAppName')]",
               "singleWebAppName": "[parameters('singleWebAppName')]",
-			  "secondWebAppName": "[parameters('secondWebAppName')]",
+			  
 
               "passwordSalt": "[parameters('passwordSalt')]",
 
