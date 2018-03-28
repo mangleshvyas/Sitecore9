@@ -102,7 +102,7 @@ $a | ConvertTo-Json | Set-Content "$WorkingDir\azuredeploy.parameters.json"
 $toolkitPath = "$WorkingDir\Sitecore Azure Toolkit 2.0.1 rev. 171218.zip"
 $LicensePath = "$WorkingDir\license.xml"
 $JsonParameterPath = "$WorkingDir\azuredeploy.parameters.json"
-$JsonDeployPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/pods-woase-uath/azuredeploy.json"
+$JsonDeployPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/9.1-Sitecore-with-2-HP-2webapp/azuredeploy.json"
 $CertificateFile = "$WorkingDir\ED4B1C6021147A88C77284E414FA1EAC57107FCC.pfx"
 
 
