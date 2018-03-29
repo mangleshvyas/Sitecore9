@@ -597,9 +597,9 @@
       "defaultValue": "[parameters('skuMap')[parameters('sitecoreSKU')]]"
     },
     "config_web_name": {
-      "defaultValue": "web"
+      "value": "[parameters('config_web_name')]"
       
-  }
+    }
   },
   "resources": [
     {
