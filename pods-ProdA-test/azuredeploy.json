@@ -525,7 +525,7 @@
       "defaultValue": false
     },
 	"ipRestrictionWebName": {
-	   "type": "string"
+	   "type": "string",
 	 "defaultValue": "[parameters('ipRestrictionWebName')]"
         
 	}
