@@ -366,12 +366,7 @@
       "type": "securestring",
       "minLength": 1,
       "defaultValue": "[resourceGroup().id]"
-    },
-	"ipRestrictionWebName": {
-	   "type": "string",
-	 "defaultValue": "[parameters('ipRestrictionWebName')]"
-        
-	}
+    }
   },
   "resources": [
     {
