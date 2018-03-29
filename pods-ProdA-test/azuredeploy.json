@@ -523,6 +523,10 @@
     "deployExmDds": {
       "type": "bool",
       "defaultValue": false
+    },
+	 "config_web_name": {
+        "defaultValue": "web",
+        "type": "String"
     }
 
   },
