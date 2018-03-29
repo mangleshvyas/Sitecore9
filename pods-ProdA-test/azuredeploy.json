@@ -640,9 +640,9 @@
             "value": "[parameters('authCertificatePassword')]"
           },
 		  "config_web_name": {
-        "defaultValue": "web",
-        "type": "String"
-    }
+			"value": "[parameters('config_web_name')]"
+        
+		  }
         }
       }
     },
