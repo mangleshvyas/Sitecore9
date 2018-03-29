@@ -693,7 +693,7 @@
     {
       "apiVersion": "2015-08-01",
       "type": "Microsoft.Web/sites/config",
-      "name": "[concat(variables('cmWebAppNameTidy'), '/')]",
+      "name": "[concat(variables('cmWebAppNameTidy'), '/', 'cm')]",
       "properties":{
         "ipSecurityRestrictions":[
           {
