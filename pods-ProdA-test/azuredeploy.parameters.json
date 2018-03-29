@@ -63,7 +63,7 @@
                                                        "value":  "P@ssw0rd1234"
                                                    },
 												   "config_web_name": {
-														"Value": null
+														"DefaultValue": "web"
       
 												   }
                    }
