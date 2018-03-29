@@ -596,8 +596,8 @@
       "type": "object",
       "defaultValue": "[parameters('skuMap')[parameters('sitecoreSKU')]]"
     },
-    "config_web_name": {
-      "value": "[parameters('config_web_name')]"
+    "ipRestrictionWebName": {
+      "value": "[parameters('ipRestrictionWebName')]"
       
     }
   },

@@ -639,8 +639,8 @@
           "authCertificatePassword": {
             "value": "[parameters('authCertificatePassword')]"
           },
-		  "config_web_name": {
-			"value": "[parameters('config_web_name')]"
+		  "ipRestrictionWebName": {
+			"value": "[parameters('ipRestrictionWebName')]"
         
 		  }
         }
