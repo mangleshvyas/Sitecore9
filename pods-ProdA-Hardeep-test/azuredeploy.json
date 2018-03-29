@@ -527,7 +527,7 @@
 	"config_web_name": {
             "defaultValue": "web",
             "type": "String"
-        },
+        }
 
   },
   "resources": [
