@@ -523,7 +523,12 @@
     "deployExmDds": {
       "type": "bool",
       "defaultValue": false
-    }
+    }.
+	"ipRestrictionWebName": {
+	   "type": "string"
+	 "defaultValue": "[parameters('ipRestrictionWebName')]"
+        
+	}
 
   },
   "resources": [
@@ -638,12 +643,8 @@
           },
           "authCertificatePassword": {
             "value": "[parameters('authCertificatePassword')]"
-          },
-		  "ipRestrictionWebName": {
-			"value": "[parameters('ipRestrictionWebName')]"
-        
-		  }
-        }
+          }
+		}
       }
     },
     {
