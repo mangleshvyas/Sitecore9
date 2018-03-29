@@ -595,7 +595,11 @@
     "resourceSizes": {
       "type": "object",
       "defaultValue": "[parameters('skuMap')[parameters('sitecoreSKU')]]"
-    }
+    },
+	"config_web_name": {
+            "defaultValue": "web",
+            "type": "String"
+        },
   },
   "resources": [
     {
@@ -693,7 +697,7 @@
     {
       "apiVersion": "2015-08-01",
       "type": "Microsoft.Web/sites/config",
-      "name": "[concat(variables('cmWebAppNameTidy'), '/', variables('cmWebAppNameTidy'))]",
+      "name": "[concat(variables('cmWebAppNameTidy'), '/', parameters('config_web_name'))]",
       "properties":{
         "ipSecurityRestrictions":[
           {
