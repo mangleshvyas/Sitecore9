@@ -595,7 +595,11 @@
     "resourceSizes": {
       "type": "object",
       "defaultValue": "[parameters('skuMap')[parameters('sitecoreSKU')]]"
-    }
+    },
+    "config_web_name": {
+      "defaultValue": "web"
+      
+  }
   },
   "resources": [
     {
