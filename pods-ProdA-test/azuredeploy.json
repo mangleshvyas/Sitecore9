@@ -642,7 +642,11 @@
           },
           "authCertificatePassword": {
             "value": "[parameters('authCertificatePassword')]"
-          }
+          },
+		  "config_web_name": {
+        "defaultValue": "web"
+        
+    }
         }
       }
     },
