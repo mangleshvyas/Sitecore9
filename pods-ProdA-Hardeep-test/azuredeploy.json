@@ -523,11 +523,7 @@
     "deployExmDds": {
       "type": "bool",
       "defaultValue": false
-    },
-	"config_web_name": {
-            "defaultValue": "web",
-            "type": "String"
-        }
+    }
 
   },
   "resources": [
@@ -642,7 +638,11 @@
           },
           "authCertificatePassword": {
             "value": "[parameters('authCertificatePassword')]"
-          }
+          },
+		  "config_web_name": {
+            "defaultValue": "web",
+            "type": "String"
+         }
         }
       }
     },
