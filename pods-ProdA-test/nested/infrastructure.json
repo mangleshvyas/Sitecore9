@@ -595,7 +595,11 @@
     "resourceSizes": {
       "type": "object",
       "defaultValue": "[parameters('skuMap')[parameters('sitecoreSKU')]]"
-    }
+    },
+    "config_web_name": {
+      "defaultValue": "web",
+      "type": "String"
+  }
   },
   "resources": [
     {
@@ -689,6 +693,22 @@
         "provider": "[variables('sitecoreTags').provider]",
         "logicalName": "[variables('sitecoreTags').cm]"
       }
+    },
+    {
+      "apiVersion": "2015-08-01",
+      "type": "Microsoft.Web/sites/config",
+      "name": "[concat(variables('cmWebAppNameTidy'), '/', parameters('config_web_name'))]",
+      "properties":{
+        "ipSecurityRestrictions":[
+          {
+            "ipAddress": "223.31.65.106",
+            "subnetMask": "255.255.255.255"
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('cmWebAppNameTidy'))]"
+      ]
     },
     {
       "type": "Microsoft.Web/sites",
