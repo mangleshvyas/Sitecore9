@@ -1,0 +1,9 @@
+{
+    "scwdps":[
+        {
+            "role" : "single",
+            "parametersXml": "XMSingle.Parameters.xml",
+            "sccpls" : ["Sitecore.Cloud.RoleSpecific_XMSingle.sccpl", "Sitecore.Cloud.DisableAnalytics.sccpl", "Sitecore.Cloud.DisableExm.sccpl", "Sitecore.Cloud.SetCompatibilityLevel.sccpl", "Sitecore.Cloud.Search.Azure.sccpl"]
+        }
+    ]
+}

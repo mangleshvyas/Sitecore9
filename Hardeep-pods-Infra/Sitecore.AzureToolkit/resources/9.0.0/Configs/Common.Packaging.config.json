@@ -1,0 +1,3 @@
+{
+    "sccpls":["Sitecore.Cloud.Common.sccpl", "Sitecore.Cloud.ApplicationInsights.sccpl", "Sitecore.Cloud.Thundercracker.sccpl","Sitecore.Cloud.Security.sccpl", "Sitecore.Cloud.HttpsRedirection.sccpl", "Sitecore.Cloud.Search.Azure.sccpl"]
+}

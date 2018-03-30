@@ -1,0 +1,43 @@
+<parameters>
+	<parameter name="Application Path" tags="iisapp">
+		<parameterEntry type="ProviderPath" scope="iisapp" match="WebSite" />
+	</parameter>
+	<parameter name="Core Admin Connection String" tags="Hidden, SQLConnectionString, NoStore">
+		<parameterEntry type="ProviderPath" scope="dbDacFx" match="core.dacpac" />
+	</parameter>
+	<parameter name="Master Admin Connection String" tags="Hidden, SQLConnectionString, NoStore">
+		<parameterEntry type="ProviderPath" scope="dbDacFx" match="master.dacpac" />
+	</parameter>
+	<parameter name="EXM Master Admin Connection String" tags="Hidden, SQLConnectionString, NoStore">\
+		<parameterEntry type="ProviderPath" scope="dbDacFx" match="Sitecore.Exm.dacpac" />
+		<parameterEntry type="ProviderPath" scope="dbfullsql" match="CreateUser.Master.sql" />
+	</parameter>
+	<parameter name="EXM Web Admin Connection String" tags="Hidden, SQLConnectionString, NoStore">
+		<parameterEntry type="ProviderPath" scope="dbDacFx" match="Sitecore.Exm_Web.dacpac" />
+		<parameterEntry type="ProviderPath" scope="dbfullsql" match="CreateUser.Web.sql" />
+	</parameter>
+	<parameter name="EXM Master DB User Name" description="User name to access you EXM Master database." tags="SQL, Hidden, DbUsername">
+		<parameterEntry type="TextFile" scope="CreateUser.Master.sql" match="PlaceHolderForUser" />
+	</parameter>
+	<parameter name="EXM Master DB Password" description="Password to access you EXM Master database." tags="SQL, Hidden, DbUserPassword">
+		<parameterEntry type="TextFile" scope="CreateUser.Master.sql" match="PlaceHolderForPassword" />
+	</parameter>
+	<parameter name="EXM Web DB User Name" description="User name to access you EXM Web database." tags="SQL, Hidden, DbUsername">
+		<parameterEntry type="TextFile" scope="CreateUser.Web.sql" match="PlaceHolderForUser" />
+	</parameter>
+	<parameter name="EXM Web DB Password" description="Password to access you EXM Web database." tags="SQL, Hidden, DbUserPassword">
+		<parameterEntry type="TextFile" scope="CreateUser.Web.sql" match="PlaceHolderForPassword" />
+	</parameter>
+	<parameter name="Cryptographic Key" description="Cryptographic Key"  tags="Hidden, NoStore">
+		<parameterEntry kind="XmlFile" scope="App_Data\\Transforms\\EXM\\Xdts\\App_Config\\ConnectionStrings\.config\.xdt$" match="//connectionStrings/add[@name='EXM.CryptographicKey']/@connectionString" />
+	</parameter>
+	<parameter name="Authentication Key" description="Authentication Key" tags="Hidden, NoStore">
+		<parameterEntry kind="XmlFile" scope="App_Data\\Transforms\\EXM\\Xdts\\App_Config\\ConnectionStrings\.config\.xdt$" match="//connectionStrings/add[@name='EXM.AuthenticationKey']/@connectionString" />
+	</parameter>
+	<parameter name="EXM Master Connection String" tags="Hidden, NoStore">
+		<parameterEntry kind="XmlFile" scope="App_Data\\Transforms\\EXM\\Xdts\\App_Config\\ConnectionStrings\.config\.xdt$" match="//connectionStrings/add[@name='exm.master']/@connectionString" />
+	</parameter>
+	<parameter name="EXM Web Connection String" tags="Hidden, NoStore">
+		<parameterEntry kind="XmlFile" scope="App_Data\\Transforms\\EXM\\Xdts\\App_Config\\ConnectionStrings\.config\.xdt$" match="//connectionStrings/add[@name='exm.web']/@connectionString" />
+	</parameter>
+</parameters>

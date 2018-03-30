@@ -1,0 +1,50 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"location": {
+			"value": "East US"
+		},
+		"sitecoreAdminPassword": {
+			"reference": {
+				"keyVault": {
+					"id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/int-pods-vault"
+				},
+				"secretName": "sitecore-admin-password"
+			}
+		},
+		"sqlServerLogin": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/int-pods-vault"
+        },
+        "secretName": "sql-server-admin"
+      }
+		},
+		"sqlServerPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/int-pods-vault"
+        },
+        "secretName": "sql-server-password"
+      }
+		},
+		"allowInvalidClientCertificates": {
+			"value": true
+		},
+		"applicationInsightsDataVolumeCap": {
+			"value": "20"
+		},
+		"xcServerConfigurationEnvironment": {
+			"value": "Development"
+		},
+		"authCertificatePassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/int-pods-vault"
+        },
+        "secretName": "sitecore-certificate-password"
+      }
+		}
+	}
+}

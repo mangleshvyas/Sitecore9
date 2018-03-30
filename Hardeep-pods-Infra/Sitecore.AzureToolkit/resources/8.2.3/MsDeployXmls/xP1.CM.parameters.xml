@@ -1,0 +1,84 @@
+<parameters>
+  <parameter name="Application Path" description="Full site path where you would like to install your application (i.e., Default Web Site/Content)" defaultValue="Default Web Site/Content" tags="iisapp">
+    <parameterEntry type="ProviderPath" scope="iisapp" match="WebSite" />
+  </parameter>
+  <parameter name="Sitecore Admin New Password" description="" tags="SQL, Hidden, DbUserPassword">
+    <parameterEntry type="TextFile" scope="SetSitecoreAdminPassword.sql" match="PlaceHolderForPassword" />
+  </parameter>
+  <parameter name="Core DB User Name" description="User name to access you Core database." tags="SQL, Hidden, DbUsername">
+    <parameterEntry type="TextFile" scope="CreateUser.Core.sql" match="PlaceHolderForUser" />
+  </parameter>
+  <parameter name="Core DB Password" description="Password to access you Core database." tags="SQL, Hidden, DbUserPassword">
+    <parameterEntry type="TextFile" scope="CreateUser.Core.sql" match="PlaceHolderForPassword" />
+  </parameter>
+  <parameter name="Master DB User Name" description="User name to access you Master database." tags="SQL, Hidden, DbUsername">
+    <parameterEntry type="TextFile" scope="CreateUser.Master.sql" match="PlaceHolderForUser" />
+  </parameter>
+  <parameter name="Master DB Password" description="Password to access you Master database." tags="SQL, Hidden, DbUserPassword">
+    <parameterEntry type="TextFile" scope="CreateUser.Master.sql" match="PlaceHolderForPassword" />
+  </parameter>
+  <parameter name="Web DB User Name" description="User name to access you Web database." tags="SQL, Hidden, DbUsername">
+    <parameterEntry type="TextFile" scope="CreateUser.Web.sql" match="PlaceHolderForUser" />
+  </parameter>
+  <parameter name="Web DB Password" description="Password to access you Web database." tags="SQL, Hidden, DbUserPassword">
+    <parameterEntry type="TextFile" scope="CreateUser.Web.sql" match="PlaceHolderForPassword" />
+  </parameter>
+  <parameter name="Core Admin Connection String" description="Connection string to Import the Dacpac and Create DB User in Core Databse" tags="Hidden, SQLConnectionString, NoStore">
+    <parameterEntry kind="ProviderPath" scope="dbDacFx" match="Sitecore.Core.dacpac" />
+    <parameterEntry type="ProviderPath" scope="dbfullsql" match="CreateUser.Core.sql" />
+    <parameterEntry type="ProviderPath" scope="dbfullsql" match="SetSitecoreAdminPassword.sql" />
+  </parameter>
+  <parameter name="Master Admin Connection String" description="Connection string to Import the Dacpac and Create DB User in Master Databse" tags="Hidden, SQLConnectionString, NoStore">
+    <parameterEntry kind="ProviderPath" scope="dbDacFx" match="Sitecore.Master.dacpac" />
+    <parameterEntry type="ProviderPath" scope="dbfullsql" match="CreateUser.Master.sql" />
+  </parameter>
+  <parameter name="Web Admin Connection String" description="Connection string to Import the Dacpac and Create DB User in Web Databse" tags="Hidden, SQLConnectionString, NoStore">
+    <parameterEntry kind="ProviderPath" scope="dbDacFx" match="Sitecore.Web.dacpac" />
+    <parameterEntry type="ProviderPath" scope="dbfullsql" match="CreateUser.Web.sql" />
+  </parameter>
+  <parameter name="Reporting Admin Connection String" description="Connection string to Import the Dacpac and Create DB User in Reporting Databse" tags="Hidden, SQLConnectionString, NoStore">
+    <parameterEntry kind="ProviderPath" scope="dbDacFx" match="Sitecore.Reporting.dacpac" />
+  </parameter>
+  <parameter name="Reporting Service Url" description="Reporting Service Url" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\Include\\Sitecore.Xdb.Remote.Client\.config$" match="//configuration/sitecore/httpTransportFactory/param[@desc='serviceUrl']/text()" />
+  </parameter>
+  <parameter name="Reporting Service Api Key" description="Api Key for Authentication Purpose" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='reporting.apikey']/@connectionString" />
+  </parameter>
+  <parameter name="Master Connection String" description="Connection string to enter into config" tags="SQL, Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='master']/@connectionString" />
+  </parameter>
+  <parameter name="Core Connection String" description="Connection string to enter into config" tags="SQL, Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='core']/@connectionString" />
+  </parameter>
+  <parameter name="Web Connection String" description="Connection string to enter into config" tags="SQL, Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='web']/@connectionString" />
+  </parameter>
+  <parameter name="Analytics Connection String" description="MongoDB Connection string to enter into config" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='analytics']/@connectionString" />
+  </parameter>
+  <parameter name="Tracking Live Connection String" description="MongoDB Connection string to enter into config" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='tracking.live']/@connectionString" />
+  </parameter>
+  <parameter name="Tracking Contact Connection String" description="MongoDB Connection string to enter into config" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='tracking.contact']/@connectionString" />
+  </parameter>
+  <parameter name="Cloud Search Connection String" description="Sitecore Cloud Search Connection String" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='cloud.search']/@connectionString" />
+  </parameter>
+  <parameter name="Application Insights Instrumentation Key" description="Sitecore Application Insights Instrumentation Key" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='appinsights.instrumentationkey']/@connectionString" />
+  </parameter>
+  <parameter name="Application Insights Role" description="Sitecore Application Insights Role" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\Include\\zzz\\Sitecore\.Cloud\.ApplicationInsights\.config$" match="//settings/setting[@name='ApplicationInsights.Role']/@value" />
+  </parameter>
+  <parameter name="License Xml" tags="Hidden,NoStore">
+    <parameterEntry type="TextFile" scope= "App_Data\\license.xml" match="LicenseContent" />
+  </parameter>
+  <parameter name="IP Security Client IP" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="Web\.config$" match="//configuration/system.webServer/security/ipSecurity/add[@ipAddress='0.0.0.0']/@ipAddress" />
+  </parameter>
+  <parameter name="IP Security Client IP Mask" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="Web\.config$" match="//configuration/system.webServer/security/ipSecurity/add[@subnetMask='0.0.0.0']/@subnetMask" />
+  </parameter>
+</parameters>
