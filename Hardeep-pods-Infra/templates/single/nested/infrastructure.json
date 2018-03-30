@@ -262,7 +262,7 @@
           "dependsOn": [
             "[resourceId('Microsoft.Web/sites', variables('singleWebAppNameTidy'))]"
           ],
-          "name": "appsettings",
+          "name": "web",
           "properties": {
             "ipSecurityRestrictions": [
               {
@@ -270,13 +270,13 @@
                 "subnetMask": "255.255.255.255"
               }
             ]
-
           },
           "tags": {
-            "displayName": "ipSecurityRestrictions"
+            "displayName": "Web"
           },
           "type": "config"
         }
+        
       ]
     },
     {
