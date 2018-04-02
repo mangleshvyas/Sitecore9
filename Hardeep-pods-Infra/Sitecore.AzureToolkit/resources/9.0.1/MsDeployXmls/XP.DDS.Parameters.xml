@@ -1,0 +1,98 @@
+<parameters>
+  <parameter name="Application Path" description="Full site path where you would like to install your application (i.e., Default Web Site/Content)" defaultValue="Default Web Site/Content" tags="iisapp">
+    <parameterEntry type="ProviderPath" scope="iisapp" match="WebSite" />
+  </parameter>
+  <parameter name="Reporting Service Url" description="Reporting Service Url" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\Sitecore\\Azure\\Sitecore\.Xdb\.Remote\.Client\.EXM\.config$" match="//configuration/sitecore/reporting/remote/httpTransportFactory/param[@desc='serviceUrl']/text()" />
+  </parameter>
+  <parameter name="Processing Service Url" description="Processing Service Url" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\Sitecore\\Azure\\Sitecore\.Xdb\.Remote\.Client\.EXM\.config$" match="//configuration/sitecore/processing/remote/httpTransportFactory/param[@desc='serviceUrl']/text()" />
+  </parameter>
+  <parameter name="Reporting Service Api Key" description="Api Key for Authentication Purpose" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='reporting.apikey']/@connectionString" />
+  </parameter>
+  <parameter name="Master Connection String" description="Connection string to enter into config" tags="SQL, Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='master']/@connectionString" />
+  </parameter>
+  <parameter name="Core Connection String" description="Connection string to enter into config" tags="SQL, Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='core']/@connectionString" />
+  </parameter>
+  <parameter name="Web Connection String" description="Connection string to enter into config" tags="SQL, Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='web']/@connectionString" />
+  </parameter>
+  <parameter name="XDB Reference Data Connection String" description="Connection string to connect to your XDB Reference Data database" tags="SQL, Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='xdb.referencedata']/@connectionString" />
+  </parameter>
+  <parameter name="Experience Forms Connection String" description="Connection string to connect to your Experience Forms database" tags="SQL, Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='experienceforms']/@connectionString" />
+  </parameter>
+  <parameter name="EXM Master Connection String" description="Connection string to connect to your EXM Master database" tags="SQL, Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='exm.master']/@connectionString" />
+  </parameter>
+  <parameter name="Cloud Search Connection String" description="Sitecore Cloud Search Connection String" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='cloud.search']/@connectionString" />
+  </parameter>
+  <parameter name="Messaging Connection String" description="Sitecore Messaging Connection String" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='messaging']/@connectionString" />
+  </parameter>
+  <parameter name="Application Insights Instrumentation Key" description="Sitecore Application Insights Instrumentation Key" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='appinsights.instrumentationkey']/@connectionString" />
+  </parameter>
+  <parameter name="Application Insights Role" description="Sitecore Application Insights Role" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\Sitecore\\Azure\\Sitecore\.Cloud\.ApplicationInsights\.config$" match="//settings/setting[@name='ApplicationInsights.Role']/@value" />
+  </parameter>
+  <parameter name="XConnect Collection" description="XConnect Collection" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='xconnect.collection']/@connectionString" />
+  </parameter>
+  <parameter name="XDB Reference Data Client" description="XDB Reference Data Client" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='xdb.referencedata.client']/@connectionString" />
+  </parameter>
+  <parameter name="XDB MA Reporting Client" description="XDB MA Reporting Client" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='xdb.marketingautomation.reporting.client']/@connectionString" />
+  </parameter>
+  <parameter name="XDB MA Ops Client" description="XDB MA Ops Client" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='xdb.marketingautomation.operations.client']/@connectionString" />
+  </parameter>
+  <parameter name="XConnect Collection Certificate" description="XConnect Collection Certificate" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='xconnect.collection.certificate']/@connectionString" />
+  </parameter>
+  <parameter name="XDB Reference Data Client Certificate" description="XDB Reference Data Client Certificate" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='xdb.referencedata.client.certificate']/@connectionString" />
+  </parameter>
+  <parameter name="XDB MA Reporting Client Certificate" description="XDB MA Reporting Client Certificate" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='xdb.marketingautomation.reporting.client.certificate']/@connectionString" />
+  </parameter>
+  <parameter name="XDB MA Ops Client Certificate" description="XDB MA Ops Client Certificate" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='xdb.marketingautomation.operations.client.certificate']/@connectionString" />
+  </parameter>
+  <parameter name="Allow Invalid Client Certificates" description="Allow Invalid Client Certificates" defaultValue="false" tags="" >
+    <parameterEntry kind="XmlFile" scope="Web\.config$" match="//configuration/appSettings/add[@key='AllowInvalidClientCertificates']/@value" />
+  </parameter>
+  <parameter name="EXM Cryptographic Key" description="Cryptographic Key" tags="Hidden, SQLConnectionString, NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='EXM.CryptographicKey']/@connectionString" />
+  </parameter>
+  <parameter name="EXM Authentication Key" description="Authentication Key" tags="Hidden, SQLConnectionString, NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='EXM.AuthenticationKey']/@connectionString" />
+  </parameter>
+  <parameter name="EXM Internal Api Key" description="Internal Api Key" tags="Hidden, SQLConnectionString, NoStore">
+    <parameterEntry kind="XmlFile" scope="App_Config\\ConnectionStrings\.config$" match="//connectionStrings/add[@name='EXM.InternalApiKey']/@connectionString" />
+  </parameter>
+  <parameter name="License Xml" tags="Hidden,NoStore">
+    <parameterEntry type="TextFile" scope= "App_Data\\license.xml" match="LicenseContent" />
+  </parameter>
+  <parameter name="IP Security Client IP" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="Web\.config$" match="//configuration/system.webServer/security/ipSecurity/add[@ipAddress='0.0.0.0']/@ipAddress" />
+  </parameter>
+  <parameter name="IP Security Client IP Mask" tags="Hidden,NoStore">
+    <parameterEntry kind="XmlFile" scope="Web\.config$" match="//configuration/system.webServer/security/ipSecurity/add[@subnetMask='0.0.0.0']/@subnetMask" />
+  </parameter>
+  <parameter name="Telerik Encryption Key" tags="Hidden,NoStore">
+	  <parameterEntry kind="XmlFile" scope="Web\.config$" match="//configuration/appSettings/add[@key='Telerik.AsyncUpload.ConfigurationEncryptionKey']/@value" />
+	  <parameterEntry kind="XmlFile" scope="Web\.config$" match="//configuration/appSettings/add[@key='Telerik.Upload.ConfigurationHashKey']/@value" />
+	  <parameterEntry kind="XmlFile" scope="Web\.config$" match="//configuration/appSettings/add[@key='Telerik.Web.UI.DialogParametersEncryptionKey']/@value" />
+  </parameter>
+
+  <parameter name="EXM EDS Provider" tags="Hidden,NoStore" defaultValue="CustomSmtp">
+    <parameterEntry kind="XmlFile" scope="Web\.config$" match="//configuration/appSettings/add[@key='eds:define']/@value" />
+  </parameter>
+</parameters>

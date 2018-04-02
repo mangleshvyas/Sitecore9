@@ -36,7 +36,7 @@
     "appInsightsNameTidy": "[toLower(trim(parameters('applicationInsightsName')))]",
     "appInsightsPricePlanTidy": "[toLower(trim(parameters('applicationInsightsPricePlan')))]",
     "authCertificateNameTidy": "[toLower(trim(parameters('authCertificateName')))]",
-	
+
     "sitecoreTags": {
       "provider": "b51535c2-ab3e-4a68-95f8-e2e3c9a19299",
       "cm": "cm",

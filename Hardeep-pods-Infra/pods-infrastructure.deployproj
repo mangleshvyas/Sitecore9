@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>b67e1ede-6567-4087-8157-edf4011d6567</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkIdentifier>Deployment</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>1.0</TargetFrameworkVersion>
+    <PrepareForBuildDependsOn>
+    </PrepareForBuildDependsOn>
+  </PropertyGroup>
+  <Import Condition=" Exists('Deployment.targets') " Project="Deployment.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <!-- vertag<:>start tokens<:>maj.min -->
+  <Import Condition=" Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets') " Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets" />
+  <!-- vertag<:>end -->
+  <ItemGroup>
+    <None Include="Deployment.targets">
+      <Visible>False</Visible>
+    </None>
+    <None Include="parameters\int.parameters.json" />
+    <None Include="README.md" />
+    <None Include="scripts\phassinger-int-deploy.ps1" />
+    <None Include="scripts\int-deploy.ps1" />
+    <None Include="scripts\proda-deploy.ps1" />
+    <None Include="scripts\prodb-deploy.ps1" />
+    <None Include="scripts\qat-deploy.ps1" />
+    <None Include="scripts\README.md" />
+    <None Include="scripts\sitecore-deploy.ps1" />
+    <None Include="scripts\uat-deploy.ps1" />
+    <None Include="templates\scaled\addons\bootloader.json" />
+    <None Include="templates\scaled\addons\generic.json" />
+    <None Include="templates\scaled\azuredeploy-default.parameters.json" />
+    <None Include="templates\scaled\azuredeploy.json" />
+    <None Include="templates\scaled\nested\application-exm.json" />
+    <None Include="templates\scaled\nested\application-ma.json" />
+    <None Include="templates\scaled\nested\application-xconnect.json" />
+    <None Include="templates\scaled\nested\application.json" />
+    <None Include="templates\scaled\nested\emptyAddon.json" />
+    <None Include="templates\scaled\nested\infrastructure-exm.json" />
+    <None Include="templates\scaled\nested\infrastructure-ma.json" />
+    <None Include="templates\scaled\nested\infrastructure-xconnect.json" />
+    <None Include="templates\scaled\nested\infrastructure.json" />
+    <None Include="templates\scaled\README.md" />
+    <None Include="templates\single\.gitignore" />
+    <None Include="templates\single\addons\bootloader.json" />
+    <None Include="templates\single\addons\generic.json" />
+    <None Include="templates\single\azuredeploy-default.parameters.json" />
+    <None Include="templates\single\azuredeploy.json" />
+    <None Include="templates\single\nested\application-xconnect.json" />
+    <None Include="templates\single\nested\application.json" />
+    <None Include="templates\single\nested\emptyAddon.json" />
+    <None Include="templates\single\nested\infrastructure-xconnect.json" />
+    <None Include="templates\single\nested\infrastructure.json" />
+    <None Include="templates\single\README.md" />
+  </ItemGroup>
+  <Target Name="GetReferenceAssemblyPaths" />
+</Project>

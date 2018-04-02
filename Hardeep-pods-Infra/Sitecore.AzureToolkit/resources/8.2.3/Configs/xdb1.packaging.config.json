@@ -1,0 +1,14 @@
+{
+    "scwdps":[
+        {
+            "role" : "prc",
+            "parametersXml": "xDB1.PRC.parameters.xml",
+            "sccpls" : ["Sitecore.Cloud.RoleSpecific_PRC.sccpl", "Sitecore.Cloud.HttpsRedirection.sccpl", "Sitecore.Cloud.IPSecurity.sccpl"]
+        },
+        {
+            "role" : "rep",
+            "parametersXml": "xDB1.REP.parameters.xml",
+            "sccpls" : ["Sitecore.Cloud.RoleSpecific_REP.sccpl", "Sitecore.Cloud.HttpsRedirection.sccpl"]
+        }
+    ]
+}

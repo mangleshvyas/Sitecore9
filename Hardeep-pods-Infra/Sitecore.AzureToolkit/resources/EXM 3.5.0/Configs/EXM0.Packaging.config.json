@@ -1,0 +1,34 @@
+{
+  "scwdps": [
+    {
+      "role": "single",
+      "parametersXml": "EXM0.SINGLE.EXM.Parameters.xml",
+      "sccpls": [
+        "Sitecore.Exm.Email.Cloud.Configuration.sccpl",
+        "Sitecore.Exm.Email.Cloud.Dispatch.Configuration.sccpl",
+        "Sitecore.Exm.Logging.Email.Cloud.Configuration.sccpl",
+		"Sitecore.Exm.Role_Single.sccpl",
+		"Sitecore.Exm.Security.Role_Single.sccpl"
+      ],
+      "embedSccpls": [],
+      "sourcePackagePattern": "Email Experience Manager \\d\\.\\d\\.\\d rev. \\d{6}\\.zip",
+      "additionalWdpContentsFolders": ["ExmDacpacs"]
+    },
+    {
+      "role": "single",
+      "parametersXml": "ExmSampleNewsletter.Parameters.xml",
+      "sccpls": [],
+      "embedSccpls": [],
+      "sourcePackagePattern": "Email Experience Manager Sample Newsletter \\d\\.\\d\\.\\d rev. \\d{6}\\.zip",
+      "additionalWdpContentsFolders": []
+    },
+    {
+      "role": "single",
+      "parametersXml": "ExmSampleNewsletterFile.Parameters.xml",
+      "sccpls": [],
+      "embedSccpls": [],
+      "sourcePackagePattern": "Email Experience Manager Sample Newsletter Files \\d\\.\\d\\.\\d rev. \\d{6}\\.zip",
+      "additionalWdpContentsFolders": []
+    }
+  ]
+}
