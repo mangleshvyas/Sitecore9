@@ -23,7 +23,7 @@
     {
       "type":"Microsoft.Authorization/locks",
       "apiVersion": "2016-09-01",
-      "name": "[concat(variables('rgname'), '-lockgroup')]",
+      "name": "[concat(parameters('deploymentId'), '-lockgroup')]",
       "properties": {
         "level":"CannotDelete",
         "notes": "ResourceGroup Should Not Be Deleted"
