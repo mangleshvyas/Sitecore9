@@ -188,7 +188,7 @@ $toolkitPath = "$WorkingDir\Sitecore Azure Toolkit 2.0.1 rev. 171218.zip"
 $LicensePath = "$WorkingDir\license.xml"
 $JsonParameterPath = "$WorkingDir\azuredeploy.Parameters.json"
 #$JsonDeployPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/Sitecore9XPScaled-ASE/azuredeploy.json"
-$JsonDeployPath = "https://raw.githubusercontent.com/Sitecore/Sitecore-Azure-Quickstart-Templates/master/Sitecore%209.0.1/XP/azuredeploy.json"
+$JsonDeployPath = "https://raw.githubusercontent.com/mangleshvyas/Sitecore9/master/pods-ProdA-TM/azuredeploy.json"
 $CertificateFile = "$WorkingDir\ED4B1C6021147A88C77284E414FA1EAC57107FCC.pfx"
 
 
