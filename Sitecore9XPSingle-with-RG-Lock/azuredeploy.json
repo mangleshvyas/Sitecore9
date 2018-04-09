@@ -342,11 +342,11 @@
     "xcSingleHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('xcSingleHostingPlanName')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-xc-single-hp')]"
     },
     "xcSingleHostingPlanSkuName": {
       "type": "string",
-      "defaultValue": "I1"
+      "defaultValue": "S1"
     },
     "xcSingleHostingPlanSkuCapacity": {
       "type": "int",
@@ -356,11 +356,11 @@
     "singleHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('singleHostingPlanName')]"
+      "defaultValue": "[concat(parameters('deploymentId'), '-single-hp')]"
     },
     "singleHostingPlanSkuName": {
       "type": "string",
-      "defaultValue": "I1"
+      "defaultValue": "S1"
     },
     "singleHostingPlanSkuCapacity": {
       "type": "int",
@@ -449,24 +449,6 @@
     }
   },
   "resources": [
-	{
-      "apiVersion": "[variables('resourcesApiVersion')]",
-      "name": "[concat(deployment().name, '-infrastructure-resourcegrouplock')]",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(uri(parameters('templateLinkBase'), 'nested/infrastructure-resourcegrouplock.json'), parameters('templateLinkAccessToken'))]"
-        },
-        "parameters": {
-          "deploymentId": {
-            "value": "[parameters('deploymentId')]"
-          },
-          "location": {
-            "value": "[parameters('location')]"
-          }        }
-      }
-    },
     {
       "apiVersion": "[variables('resourcesApiVersion')]",
       "name": "[concat(deployment().name, '-infrastructure')]",
