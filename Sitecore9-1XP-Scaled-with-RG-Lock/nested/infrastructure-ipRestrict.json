@@ -1,0 +1,60 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "webAppNames": {
+      "type": "array",
+      "minLength": 1
+    },
+    "allowedIpAddresses": {
+      "type": "array",
+      "defaultValue": []
+    },
+    "additionalIpAddresses": {
+      "type": "array",
+      "defaultValue": []
+    }
+  },
+  "variables": {
+    "ipSecurityRestrictions": {
+      "copy": [
+        {
+          "name": "ipAddressArray",
+          "count": "[length(parameters('allowedIpAddresses'))]",
+          "input": {
+            "ipAddress": "[parameters('allowedIpAddresses')[copyIndex('ipAddressArray')]]",
+            "subnetMask": "255.255.255.255"
+          }
+        }
+      ]
+    }
+  },
+  "resources": [
+    {
+      "name": "[parameters('webAppNames')[copyIndex('webApps')]]",
+      "type": "Microsoft.Web/sites",
+      "kind": "app",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2016-08-01",
+      "properties": {
+        "siteConfig": {
+          "ipSecurityRestrictions": "[concat(parameters('additionalIpAddresses'),union(variables('ipSecurityRestrictions').ipAddressArray,variables('ipSecurityRestrictions').ipAddressArray))]"
+        }
+      },
+      "copy": {
+        "name": "webApps",
+        "count": "[length(parameters('webAppNames'))]"
+      }
+    }
+  ],
+  "outputs": {
+    "webAppNames": {
+      "type": "array",
+      "value": "[parameters('webAppNames')]"
+    },
+    "ipSecurityRestrictions": {
+      "type": "array",
+      "value": "[concat(parameters('additionalIpAddresses'),union(variables('ipSecurityRestrictions').ipAddressArray,variables('ipSecurityRestrictions').ipAddressArray))]"
+    }
+  }
+}
