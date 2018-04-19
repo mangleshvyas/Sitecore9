@@ -183,11 +183,11 @@
     },
     "CPUAlert": {
       "type": "string",
-	  "defaultValue": "[concat(parameters('deploymentId'), '-cpualert')"
+	  "defaultValue": "cpu-alert)"
     },
     "MemoryAlert": {
       "type": "string",
-	  "defaultValue": "[concat(parameters('deploymentId'), '-memoryalert')"
+	  "defaultValue": "memory-alert"
     },
     "singleHostingPlanName": {
       "type": "string",

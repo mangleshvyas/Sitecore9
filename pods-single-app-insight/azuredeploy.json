@@ -361,11 +361,11 @@
 
     "CPUAlert": {
       "type": "string",
-	  "defaultValue": "[concat(parameters('deploymentId'), '-cpu-alert')"
+	  "defaultValue": "cpu-alert"
     },
     "MemoryAlert": {
       "type": "string",
-	  "defaultValue": "[concat(parameters('deploymentId'), '-memoryalert')"
+	  "defaultValue": "memory-alert"
     },
     "xcSingleHostingPlanName": {
       "type": "string",
