@@ -120,11 +120,11 @@
       "defaultValue": "[concat(parameters('deploymentId'), '-xc-single')]"
     },
 
-    "applicationInsightCPUAlert": {
+    "CPUAlert": {
       "type": "string",
 	  "defaultValue": "pods-int-highCPUAlert"
     },
-    "applicationInsightMemoryAlert": {
+    "MemoryAlert": {
       "type": "string",
 	  "defaultValue": "pods-int-highMemoryAlert"
     },
@@ -141,12 +141,12 @@
   "resources": [
     {
       "type": "microsoft.insights/alertrules",
-      "name": "[parameters('applicationInsightCPUAlert')]",
+      "name": "[parameters('CPUAlert')]",
       "apiVersion": "2014-04-01",
       "location": "[parameters('applicationInsightsLocation')]",
       "scale": null,
       "properties": {
-        "name": "[parameters('applicationInsightCPUAlert')]",
+        "name": "[parameters('CPUAlert')]",
         "description": "High CPU Alert",
         "isEnabled": true,
         "condition": {
