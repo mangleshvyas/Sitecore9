@@ -168,7 +168,8 @@
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('xcSingleHostingPlanNameTidy'))]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('xcSingleHostingPlanNameTidy'))]",
+		"[resourceId('Microsoft/insights', variables('applicationInsightsNameTidy'))]"
       ]
     },
     {
@@ -200,7 +201,8 @@
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('xcSingleHostingPlanNameTidy'))]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('xcSingleHostingPlanNameTidy'))]",
+		"[resourceId('Microsoft/insights', variables('applicationInsightsNameTidy'))]"
       ]
     },
     {
