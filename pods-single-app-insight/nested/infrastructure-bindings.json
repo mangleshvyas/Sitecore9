@@ -1,0 +1,41 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "webAppName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "additionalHostnames": {
+      "type": "array",
+      "defaultValue": []
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2016-08-01",
+      "copy": {
+        "name": "hostNames",
+        "count": "[length(parameters('additionalHostnames'))]",
+        "mode": "Serial",
+        "batchSize": 1
+      },
+      "location": "[resourceGroup().location]",
+      "name": "[concat(parameters('webAppName'), '/', parameters('additionalHostnames')[copyIndex()].hostName)]",
+      "properties": {
+        "name": "parameters('webAppName')"
+      },
+      "type": "Microsoft.Web/sites/hostNameBindings"
+    }
+  ],
+  "outputs": {
+    "webAppName": {
+      "type": "string",
+      "value": "[parameters('webAppName')]"
+    },
+    "additionalHostnames": {
+      "type": "array",
+      "value": "[parameters('additionalHostnames')]"
+    }
+  }
+}

@@ -1,0 +1,161 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+  "parameters": {
+    "sitecoreAdminPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/int-pods-vault"
+        },
+        "secretName": "sitecore-admin-password"
+      }
+    },
+    "sqlServerLogin": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/int-pods-vault"
+        },
+        "secretName": "sql-server-admin"
+      }
+    },
+    "sqlServerPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/int-pods-vault"
+        },
+        "secretName": "sql-server-password"
+      }
+    },
+    "allowInvalidClientCertificates": {
+      "value": true
+    },
+    "applicationInsightsDataVolumeCap": {
+      "value": "20"
+    },
+    "xcServerConfigurationEnvironment": {
+      "value": "Development"
+    },
+    "authCertificatePassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/int-pods-vault"
+        },
+        "secretName": "sitecore-certificate-password"
+      }
+    },
+    "additionalAllowedIpAddresses": {
+      "value": [
+        {
+          "ipAddress": "38.140.237.130",
+          "comment": "HI-Dallas-TX"
+        },
+        {
+          "ipAddress": "66.195.87.182",
+          "comment": "HI-Denver-CO"
+        },
+        {
+          "ipAddress": "111.93.85.206",
+          "comment": "HI-India-2"
+        },
+        {
+          "ipAddress": "198.99.208.0",
+          "subnetMask": "255.255.255.0",
+          "comment": "KBS"
+        },
+        {
+          "ipAddress": "183.82.33.197",
+          "comment": "KBS QA Team Office"
+        },
+        {
+          "ipAddress": "106.51.2.55",
+          "comment": "KBS QA PM"
+        },
+        {
+          "ipAddress": "98.221.127.172",
+          "comment": "KBS Head of Fleet - Venu Moola"
+        },
+        {
+          "ipAddress": "52.179.101.236",
+          "comment": "PODS Octopus Deploy - pods-deploy-octopus.eastus.cloudapp.azure.com"
+        },
+        {
+          "ipAddress": "69.67.19.79",
+          "comment": "HI-SLP-MN"
+        },
+        {
+          "ipAddress": "223.31.65.106",
+          "comment": "HI-India"
+        },
+        {
+          "ipAddress": "199.83.128.0",
+          "subnetMask": "255.255.248.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "198.143.32.0",
+          "subnetMask": "255.255.224.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "149.126.72.0",
+          "subnetMask": "255.255.248.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "103.28.248.0",
+          "subnetMask": "255.255.252.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "45.64.64.0",
+          "subnetMask": "255.255.252.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "185.11.124.0",
+          "subnetMask": "255.255.252.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "192.230.64.0",
+          "subnetMask": "255.255.192.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "107.154.0.0",
+          "subnetMask": "255.255.0.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "45.60.0.0",
+          "subnetMask": "255.255.0.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "45.223.0.0",
+          "subnetMask": "255.255.0.0",
+          "comment": "WAF"
+        }
+      ]
+    },
+    "additionalBindingsSingle": {
+      "value": [
+        {
+          "hostName": "int-www.pods.com.hi.zone"
+        },
+        {
+          "hostName": "int-en.ca.pods.com.hi.zone"
+        },
+        {
+          "hostName": "int-fr.ca.pods.com.hi.zone"
+        }
+      ]
+    },
+    "applicationInsightCPUAlert": {
+      "value": "pods-int-highCPUAlert"
+    },
+    "applicationInsightMemoryAlert": {
+      "value": "pods-int-highMemoryAlert"
+    }
+  }
+}
