@@ -358,6 +358,16 @@
       "type": "string",
       "defaultValue": "0.33"
     },
+
+    "CPUAlert": {
+      "type": "string",
+	  "defaultValue": "[concat(parameters('deploymentId'), '-cpu-alert')"
+    },
+    "MemoryAlert": {
+      "type": "string",
+	  "defaultValue": "[concat(parameters('deploymentId'), '-memoryalert')"
+    },
+    },
     "xcSingleHostingPlanName": {
       "type": "string",
       "minLength": 1,
@@ -567,11 +577,11 @@
           "applicationInsightsDataVolumeCap": {
             "value": "[parameters('applicationInsightsDataVolumeCap')]"
           },
-          "applicationInsightCPUAlert": {
-            "value": "[parameters('applicationInsightCPUAlert')]"
+          "CPUAlert": {
+            "value": "[parameters('CPUAlert')]"
           },
-          "applicationInsightMemoryAlert": {
-            "value":  "[parameters('applicationInsightMemoryAlert')]"
+          "MemoryAlert": {
+            "value":  "[parameters('MemoryAlert')]"
           },
           "singleHostingPlanName": {
             "value": "[parameters('singleHostingPlanName')]"
@@ -685,11 +695,11 @@
           "xcSingleWebAppName": {
             "value": "[parameters('xcSingleWebAppName')]"
           },
-          "applicationInsightCPUAlert": {
-            "type": "string"
+          "CPUAlert": {
+            "value": "[parameters('CPUAlert')]"
           },
-          "applicationInsightMemoryAlert": {
-            "type": "string"
+          "MemoryAlert": {
+            "value":  "[parameters('MemoryAlert')]"
           }
         }
       },

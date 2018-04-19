@@ -122,11 +122,11 @@
 
     "CPUAlert": {
       "type": "string",
-	  "defaultValue": "pods-int-highCPUAlert"
+	  "defaultValue": "[concat(parameters('deploymentId'), '-cpu-alert')"
     },
     "MemoryAlert": {
       "type": "string",
-	  "defaultValue": "pods-int-highMemoryAlert"
+	  "defaultValue": "[concat(parameters('deploymentId'), '-memoryalert')"
     },
     "applicationInsightsName": {
       "type": "string",
@@ -173,12 +173,12 @@
     },
     {
       "type": "microsoft.insights/alertrules",
-      "name": "[parameters('applicationInsightMemoryAlert')]",
+      "name": "[parameters('MemoryAlert')]",
       "apiVersion": "2014-04-01",
       "location": "[parameters('applicationInsightsLocation')]",
       "scale": null,
       "properties": {
-        "name": "[parameters('applicationInsightMemoryAlert')]",
+        "name": "[parameters('MemoryAlert')]",
         "description": "High Memory Usage",
         "isEnabled": true,
         "condition": {

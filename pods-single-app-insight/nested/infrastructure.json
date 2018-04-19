@@ -183,11 +183,11 @@
     },
     "CPUAlert": {
       "type": "string",
-	  "defaultValue": "pods-int-highCPUAlert"
+	  "defaultValue": "[concat(parameters('deploymentId'), '-cpualert')"
     },
     "MemoryAlert": {
       "type": "string",
-	  "defaultValue": "pods-int-highMemoryAlert"
+	  "defaultValue": "[concat(parameters('deploymentId'), '-memoryalert')"
     },
     "singleHostingPlanName": {
       "type": "string",
