@@ -18,8 +18,7 @@
     "xcSingleHostingPlanNameTidy": "[toLower(trim(parameters('xcSingleHostingPlanName')))]",
 
     "xcSingleWebAppNameTidy": "[toLower(trim(parameters('xcSingleWebAppName')))]",
-    "applicationInsightsNameTidy": "[toLower(trim(parameters('applicationInsightsName')))]",
-
+    
     "sitecoreTags": {
       "provider": "b51535c2-ab3e-4a68-95f8-e2e3c9a19299",
       "xcSingle": "xc-single",
@@ -118,93 +117,9 @@
       "type": "string",
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-xc-single')]"
-    },
-
-    "CPUAlert": {
-      "type": "string",
-	  "defaultValue": "cpu-alert"
-    },
-    "MemoryAlert": {
-      "type": "string",
-	  "defaultValue": "memory-alert"
-    },
-    "applicationInsightsName": {
-      "type": "string",
-      "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-ai')]"
-    },
-    "applicationInsightsLocation": {
-      "type": "string",
-      "defaultValue": "East US"
     }
   },
   "resources": [
-    {
-      "type": "microsoft.insights/alertrules",
-      "name": "[parameters('CPUAlert')]",
-      "apiVersion": "2014-04-01",
-      "location": "[parameters('applicationInsightsLocation')]",
-      "scale": null,
-      "properties": {
-        "name": "[parameters('CPUAlert')]",
-        "description": "High CPU Alert",
-        "isEnabled": true,
-        "condition": {
-          "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-          "dataSource": {
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-            "resourceUri": "[resourceId('Microsoft.Web/serverfarms', variables('xcSingleHostingPlanNameTidy'))]",
-            "metricNamespace": null,
-            "metricName": "CpuPercentage"
-          },
-          "operator": "GreaterThanOrEqual",
-          "threshold": 70,
-          "windowSize": "PT5M"
-        },
-        "action": {
-          "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-          "sendToServiceOwners": true,
-          "customEmails": [ ]
-        }
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('xcSingleHostingPlanNameTidy'))]",
-		"[resourceId('Microsoft/insights', variables('applicationInsightsNameTidy'))]"
-      ]
-    },
-    {
-      "type": "microsoft.insights/alertrules",
-      "name": "[parameters('MemoryAlert')]",
-      "apiVersion": "2014-04-01",
-      "location": "[parameters('applicationInsightsLocation')]",
-      "scale": null,
-      "properties": {
-        "name": "[parameters('MemoryAlert')]",
-        "description": "High Memory Usage",
-        "isEnabled": true,
-        "condition": {
-          "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-          "dataSource": {
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-            "resourceUri": "[resourceId('Microsoft.Web/serverfarms', variables('xcSingleHostingPlanNameTidy'))]",
-            "metricNamespace": null,
-            "metricName": "MemoryPercentage"
-          },
-          "operator": "GreaterThanOrEqual",
-          "threshold": 80,
-          "windowSize": "PT5M"
-        },
-        "action": {
-          "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-          "sendToServiceOwners": true,
-          "customEmails": [ ]
-        }
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('xcSingleHostingPlanNameTidy'))]",
-		"[resourceId('Microsoft/insights', variables('applicationInsightsNameTidy'))]"
-      ]
-    },
     {
       "type": "Microsoft.Web/serverfarms",
       "name": "[variables('xcSingleHostingPlanNameTidy')]",
