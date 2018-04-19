@@ -693,12 +693,6 @@
 
           "xcSingleWebAppName": {
             "value": "[parameters('xcSingleWebAppName')]"
-          },
-          "CPUAlert": {
-            "value": "[parameters('CPUAlert')]"
-          },
-          "MemoryAlert": {
-            "value":  "[parameters('MemoryAlert')]"
           }
         }
       },
