@@ -358,14 +358,6 @@
       "type": "string",
       "defaultValue": "0.33"
     },
-    "applicationInsightCPUAlert": {
-      "type": "string",
-	  "defaultValue": "pods-int-highCPUAlert"
-	},
-    "applicationInsightMemoryAlert": {
-      "type": "string",
-	  "defaultValue": "pods-int-highMemoryAlert"
-    },
     "xcSingleHostingPlanName": {
       "type": "string",
       "minLength": 1,

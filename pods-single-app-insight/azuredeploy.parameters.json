@@ -139,12 +139,6 @@
           "hostName": "int-fr.ca.pods.com.hi.zone"
         }
       ]
-    },
-    "applicationInsightCPUAlert":  {
-      "value":  "pods-int-highCPUAlert"
-    },
-    "applicationInsightMemoryAlert":  {
-      "value":  "pods-int-highMemoryAlert"
     }
   }
 }
