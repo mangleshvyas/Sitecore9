@@ -751,7 +751,7 @@
         }
       },
       "dependsOn": [
-        "[resourceID('Microsoft.Web/serverfarms', parameters('singleHostingPlanName')]"
+        "[resourceID('Microsoft.Web/serverfarms', parameters('singleHostingPlanName'))]"
       ]
     },
     {
