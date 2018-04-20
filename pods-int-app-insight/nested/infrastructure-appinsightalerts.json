@@ -49,7 +49,10 @@
           "sendToServiceOwners": true,
           "customEmails": [ ]
         }
-      }
+      },
+      "dependsOn": [
+        "[parameters('resourceID')]"
+      ]
     },
 	{
       "type": "microsoft.insights/alertrules",
@@ -78,7 +81,10 @@
           "sendToServiceOwners": true,
           "customEmails": [ ]
         }
-      }
+      },
+      "dependsOn": [
+        "[parameters('resourceID')]"
+      ]
     }
   ],
   "outputs": {
