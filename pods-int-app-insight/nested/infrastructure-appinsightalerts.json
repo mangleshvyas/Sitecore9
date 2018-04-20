@@ -9,10 +9,6 @@
     "Location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]"
-    },
-    "resourceID": {
-      "type": "string",
-      "defaultValue": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/test-pods-int-rg/providers/Microsoft.Web/serverfarms/test-pods-int-rg-single-hp"
     }
 
   },
