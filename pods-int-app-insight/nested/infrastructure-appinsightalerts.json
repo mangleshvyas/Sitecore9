@@ -9,11 +9,6 @@
     "Location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]"
-    },
-    "singleHostingPlanName": {
-      "type": "string",
-      "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-single-hp')]"
     }
 
   },
