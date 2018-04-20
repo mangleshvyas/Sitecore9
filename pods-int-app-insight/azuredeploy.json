@@ -756,7 +756,12 @@
         "parameters": {
           "deploymentId": {
             "value": "[parameters('deploymentId')]"
-          }
+        },
+        "singleHostingPlanName": {
+          "type": "string",
+          "minLength": 1,
+          "defaultValue": "[concat(parameters('deploymentId'), '-single-hp')]"
+        }
         }
       }
     },
