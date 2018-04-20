@@ -1,0 +1,95 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "deploymentId": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().name]"
+    },
+    "Location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    },
+    "singleHostingPlanName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-single-hp')]"
+    }
+
+  },
+  "variables": {
+    "singleHostingPlanNameTidy": "[parameters('singleHostingPlanName')]",
+    "CPUAlert": "[concat(parameters('deploymentID'),'-CPUAlert')]",
+    "MemoryAlert": "[concat(parameters('deploymentID'),'-MemoryAlert')]"
+
+  },
+  "resources": [
+    {
+      "type": "microsoft.insights/alertrules",
+      "name": "[variables('CPUAlert')]",
+      "apiVersion": "2014-04-01",
+      "location": "[parameters('Location')]",
+      "scale": null,
+      "properties": {
+        "name": "[variables('CPUAlert')]",
+        "description": "High CPU",
+        "isEnabled": true,
+        "condition": {
+          "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+          "dataSource": {
+            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+            "resourceUri": "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]",
+            "metricNamespace": null,
+            "metricName": "CpuPercentage"
+          },
+          "operator": "GreaterThanOrEqual",
+          "threshold": 70,
+          "windowSize": "PT5M"
+        },
+        "action": {
+          "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+          "sendToServiceOwners": true,
+          "customEmails": [ ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
+      ]
+    },
+	{
+      "type": "microsoft.insights/alertrules",
+      "name": "[variables('MemoryAlert')]",
+      "apiVersion": "2014-04-01",
+      "location": "[parameters('Location')]",
+      "scale": null,
+      "properties": {
+        "name": "[variables('MemoryAlert')]",
+        "description": "High Memory",
+        "isEnabled": true,
+        "condition": {
+          "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+          "dataSource": {
+            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+            "resourceUri": "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]",
+            "metricNamespace": null,
+            "metricName": "MemoryPercentage"
+          },
+          "operator": "GreaterThanOrEqual",
+          "threshold": 80,
+          "windowSize": "PT5M"
+        },
+        "action": {
+          "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+          "sendToServiceOwners": true,
+          "customEmails": [ ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
+      ]
+    }
+  ],
+  "outputs": {
+    
+  }
+}
