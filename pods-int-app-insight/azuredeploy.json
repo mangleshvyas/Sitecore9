@@ -749,10 +749,7 @@
             "value": "[parameters('deploymentId')]"
           }
         }
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', parameters('singleHostingPlanName'))]"
-      ]
+      }
     },
     {
       "apiVersion": "[variables('resourcesApiVersion')]",

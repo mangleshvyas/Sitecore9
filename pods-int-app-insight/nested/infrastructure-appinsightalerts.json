@@ -36,7 +36,7 @@
           "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
           "dataSource": {
             "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-            "resourceUri": "[parameters('resourceID')]",
+            "resourceUri": "[resourceId('Microsoft.Web/serverfarms', parameters('singleHostingPlanName'))]",
             "metricNamespace": null,
             "metricName": "CpuPercentage"
           },
@@ -65,7 +65,7 @@
           "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
           "dataSource": {
             "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-            "resourceUri": "[parameters('resourceID')]",
+            "resourceUri": "[resourceId('Microsoft.Web/serverfarms', parameters('singleHostingPlanName'))]",
             "metricNamespace": null,
             "metricName": "MemoryPercentage"
           },
