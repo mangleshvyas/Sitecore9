@@ -10,15 +10,13 @@
       "type": "string",
       "defaultValue": "[resourceGroup().location]"
     },
-    "singleHostingPlanName": {
+    "resourceID": {
       "type": "string",
-      "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-single-hp')]"
+      "defaultValue": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/test-pods-int-rg/providers/Microsoft.Web/serverfarms/test-pods-int-rg-single-hp"
     }
 
   },
   "variables": {
-    "singleHostingPlanNameTidy": "[parameters('singleHostingPlanName')]",
     "CPUAlert": "[concat(parameters('deploymentID'),'-CPUAlert')]",
     "MemoryAlert": "[concat(parameters('deploymentID'),'-MemoryAlert')]"
 
@@ -38,7 +36,7 @@
           "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
           "dataSource": {
             "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-            "resourceUri": "[resourceId('Microsoft.Web/serverfarms', toLower(trim(concat(parameters('deploymentId'), '-single-hp'))))]",
+            "resourceUri": "[parameters('resourceID')]",
             "metricNamespace": null,
             "metricName": "CpuPercentage"
           },
@@ -51,10 +49,7 @@
           "sendToServiceOwners": true,
           "customEmails": [ ]
         }
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
-      ]
+      }
     },
 	{
       "type": "microsoft.insights/alertrules",
@@ -70,7 +65,7 @@
           "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
           "dataSource": {
             "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-            "resourceUri": "[resourceId('Microsoft.Web/serverfarms', toLower(trim(concat(parameters('deploymentId'), '-single-hp'))))]",
+            "resourceUri": "[parameters('resourceID')]",
             "metricNamespace": null,
             "metricName": "MemoryPercentage"
           },
@@ -83,10 +78,7 @@
           "sendToServiceOwners": true,
           "customEmails": [ ]
         }
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
-      ]
+      }
     }
   ],
   "outputs": {
