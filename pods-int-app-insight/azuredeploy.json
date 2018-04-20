@@ -743,9 +743,6 @@
     },
     {
       "apiVersion": "[variables('resourcesApiVersion')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', parameters('singleHostingPlanName'))]"
-      ],
       "name": "[concat(deployment().name, '-infrastructure-appinsightalerts')]",
       "type": "Microsoft.Resources/deployments",
       "properties": {
