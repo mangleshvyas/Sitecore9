@@ -567,12 +567,6 @@
           "applicationInsightsDataVolumeCap": {
             "value": "[parameters('applicationInsightsDataVolumeCap')]"
           },
-          "applicationInsightCPUAlert": {
-            "value": "[parameters('applicationInsightCPUAlert')]"
-          },
-          "applicationInsightMemoryAlert": {
-            "value": "[parameters('applicationInsightMemoryAlert')]"
-          },
           "singleHostingPlanName": {
             "value": "[parameters('singleHostingPlanName')]"
           },
