@@ -1,0 +1,89 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "deploymentId": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().name]"
+    },
+    "keyvaultName": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "sku": {
+      "type": "string",
+      "defaultValue": "Standard",
+      "allowedValues": [
+        "Standard",
+        "standard",
+        "Premium",
+        "premium"
+      ],
+      "metadata": {
+        "description": "SKU for the vault"
+      }
+    },
+    "accessPolicies": {
+      "type": "array",
+      "defaultValue": [],
+      "metadata": {
+        "description": "The access policies defined for this vault."
+      }
+    },
+    "tenant": {
+      "type": "string"
+    },
+    "enabledForDeployment": {
+      "type": "bool"
+    },
+    "enabledForTemplateDeployment": {
+      "type": "bool"
+    },
+    "enabledForDiskEncryption": {
+      "type": "bool"
+    }
+  },
+  "variables": {
+    "rgname": "[concat(parameters('deploymentID'),'-lock')]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2016-10-01",
+      "name": "[parameters('keyvaultName')]",
+      "location": "[parameters('location')]",
+      "type": "Microsoft.KeyVault/vaults",
+      "properties": {
+        "enabledForDeployment": "[parameters('enabledForDeployment')]",
+        "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
+        "enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
+        "accessPolicies": "[parameters('accessPolicies')]",
+        "tenantId": "[parameters('tenant')]",
+        "sku": {
+          "name": "[parameters('sku')]",
+          "family": "A"
+        }
+      }
+    },
+    {
+      "apiVersion": "2016-09-01",
+      "name": "[concat(parameters('keyvaultName'), '/Microsoft.Authorization/', parameters('keyvaultName'), '-lock')]",
+      "properties": {
+        "level": "CannotDelete",
+        "notes": "This keyvault is locked and cannot be deleted."
+      },
+      "type": "Microsoft.KeyVault/vaults/providers/locks",
+      "dependsOn": [ "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvaultName'))]" ]
+    },
+    {
+      "apiVersion": "2016-09-01",
+      "name": "[variables('rgname')]",
+      "properties": {
+        "level": "CannotDelete",
+        "notes": "This resource group is locked and cannot be deleted."
+      },
+      "type": "Microsoft.Authorization/locks"
+    }
+  ]
+}

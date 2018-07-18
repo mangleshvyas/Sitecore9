@@ -1,0 +1,99 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "webAppNames": {
+      "type": "array",
+      "minLength": 1
+    },
+    "sqlServerName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": ""
+    },
+    "allowedIpAddresses": {
+      "type": "array",
+      "defaultValue": [ ]
+    },
+    "additionalIpAddresses": {
+      "type": "array",
+      "defaultValue": [ ]
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+
+  },
+  "variables": {
+    "ipSecurityRestrictions": {
+      "copy": [
+        {
+          "name": "ipAddressArray",
+          "count": "[length(parameters('allowedIpAddresses'))]",
+          "input": {
+            "ipAddress": "[parameters('allowedIpAddresses')[copyIndex('ipAddressArray')]]",
+            "subnetMask": "255.255.255.255"
+          }
+        }
+      ]
+    },
+    "additionalIpSecurityRestrictions": {
+      "copy": [
+        {
+          "name": "ipAddressArray",
+          "count": "[length(parameters('additionalIpAddresses'))]",
+          "input": {
+            "ipAddress": "[parameters('additionalIpAddresses')[copyIndex('ipAddressArray')].ipAddress]",
+            "subnetMask": "[if(contains(parameters('additionalIpAddresses')[copyIndex('ipAddressArray')],'subnetMask'),parameters('additionalIpAddresses')[copyIndex('ipAddressArray')].subnetMask,'255.255.255.255')]"
+          }
+        }
+      ]
+    },
+    "ipSecurityRestrictionsAll": "[concat(variables('additionalIpSecurityRestrictions').ipAddressArray,union(variables('ipSecurityRestrictions').ipAddressArray,variables('ipSecurityRestrictions').ipAddressArray))]",
+    "sqlServerUniqueIps": "[union(parameters('allowedIpAddresses'),parameters('allowedIpAddresses'))]"
+  },
+  "resources": [
+    {
+      "name": "[parameters('webAppNames')[copyIndex('webApps')]]",
+      "type": "Microsoft.Web/sites",
+      "kind": "app",
+      "apiVersion": "2016-08-01",
+      "location": "[parameters('location')]",
+      "properties": {
+        "siteConfig": {
+          "ipSecurityRestrictions": "[variables('ipSecurityRestrictionsAll')]"
+        }
+      },
+      "copy": {
+        "name": "webApps",
+        "count": "[length(parameters('webAppNames'))]"
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "copy": {
+        "name": "sqlIpRestrict",
+        "count": "[length(variables('sqlServerUniqueIps'))]",
+        "mode": "Serial",
+        "batchSize": 1
+      },
+      "name": "[concat(parameters('sqlServerName'),'/',variables('sqlServerUniqueIps')[copyIndex('sqlIpRestrict')])]",
+      "properties": {
+        "startIpAddress": "[variables('sqlServerUniqueIps')[copyIndex('sqlIpRestrict')]]",
+        "endIpAddress": "[variables('sqlServerUniqueIps')[copyIndex('sqlIpRestrict')]]"
+      },
+      "type": "Microsoft.Sql/servers/firewallRules"
+    }
+  ],
+  "outputs": {
+    "webAppNames": {
+      "type": "array",
+      "value": "[parameters('webAppNames')]"
+    },
+    "ipSecurityRestrictions": {
+      "type": "array",
+      "value": "[variables('ipSecurityRestrictionsAll')]"
+    }
+  }
+}

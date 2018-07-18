@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "deploymentId": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().name]"
+    }
+  },
+  "variables": {
+    "rgname": "[concat(parameters('deploymentID'),'-lock')]",
+    "resourcesApiVersion": "2016-09-01"
+  },
+  "resources": [
+    {
+      "type":"Microsoft.Authorization/locks",
+      "apiVersion": "2016-09-01",
+      "name": "[variables('rgname')]",
+      "properties": {
+        "level": "CannotDelete",
+        "notes": "This resource group is locked and cannot be deleted."
+      }
+    }
+  ],
+  "outputs": {
+    
+  }
+}

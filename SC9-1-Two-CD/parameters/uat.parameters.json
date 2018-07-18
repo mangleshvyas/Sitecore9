@@ -1,0 +1,671 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "sitecoreAdminPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/uat-pods-vault"
+        },
+        "secretName": "sitecore-admin-password"
+      }
+    },
+    "sqlServerLogin": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/uat-pods-vault"
+        },
+        "secretName": "sql-server-admin"
+      }
+    },
+    "sqlServerPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/uat-pods-vault"
+        },
+        "secretName": "sql-server-password"
+      }
+    },
+    "allowInvalidClientCertificates": {
+      "value": true
+    },
+    "applicationInsightsDataVolumeCap": {
+      "value": "20"
+    },
+    "xcServerConfigurationEnvironment": {
+      "value": "Development"
+    },
+    "authCertificatePassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/uat-pods-vault"
+        },
+        "secretName": "sitecore-certificate-password"
+      }
+    },
+    "additionalAllowedIpAddresses": {
+      "value": [
+        {
+          "ipAddress": "165.225.32.0",
+          "subnetMask": "255.255.254.0",
+          "comment": "PODS Zscaler"
+        },
+        {
+          "ipAddress": "104.129.206.0",
+          "subnetMask": "255.255.254.0",
+          "comment": "PODS Zscaler"
+        },
+        {
+          "ipAddress": "165.225.73.67",
+          "comment": "PODS Zscaler"
+        },
+        {
+          "ipAddress": "185.46.213.64",
+          "comment": "PODS Zscaler"
+        },
+        {
+          "ipAddress": "185.46.215.66",
+          "comment": "PODS Zscaler"
+        },
+        {
+          "ipAddress": "66.194.205.70",
+          "comment": "PODS Atlanta"
+        },
+        {
+          "ipAddress": "207.201.197.0",
+          "subnetMask": "255.255.255.0",
+          "comment": "PODS Atlanta Datacenter"
+        },
+        {
+          "ipAddress": "66.192.111.0",
+          "subnetMask": "255.255.255.0",
+          "comment": "PODS Clearwater"
+        },
+        {
+          "ipAddress": "168.215.154.160",
+          "subnetMask": "255.255.255.224",
+          "comment": "PODS Clearwater Datacenter"
+        },
+        {
+          "ipAddress": "12.88.11.166",
+          "comment": "PODS Reno"
+        },
+        {
+          "ipAddress": "12.216.145.224",
+          "subnetMask": "255.255.255.224",
+          "comment": "PODS Reno Datacenter"
+        },
+        {
+          "ipAddress": "65.47.61.238",
+          "comment": "PODS Tampa"
+        },
+        {
+          "ipAddress": "207.239.227.0",
+          "subnetMask": "255.255.255.0",
+          "comment": "PODS Tampa Datacenter"
+        },
+        {
+          "ipAddress": "167.216.180.0",
+          "subnetMask": "255.255.252.0",
+          "comment": "SCA NetSuite Sandbox"
+        },
+        {
+          "ipAddress": "216.127.195.117",
+          "comment": "SCA - Anthony Plack"
+        },
+        {
+          "ipAddress": "38.140.237.130",
+          "comment": "HI-Dallas-TX"
+        },
+        {
+          "ipAddress": "66.195.87.182",
+          "comment": "HI-Denver-CO"
+        },
+        {
+          "ipAddress": "111.93.85.206",
+          "comment": "HI-India-2"
+        },
+        {
+          "ipAddress": "198.99.208.0",
+          "subnetMask": "255.255.255.0",
+          "comment": "KBS"
+        },
+        {
+          "ipAddress": "183.82.33.197",
+          "comment": "KBS QA Team Office"
+        },
+        {
+          "ipAddress": "106.51.2.55",
+          "comment": "KBS QA PM"
+        },
+        {
+          "ipAddress": "98.221.127.172",
+          "comment": "KBS Head of Fleet - Venu Moola"
+        },
+        {
+          "ipAddress": "52.179.101.236",
+          "comment": "PODS Octopus Deploy - pods-deploy-octopus.eastus.cloudapp.azure.com"
+        },
+        {
+          "ipAddress": "69.67.19.79",
+          "comment": "HI-SLP-MN"
+        },
+        {
+          "ipAddress": "223.31.65.106",
+          "comment": "HI-India"
+        },
+        {
+          "ipAddress": "199.83.128.0",
+          "subnetMask": "255.255.248.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "198.143.32.0",
+          "subnetMask": "255.255.224.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "149.126.72.0",
+          "subnetMask": "255.255.248.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "103.28.248.0",
+          "subnetMask": "255.255.252.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "45.64.64.0",
+          "subnetMask": "255.255.252.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "185.11.124.0",
+          "subnetMask": "255.255.252.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "192.230.64.0",
+          "subnetMask": "255.255.192.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "107.154.0.0",
+          "subnetMask": "255.255.0.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "45.60.0.0",
+          "subnetMask": "255.255.0.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "45.223.0.0",
+          "subnetMask": "255.255.0.0",
+          "comment": "WAF"
+        },
+        {
+          "ipAddress": "13.70.83.252",
+          "comment": "Application Insights - Australia East"
+        },
+        {
+          "ipAddress": "13.75.150.96",
+          "comment": "Application Insights - Australia East"
+        },
+        {
+          "ipAddress": "13.75.153.9",
+          "comment": "Application Insights - Australia East"
+        },
+        {
+          "ipAddress": "13.75.158.185",
+          "comment": "Application Insights - Australia East"
+        },
+        {
+          "ipAddress": "191.232.32.122",
+          "comment": "Application Insights - Brazil South"
+        },
+        {
+          "ipAddress": "191.232.172.45",
+          "comment": "Application Insights - Brazil South"
+        },
+        {
+          "ipAddress": "191.232.176.218",
+          "comment": "Application Insights - Brazil South"
+        },
+        {
+          "ipAddress": "191.232.191.225",
+          "comment": "Application Insights - Brazil South"
+        },
+        {
+          "ipAddress": "52.136.140.221",
+          "comment": "Application Insights - France South"
+        },
+        {
+          "ipAddress": "52.136.140.222",
+          "comment": "Application Insights - France South"
+        },
+        {
+          "ipAddress": "52.136.140.223",
+          "comment": "Application Insights - France South"
+        },
+        {
+          "ipAddress": "52.136.140.226",
+          "comment": "Application Insights - France South"
+        },
+        {
+          "ipAddress": "52.143.140.242",
+          "comment": "Application Insights - France Central"
+        },
+        {
+          "ipAddress": "52.143.140.246",
+          "comment": "Application Insights - France Central"
+        },
+        {
+          "ipAddress": "52.143.140.247",
+          "comment": "Application Insights - France Central"
+        },
+        {
+          "ipAddress": "52.143.140.249",
+          "comment": "Application Insights - France Central"
+        },
+        {
+          "ipAddress": "13.75.121.122",
+          "comment": "Application Insights - East Asia"
+        },
+        {
+          "ipAddress": "23.99.115.153",
+          "comment": "Application Insights - East Asia"
+        },
+        {
+          "ipAddress": "23.99.123.38",
+          "comment": "Application Insights - East Asia"
+        },
+        {
+          "ipAddress": "23.102.232.186",
+          "comment": "Application Insights - East Asia"
+        },
+        {
+          "ipAddress": "52.175.38.49",
+          "comment": "Application Insights - East Asia"
+        },
+        {
+          "ipAddress": "52.175.39.103",
+          "comment": "Application Insights - East Asia"
+        },
+        {
+          "ipAddress": "13.74.184.101",
+          "comment": "Application Insights - North Europe"
+        },
+        {
+          "ipAddress": "13.74.185.160",
+          "comment": "Application Insights - North Europe"
+        },
+        {
+          "ipAddress": "40.69.200.198",
+          "comment": "Application Insights - North Europe"
+        },
+        {
+          "ipAddress": "52.164.224.46",
+          "comment": "Application Insights - North Europe"
+        },
+        {
+          "ipAddress": "52.169.12.203",
+          "comment": "Application Insights - North Europe"
+        },
+        {
+          "ipAddress": "52.169.14.11",
+          "comment": "Application Insights - North Europe"
+        },
+        {
+          "ipAddress": "52.169.237.149",
+          "comment": "Application Insights - North Europe"
+        },
+        {
+          "ipAddress": "52.178.183.105",
+          "comment": "Application Insights - North Europe"
+        },
+        {
+          "ipAddress": "52.243.33.33",
+          "comment": "Application Insights - Japan East"
+        },
+        {
+          "ipAddress": "52.243.33.141",
+          "comment": "Application Insights - Japan East"
+        },
+        {
+          "ipAddress": "52.243.35.253",
+          "comment": "Application Insights - Japan East"
+        },
+        {
+          "ipAddress": "52.243.41.117",
+          "comment": "Application Insights - Japan East"
+        },
+        {
+          "ipAddress": "52.174.166.113",
+          "comment": "Application Insights - West Europe"
+        },
+        {
+          "ipAddress": "52.174.178.96",
+          "comment": "Application Insights - West Europe"
+        },
+        {
+          "ipAddress": "52.174.31.140",
+          "comment": "Application Insights - West Europe"
+        },
+        {
+          "ipAddress": "52.174.35.14",
+          "comment": "Application Insights - West Europe"
+        },
+        {
+          "ipAddress": "52.178.104.23",
+          "comment": "Application Insights - West Europe"
+        },
+        {
+          "ipAddress": "52.178.109.190",
+          "comment": "Application Insights - West Europe"
+        },
+        {
+          "ipAddress": "52.178.111.139",
+          "comment": "Application Insights - West Europe"
+        },
+        {
+          "ipAddress": "52.233.166.221",
+          "comment": "Application Insights - West Europe"
+        },
+        {
+          "ipAddress": "51.140.79.229",
+          "comment": "Application Insights - UK South"
+        },
+        {
+          "ipAddress": "51.140.84.172",
+          "comment": "Application Insights - UK South"
+        },
+        {
+          "ipAddress": "51.140.87.211",
+          "comment": "Application Insights - UK South"
+        },
+        {
+          "ipAddress": "51.140.105.74",
+          "comment": "Application Insights - UK South"
+        },
+        {
+          "ipAddress": "51.141.25.219",
+          "comment": "Application Insights - UK West"
+        },
+        {
+          "ipAddress": "51.141.32.101",
+          "comment": "Application Insights - UK West"
+        },
+        {
+          "ipAddress": "51.141.35.167",
+          "comment": "Application Insights - UK West"
+        },
+        {
+          "ipAddress": "51.141.54.177",
+          "comment": "Application Insights - UK West"
+        },
+        {
+          "ipAddress": "52.187.29.7",
+          "comment": "Application Insights - Southeast Asia"
+        },
+        {
+          "ipAddress": "52.187.179.17",
+          "comment": "Application Insights - Southeast Asia"
+        },
+        {
+          "ipAddress": "52.187.76.248",
+          "comment": "Application Insights - Southeast Asia"
+        },
+        {
+          "ipAddress": "52.187.43.24",
+          "comment": "Application Insights - Southeast Asia"
+        },
+        {
+          "ipAddress": "52.163.57.91",
+          "comment": "Application Insights - Southeast Asia"
+        },
+        {
+          "ipAddress": "52.187.30.120",
+          "comment": "Application Insights - Southeast Asia"
+        },
+        {
+          "ipAddress": "104.45.228.236",
+          "comment": "Application Insights - West US"
+        },
+        {
+          "ipAddress": "104.45.237.251",
+          "comment": "Application Insights - West US"
+        },
+        {
+          "ipAddress": "13.64.152.110",
+          "comment": "Application Insights - West US"
+        },
+        {
+          "ipAddress": "13.64.156.54",
+          "comment": "Application Insights - West US"
+        },
+        {
+          "ipAddress": "13.64.232.251",
+          "comment": "Application Insights - West US"
+        },
+        {
+          "ipAddress": "13.64.236.105",
+          "comment": "Application Insights - West US"
+        },
+        {
+          "ipAddress": "13.91.94.59",
+          "comment": "Application Insights - West US"
+        },
+        {
+          "ipAddress": "40.118.131.182",
+          "comment": "Application Insights - West US"
+        },
+        {
+          "ipAddress": "40.83.189.192",
+          "comment": "Application Insights - West US"
+        },
+        {
+          "ipAddress": "40.83.215.122",
+          "comment": "Application Insights - West US"
+        },
+        {
+          "ipAddress": "52.165.130.58",
+          "comment": "Application Insights - Central US"
+        },
+        {
+          "ipAddress": "52.173.142.229",
+          "comment": "Application Insights - Central US"
+        },
+        {
+          "ipAddress": "52.173.147.190",
+          "comment": "Application Insights - Central US"
+        },
+        {
+          "ipAddress": "52.173.17.41",
+          "comment": "Application Insights - Central US"
+        },
+        {
+          "ipAddress": "52.173.204.247",
+          "comment": "Application Insights - Central US"
+        },
+        {
+          "ipAddress": "52.173.244.190",
+          "comment": "Application Insights - Central US"
+        },
+        {
+          "ipAddress": "52.173.36.222",
+          "comment": "Application Insights - Central US"
+        },
+        {
+          "ipAddress": "52.176.1.226",
+          "comment": "Application Insights - Central US"
+        },
+        {
+          "ipAddress": "23.96.247.139",
+          "comment": "Application Insights - North Central US"
+        },
+        {
+          "ipAddress": "23.96.249.113",
+          "comment": "Application Insights - North Central US"
+        },
+        {
+          "ipAddress": "52.162.124.242",
+          "comment": "Application Insights - North Central US"
+        },
+        {
+          "ipAddress": "52.162.126.139",
+          "comment": "Application Insights - North Central US"
+        },
+        {
+          "ipAddress": "52.162.241.147",
+          "comment": "Application Insights - North Central US"
+        },
+        {
+          "ipAddress": "52.162.246.222",
+          "comment": "Application Insights - North Central US"
+        },
+        {
+          "ipAddress": "52.162.247.136",
+          "comment": "Application Insights - North Central US"
+        },
+        {
+          "ipAddress": "52.237.153.231",
+          "comment": "Application Insights - North Central US"
+        },
+        {
+          "ipAddress": "52.237.154.216",
+          "comment": "Application Insights - North Central US"
+        },
+        {
+          "ipAddress": "52.237.156.14",
+          "comment": "Application Insights - North Central US"
+        },
+        {
+          "ipAddress": "52.237.157.218",
+          "comment": "Application Insights - North Central US"
+        },
+        {
+          "ipAddress": "52.237.157.37",
+          "comment": "Application Insights - North Central US"
+        },
+        {
+          "ipAddress": "104.210.145.106",
+          "comment": "Application Insights - South Central US"
+        },
+        {
+          "ipAddress": "13.84.176.24",
+          "comment": "Application Insights - South Central US"
+        },
+        {
+          "ipAddress": "13.84.49.16",
+          "comment": "Application Insights - South Central US"
+        },
+        {
+          "ipAddress": "13.85.11.137",
+          "comment": "Application Insights - South Central US"
+        },
+        {
+          "ipAddress": "13.85.26.248",
+          "comment": "Application Insights - South Central US"
+        },
+        {
+          "ipAddress": "13.85.69.145",
+          "comment": "Application Insights - South Central US"
+        },
+        {
+          "ipAddress": "52.171.136.162",
+          "comment": "Application Insights - South Central US"
+        },
+        {
+          "ipAddress": "52.171.141.253",
+          "comment": "Application Insights - South Central US"
+        },
+        {
+          "ipAddress": "52.171.57.172",
+          "comment": "Application Insights - South Central US"
+        },
+        {
+          "ipAddress": "52.171.58.140",
+          "comment": "Application Insights - South Central US"
+        },
+        {
+          "ipAddress": "13.82.218.95",
+          "comment": "Application Insights - East US"
+        },
+        {
+          "ipAddress": "13.90.96.71",
+          "comment": "Application Insights - East US"
+        },
+        {
+          "ipAddress": "13.90.98.52",
+          "comment": "Application Insights - East US"
+        },
+        {
+          "ipAddress": "13.92.137.70",
+          "comment": "Application Insights - East US"
+        },
+        {
+          "ipAddress": "40.85.187.235",
+          "comment": "Application Insights - East US"
+        },
+        {
+          "ipAddress": "40.87.61.61",
+          "comment": "Application Insights - East US"
+        },
+        {
+          "ipAddress": "52.168.8.247",
+          "comment": "Application Insights - East US"
+        },
+        {
+          "ipAddress": "52.170.38.79",
+          "comment": "Application Insights - East US"
+        },
+        {
+          "ipAddress": "52.170.80.61",
+          "comment": "Application Insights - East US"
+        },
+        {
+          "ipAddress": "52.179.9.26",
+          "comment": "Application Insights - East US"
+        }
+      ]
+    },
+    "additionalBindingsSingle": {
+      "value": [
+        {
+          "hostName": "uat-www.pods.com"
+        },
+        {
+          "hostName": "uat-en.ca.pods.com"
+        },
+        {
+          "hostName": "uat-fr.ca.pods.com"
+        },
+        {
+          "hostName": "uat-www.pods.com.hi.zone"
+        },
+        {
+          "hostName": "uat-en.ca.pods.com.hi.zone"
+        },
+        {
+          "hostName": "uat-fr.ca.pods.com.hi.zone"
+        }
+      ]
+    },
+    "alertSubscribers": {
+      "value": [
+        "devops@horizontalintegration.com",
+        "mchaudhary@horizontalintegration.com",
+        "dschoenberg@horizontalintegration.com"
+      ]
+    },
+    "corsAllowedOrigins": {
+      "value": [
+        "https://testns.pods.com"
+      ]
+    },
+    "MemoryAlertThreshold": {
+      "value": 90
+    }
+  }
+}

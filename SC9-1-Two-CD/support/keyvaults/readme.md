@@ -1,0 +1,1 @@
+The environment scripts call a keyvault-deploy script what will use an ARM template to deploy/update an environment keyvault.

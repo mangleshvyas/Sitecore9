@@ -1,0 +1,114 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "deploymentId": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().name]"
+    },
+    "Location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    },
+    "hostingPlanName": {
+      "type": "array",
+      "defaultValue": [
+        "[concat(parameters('deploymentId'), '-single-hp')]",
+        "[concat(parameters('deploymentId'), '-xc-single-hp')]"
+      ]
+    },
+    "alertSubscribers": {
+      "type": "array",
+      "defaultValue": []
+    },
+    "enableCPUAlerts": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "CPUAlertThreshold": {
+      "type": "int"
+    },
+    "enableMemoryAlerts": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "MemoryAlertThreshold": {
+      "type": "int"
+    }
+  },
+  "variables": {
+  },
+  "resources": [
+    {
+      "apiVersion": "2014-04-01",
+      "copy": {
+        "name": "alertcopy",
+        "count": "[length(parameters('hostingPlanName'))]"
+      },
+      "name": "[concat(parameters('deploymentID'), '-', parameters('hostingPlanName')[copyIndex()], '-CPUAlert')]",
+      "properties": {
+        "name": "[concat(parameters('deploymentID'), '-', parameters('hostingPlanName')[copyIndex()], '-CPUAlert')]",
+        "description": "High CPU",
+        "isEnabled": "[parameters('enableCPUAlerts')]",
+        "condition": {
+          "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+          "dataSource": {
+            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+            "resourceUri": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName')[copyIndex()])]",
+            "metricNamespace": null,
+            "metricName": "CpuPercentage"
+          },
+          "operator": "GreaterThanOrEqual",
+          "threshold": "[parameters('CPUAlertThreshold')]",
+          "windowSize": "PT5M"
+        },
+        "action": {
+          "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+          "sendToServiceOwners": false,
+          "customEmails": "[parameters('alertSubscribers')]"
+        }
+      },
+
+      "location": "[parameters('Location')]",
+      "scale": null,
+      "type": "microsoft.insights/alertrules"
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "copy": {
+        "name": "alertcopy",
+        "count": "[length(parameters('hostingPlanName'))]"
+      },
+      "name": "[concat(parameters('deploymentID'), '-', parameters('hostingPlanName')[copyIndex()], '-MemoryAlert')]",
+      "properties": {
+        "name": "[concat(parameters('deploymentID'), '-', parameters('hostingPlanName')[copyIndex()], '-MemoryAlert')]",
+        "description": "High Memory",
+        "isEnabled": "[parameters('enableMemoryAlerts')]",
+        "condition": {
+          "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+          "dataSource": {
+            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+            "resourceUri": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName')[copyIndex()])]",
+            "metricNamespace": null,
+            "metricName": "MemoryPercentage"
+          },
+          "operator": "GreaterThanOrEqual",
+          "threshold": "[parameters('MemoryAlertThreshold')]",
+          "windowSize": "PT5M"
+        },
+        "action": {
+          "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+          "sendToServiceOwners": false,
+          "customEmails": "[parameters('alertSubscribers')]"
+        }
+      },
+
+      "location": "[parameters('Location')]",
+      "scale": null,
+      "type": "microsoft.insights/alertrules"
+    }
+  ],
+  "outputs": {
+
+  }
+}
