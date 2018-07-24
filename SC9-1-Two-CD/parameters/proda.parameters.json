@@ -5,7 +5,7 @@
     "sitecoreAdminPassword": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/proda-pods-vault"
+          "id": "/subscriptions/5d474f0f-892e-4843-a5c9-803a09ca8628/resourceGroups/mv-keystore/providers/Microsoft.KeyVault/vaults/prod-mv-vault"
         },
         "secretName": "sitecore-admin-password"
       }
@@ -13,9 +13,9 @@
     "sqlServerLogin": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/proda-pods-vault"
+          "id": "/subscriptions/5d474f0f-892e-4843-a5c9-803a09ca8628/resourceGroups/mv-keystore/providers/Microsoft.KeyVault/vaults/prod-mv-vault"
         },
-        "secretName": "sql-server-admin"
+        "secretName": "sql-admin-user"
       }
     },
     "sitecoreSKU": {
@@ -24,7 +24,7 @@
     "sqlServerPassword": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/proda-pods-vault"
+          "id": "/subscriptions/5d474f0f-892e-4843-a5c9-803a09ca8628/resourceGroups/mv-keystore/providers/Microsoft.KeyVault/vaults/prod-mv-vault"
         },
         "secretName": "sql-server-password"
       }
@@ -38,7 +38,7 @@
     "authCertificatePassword": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/proda-pods-vault"
+          "id": "/subscriptions/5d474f0f-892e-4843-a5c9-803a09ca8628/resourceGroups/mv-keystore/providers/Microsoft.KeyVault/vaults/prod-mv-vault"
         },
         "secretName": "sitecore-certificate-password"
       }
@@ -46,81 +46,13 @@
     "repAuthenticationApiKey": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/ca1eacdc-c82e-48b0-81ae-43bf2280e9e3/resourceGroups/pods-keystore/providers/Microsoft.KeyVault/vaults/proda-pods-vault"
+          "id": "/subscriptions/5d474f0f-892e-4843-a5c9-803a09ca8628/resourceGroups/mv-keystore/providers/Microsoft.KeyVault/vaults/prod-mv-vault"
         },
         "secretName": "sitecore-reporting-api-key"
       }
     },
     "additionalAllowedIpAddresses": {
       "value": [
-        {
-          "ipAddress": "165.225.32.0",
-          "subnetMask": "255.255.254.0",
-          "comment": "PODS Zscaler"
-        },
-        {
-          "ipAddress": "104.129.206.0",
-          "subnetMask": "255.255.254.0",
-          "comment": "PODS Zscaler"
-        },
-        {
-          "ipAddress": "165.225.73.67",
-          "comment": "PODS Zscaler"
-        },
-        {
-          "ipAddress": "185.46.213.64",
-          "comment": "PODS Zscaler"
-        },
-        {
-          "ipAddress": "185.46.215.66",
-          "comment": "PODS Zscaler"
-        },
-        {
-          "ipAddress": "66.194.205.70",
-          "comment": "PODS Atlanta"
-        },
-        {
-          "ipAddress": "207.201.197.0",
-          "subnetMask": "255.255.255.0",
-          "comment": "PODS Atlanta Datacenter"
-        },
-        {
-          "ipAddress": "66.192.111.0",
-          "subnetMask": "255.255.255.0",
-          "comment": "PODS Clearwater"
-        },
-        {
-          "ipAddress": "168.215.154.160",
-          "subnetMask": "255.255.255.224",
-          "comment": "PODS Clearwater Datacenter"
-        },
-        {
-          "ipAddress": "12.88.11.166",
-          "comment": "PODS Reno"
-        },
-        {
-          "ipAddress": "12.216.145.224",
-          "subnetMask": "255.255.255.224",
-          "comment": "PODS Reno Datacenter"
-        },
-        {
-          "ipAddress": "65.47.61.238",
-          "comment": "PODS Tampa"
-        },
-        {
-          "ipAddress": "207.239.227.0",
-          "subnetMask": "255.255.255.0",
-          "comment": "PODS Tampa Datacenter"
-        },
-        {
-          "ipAddress": "167.216.180.0",
-          "subnetMask": "255.255.252.0",
-          "comment": "SCA NetSuite Sandbox"
-        },
-        {
-          "ipAddress": "216.127.195.117",
-          "comment": "SCA - Anthony Plack"
-        },
         {
           "ipAddress": "38.140.237.130",
           "comment": "HI-Dallas-TX"
@@ -134,83 +66,12 @@
           "comment": "HI-India-2"
         },
         {
-          "ipAddress": "198.99.208.0",
-          "subnetMask": "255.255.255.0",
-          "comment": "KBS"
-        },
-        {
-          "ipAddress": "183.82.33.197",
-          "comment": "KBS QA Team Office"
-        },
-        {
-          "ipAddress": "106.51.2.55",
-          "comment": "KBS QA PM"
-        },
-        {
-          "ipAddress": "98.221.127.172",
-          "comment": "KBS Head of Fleet - Venu Moola"
-        },
-        {
-          "ipAddress": "52.179.101.236",
-          "comment": "PODS Octopus Deploy - pods-deploy-octopus.eastus.cloudapp.azure.com"
-        },
-        {
           "ipAddress": "69.67.19.79",
           "comment": "HI-SLP-MN"
         },
         {
           "ipAddress": "223.31.65.106",
           "comment": "HI-India"
-        },
-        {
-          "ipAddress": "199.83.128.0",
-          "subnetMask": "255.255.248.0",
-          "comment": "WAF"
-        },
-        {
-          "ipAddress": "198.143.32.0",
-          "subnetMask": "255.255.224.0",
-          "comment": "WAF"
-        },
-        {
-          "ipAddress": "149.126.72.0",
-          "subnetMask": "255.255.248.0",
-          "comment": "WAF"
-        },
-        {
-          "ipAddress": "103.28.248.0",
-          "subnetMask": "255.255.252.0",
-          "comment": "WAF"
-        },
-        {
-          "ipAddress": "45.64.64.0",
-          "subnetMask": "255.255.252.0",
-          "comment": "WAF"
-        },
-        {
-          "ipAddress": "185.11.124.0",
-          "subnetMask": "255.255.252.0",
-          "comment": "WAF"
-        },
-        {
-          "ipAddress": "192.230.64.0",
-          "subnetMask": "255.255.192.0",
-          "comment": "WAF"
-        },
-        {
-          "ipAddress": "107.154.0.0",
-          "subnetMask": "255.255.0.0",
-          "comment": "WAF"
-        },
-        {
-          "ipAddress": "45.60.0.0",
-          "subnetMask": "255.255.0.0",
-          "comment": "WAF"
-        },
-        {
-          "ipAddress": "45.223.0.0",
-          "subnetMask": "255.255.0.0",
-          "comment": "WAF"
         },
         {
           "ipAddress": "13.70.83.252",
@@ -640,70 +501,17 @@
     },
     "additionalBindingsCM": {
       "value": [
-        {
-          "hostName": "sitecore-www.pods.com"
-        },
-        {
-          "hostName": "prodstandby-sitecore-www.pods.com"
-        },
-        {
-          "hostName": "sitecore-www.pods.com.hi.zone"
-        },
-        {
-          "hostName": "prodstandby-sitecore-www.pods.com.hi.zone"
-        }
+        
       ]
     },
     "additionalBindingsCD": {
       "value": [
-        {
-          "hostName": "www.pods.com"
-        },
-        {
-          "hostName": "prodstandby-www.pods.com"
-        },
-        {
-          "hostName": "en.ca.pods.com"
-        },
-        {
-          "hostName": "prodstandby-en.ca.pods.com"
-        },
-        {
-          "hostName": "fr.ca.pods.com"
-        },
-        {
-          "hostName": "prodstandby-fr.ca.pods.com"
-        },
-        {
-          "hostName": "www.pods.com.hi.zone"
-        },
-        {
-          "hostName": "prodstandby-www.pods.com.hi.zone"
-        },
-        {
-          "hostName": "en.ca.pods.com.hi.zone"
-        },
-        {
-          "hostName": "prodstandby-en.ca.pods.com.hi.zone"
-        },
-        {
-          "hostName": "fr.ca.pods.com.hi.zone"
-        },
-        {
-          "hostName": "prodstandby-fr.ca.pods.com.hi.zone"
-        }
+        
       ]
     },
     "alertSubscribers": {
       "value": [
-        "devops@horizontalintegration.com",
-        "mchaudhary@horizontalintegration.com",
-        "dschoenberg@horizontalintegration.com"
-      ]
-    },
-    "corsAllowedOrigins": {
-      "value": [
-        "https://ns.pods.com"
+        "devops@horizontalintegration.com"
       ]
     }
   }

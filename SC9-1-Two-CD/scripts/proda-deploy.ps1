@@ -17,4 +17,4 @@ $ErrorActionPreference = "Stop"
 	-EnableMemoryAlerts `
 	-EnableAdditionalAppAvailabilityAlerts `
 	-EnableAppAvailabilityAlerts `
-    -Subscription "ca1eacdc-c82e-48b0-81ae-43bf2280e9e3"
+    -Subscription "5d474f0f-892e-4843-a5c9-803a09ca8628"

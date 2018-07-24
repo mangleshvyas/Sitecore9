@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "keyvaultName": {
-      "value": "prod-dxv-vault"
+      "value": "prod-mv-vault"
     },
     "location": {
       "value": "eastus"
@@ -14,8 +14,8 @@
     "accessPolicies": {
       "value": [
         {
-          "objectId": "6bb91471-2225-47a2-a576-5f9e75b180d4",
-          "tenantId": "1a60addb-fe41-420d-a2d6-ce2a3b159089",
+          "objectId": "ded8e59e-59ac-4708-82e2-3b67a2a6bd73",
+          "tenantId": "4c31935f-277d-4f84-bc78-b2d637b109d9",
           "permissions": {
             "keys": [
               "Get",
@@ -55,8 +55,8 @@
           }
         },
         {
-          "objectId": "f981428e-fcb4-4cee-9142-733e62d09068",
-          "tenantId": "1a60addb-fe41-420d-a2d6-ce2a3b159089",
+          "objectId": "ded8e59e-59ac-4708-82e2-3b67a2a6bd73",
+          "tenantId": "4c31935f-277d-4f84-bc78-b2d637b109d9",
           "permissions": {
             "keys": [
               "Get",
@@ -96,8 +96,8 @@
           }
         },
         {
-          "objectId": "a5e8c62f-e349-493e-8cd8-b72ac91e6f93",
-          "tenantId": "1a60addb-fe41-420d-a2d6-ce2a3b159089",
+          "objectId": "ded8e59e-59ac-4708-82e2-3b67a2a6bd73",
+          "tenantId": "4c31935f-277d-4f84-bc78-b2d637b109d9",
           "permissions": {
             "keys": [
               "Get",
@@ -139,7 +139,7 @@
       ]
     },
     "tenant": {
-      "value": "1a60addb-fe41-420d-a2d6-ce2a3b159089"
+      "value": "4c31935f-277d-4f84-bc78-b2d637b109d9"
     },
     "enabledForDeployment": {
       "value": true

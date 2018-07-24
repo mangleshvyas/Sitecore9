@@ -2,27 +2,26 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "variables": {
-    "webApiVersion": "2016-08-01",
-    "serverFarmApiVersion": "2016-09-01",
-    "dbApiVersion": "2014-04-01-preview",
-    "redisApiVersion": "2016-04-01",
-    "certificateApiVersion": "2014-11-01",
-
-
-    "sqlServerNameTidy": "[toLower(trim(parameters('sqlServerName')))]",
-    "cd2HostingPlanNameTidy": "[toLower(trim(parameters('cd2HostingPlanName')))]",
-    "coreSqlDatabaseNameTidy": "[toLower(trim(parameters('coreSqlDatabaseName')))]",
-    "webSqlDatabaseNameTidy": "[toLower(trim(parameters('webSqlDatabaseName')))]",
-
-    "cd2WebAppNameTidy": "[toLower(trim(parameters('cd2WebAppName')))]",
     "authCertificateNameTidy": "[toLower(trim(parameters('authCertificateName')))]",
+    "cd2HostingPlanNameTidy": "[toLower(trim(parameters('cd2HostingPlanName')))]",
+    "cd2WebAppNameTidy": "[toLower(trim(parameters('cd2WebAppName')))]",
+    "certificateApiVersion": "2014-11-01",
+    "coreSqlDatabaseNameTidy": "[toLower(trim(parameters('coreSqlDatabaseName')))]",
+    "dbApiVersion": "2014-04-01-preview",
+    "messagingSqlDatabaseNameTidy": "[toLower(trim(parameters('messagingSqlDatabaseName')))]",
+    "redisApiVersion": "2016-04-01",
     "redisCacheNameTidy": "[toLower(trim(parameters('redisCacheName')))]",
-
-
+    "serverFarmApiVersion": "2016-09-01",
     "sitecoreTags": {
       "provider": "b51535c2-ab3e-4a68-95f8-e2e3c9a19299",
-      "cd": "cd"
-    }
+      "cd": "cd",
+      "core": "core",
+      "web": "web",
+      "messaging": "messaging"
+    },
+    "sqlServerNameTidy": "[toLower(trim(parameters('sqlServerName')))]",
+    "webApiVersion": "2016-08-01",
+    "webSqlDatabaseNameTidy": "[toLower(trim(parameters('webSqlDatabaseName')))]"
   },
   "parameters": {
     "deploymentId": {
@@ -141,6 +140,11 @@
             "DataVolumeCap": {
               "Cap": 20
             }
+          },
+          "messagingSqlDatabase": {
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S0"
           }
         },
         "Small": {
@@ -210,6 +214,11 @@
             "SkuFamily": "C",
             "SkuCapacity": 1
           },
+          "messagingSqlDatabase": {
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S0"
+          },
           "applicationInsightsPricePlan": {
             "CurrentBillingFeatures": "Basic",
             "DataVolumeCap": {
@@ -270,6 +279,11 @@
             "ServiceObjectiveLevel": "S0"
           },
           "exmMasterSqlDatabase": {
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S0"
+          },
+          "messagingSqlDatabase": {
             "Edition": "Standard",
             "MaxSize": "268435456000",
             "ServiceObjectiveLevel": "S0"
@@ -348,6 +362,11 @@
             "MaxSize": "268435456000",
             "ServiceObjectiveLevel": "S1"
           },
+          "messagingSqlDatabase": {
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S0"
+          },
           "searchService": {
             "SkuName": "Standard",
             "Partitions": 1,
@@ -422,6 +441,11 @@
             "MaxSize": "268435456000",
             "ServiceObjectiveLevel": "S2"
           },
+          "messagingSqlDatabase": {
+            "Edition": "Standard",
+            "MaxSize": "268435456000",
+            "ServiceObjectiveLevel": "S0"
+          },
           "searchService": {
             "SkuName": "Standard",
             "Partitions": 1,
@@ -488,6 +512,11 @@
       "type": "string",
       "minLength": 1,
       "defaultValue": "[concat(parameters('deploymentId'), '-redis2')]"
+    },
+    "messagingSqlDatabaseName": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "[concat(parameters('deploymentId'), '-messaging-db')]"
     }
   },
   "resources": [
@@ -549,6 +578,16 @@
         "provider": "[variables('sitecoreTags').provider]"
       },
       "resources": [
+        {
+          "type": "firewallrules",
+          "apiVersion": "[variables('dbApiVersion')]",
+          "properties": {
+            "endIpAddress": "0.0.0.0",
+            "startIpAddress": "0.0.0.0"
+          },
+          "name": "AllowAllAzureIps",
+          "dependsOn": [ "[resourceId('Microsoft.Sql/servers', variables('sqlServerNameTidy'))]" ]
+        },
         {
           "type": "databases",
           "apiVersion": "[variables('dbApiVersion')]",
@@ -612,6 +651,36 @@
       ]
     },
     {
+      "type": "Microsoft.Sql/servers/databases",
+      "name": "[concat(variables('sqlServerNameTidy'), '/', variables('messagingSqlDatabaseNameTidy'))]",
+      "dependsOn": [ "[resourceId('Microsoft.Sql/servers', variables('sqlServerNameTidy'))]" ],
+      "location": "[parameters('location')]",
+      "apiVersion": "[variables('dbApiVersion')]",
+      "properties": {
+        "edition": "[parameters('resourceSizes').messagingSqlDataBase.Edition]",
+        "collation": "[parameters('sqlDatabaseCollation')]",
+        "maxSizeBytes": "[parameters('resourceSizes').messagingSqlDataBase.MaxSize]",
+        "requestedServiceObjectiveName": "[parameters('resourceSizes').messagingSqlDataBase.ServiceObjectiveLevel]"
+      },
+      "resources": [
+        {
+          "name": "current",
+          "type": "transparentDataEncryption",
+          "dependsOn": [
+            "[variables('messagingSqlDatabaseNameTidy')]"
+          ],
+          "apiVersion": "2014-04-01",
+          "properties": {
+            "status": "Enabled"
+          }
+        }
+      ],
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').messaging]"
+      }
+    },
+    {
       "type": "Microsoft.Cache/Redis",
       "name": "[variables('redisCacheNameTidy')]",
       "apiVersion": "[variables('redisApiVersion')]",
@@ -635,6 +704,12 @@
       "value": [
         "[variables('cd2WebAppNameTidy')]"
       ]
+    },
+    "infrastructure": {
+      "type": "object",
+      "value": {
+        "sqlServerFqdn": "[reference(concat('Microsoft.Sql/servers/', variables('sqlServerNameTidy'))).fullyQualifiedDomainName]"
+      }
     },
     "possibleAzureIpAddresses": {
       "type": "array",

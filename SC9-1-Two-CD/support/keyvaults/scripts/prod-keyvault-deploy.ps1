@@ -1,6 +1,6 @@
-$resourceGroupName = "dxv-keystore"
+$resourceGroupName = "mv-keystore"
 $vaultEnvironment = "prod"
-$subscriptionId = "842018ba-1d53-4c48-b057-a17801295110"
+$subscriptionId = "5d474f0f-892e-4843-a5c9-803a09ca8628"
 
 $keyvaultProjectRoot = "$($PSScriptRoot)\.."
 

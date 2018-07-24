@@ -11,7 +11,7 @@ param(
 	[string] $WebEnvironmentShort = "",
 
 	[parameter (Mandatory=$false)]
-	[string] $ClientName = "pods",
+	[string] $ClientName = "mv",
 
 	[parameter (Mandatory=$false)]
 	[string] $ResourceGroupPrefix = "",
